@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Trunk -->
+  <path d="M200 480 L200 300" stroke-width="12"/>
+  <path d="M200 440 L200 310" stroke-width="10"/>
+  
+  <!-- Main trunk texture -->
+  <path d="M196 480 Q192 440 194 400 Q196 360 195 320 Q197 300 200 300" stroke-width="2" opacity="0.4"/>
+  <path d="M204 480 Q208 440 206 400 Q204 360 205 320 Q203 300 200 300" stroke-width="2" opacity="0.4"/>
+
+  <!-- Primary branches -->
+  <!-- Left large branch -->
+  <path d="M200 360 Q170 340 140 310 Q120 290 100 260" stroke-width="7"/>
+  <!-- Right large branch -->
+  <path d="M200 360 Q230 340 260 310 Q280 290 300 260" stroke-width="7"/>
+  <!-- Left upper branch -->
+  <path d="M200 320 Q175 300 155 270 Q140 245 130 220" stroke-width="5"/>
+  <!-- Right upper branch -->
+  <path d="M200 320 Q225 300 245 270 Q260 245 270 220" stroke-width="5"/>
+  <!-- Center branch -->
+  <path d="M200 310 Q200 280 200 250 Q200 230 198 210" stroke-width="5"/>
+
+  <!-- Secondary branches left -->
+  <path d="M140 310 Q120 295 105 275 Q92 258 85 238" stroke-width="3.5"/>
+  <path d="M140 310 Q125 305 110 295 Q95 282 85 265" stroke-width="3"/>
+  <path d="M100 260 Q85 248 72 232 Q60 215 55 195" stroke-width="3"/>
+  <path d="M100 260 Q88 250 80 238" stroke-width="2.5"/>
+  <path d="M130 220 Q118 208 108 192 Q98 175 95 158" stroke-width="3"/>
+  <path d="M130 220 Q120 215 108 205" stroke-width="2.5"/>
+
+  <!-- Secondary branches right -->
+  <path d="M260 310 Q278 295 292 275 Q305 258 312 238" stroke-width="3.5"/>
+  <path d="M260 310 Q272 305 287 295 Q302 282 312 265" stroke-width="3"/>
+  <path d="M300 260 Q313 248 325 232 Q337 215 342 195" stroke-width="3"/>
+  <path d="M300 260 Q312 250 318 238" stroke-width="2.5"/>
+  <path d="M270 220 Q280 208 290 192 Q300 175 302 158" stroke-width="3"/>
+  <path d="M270 220 Q278 215 290 205" stroke-width="2.5"/>
+
+  <!-- Tertiary branches left -->
+  <path d="M85 238 Q72 225 62 210 Q52 193 50 175" stroke-width="2"/>
+  <path d="M85 238 Q76 228 68 215" stroke-width="2"/>
+  <path d="M55 195 Q44 182 38 165 Q32 148 33 130" stroke-width="2"/>
+  <path d="M95 158 Q85 145 78 130 Q72 115 73 98" stroke-width="2"/>
+  <path d="M95 158 Q88 150 82 138" stroke-width="1.5"/>
+  <path d="M108 205 Q100 193 96 178" stroke-width="2"/>
+
+  <!-- Tertiary branches right -->
+  <path d="M312 238 Q325 225 335 210 Q345 193 347 175" stroke-width="2"/>
+  <path d="M312 238 Q321 228 330 215" stroke-width="2"/>
+  <path d="M342 195 Q353 182 360 165 Q366 148 365 130" stroke-width="2"/>
+  <path d="M302 158 Q312 145 320 130 Q326 115 325 98" stroke-width="2"/>
+  <path d="M302 158 Q310 150 316 138" stroke-width="1.5"/>
+  <path d="M290 205 Q298 193 302 178" stroke-width="2"/>
+
+  <!-- Fine twigs left -->
+  <path d="M50 175 Q40 162 34 148" stroke-width="1.5"/>
+  <path d="M50 175 Q45 165 40 155" stroke-width="1.5"/>
+  <path d="M33 130 Q26 118 22 105" stroke-width="1.5"/>
+  <path d="M33 130 Q30 120 28 108" stroke-width="1.5"/>
+  <path d="M73 98 Q65 86 60 72" stroke-width="1.5"/>
+  <path d="M73 98 Q70 88 68 76" stroke-width="1.5"/>
+  <path d="M62 210 Q54 200 48 188" stroke-width="1.5"/>
+
+  <!-- Fine twigs right -->
+  <path d="M347 175 Q357 162 363 148" stroke-width="1.5"/>
+  <path d="M347 175 Q352 165 358 155" stroke-width="1.5"/>
+  <path d="M365 130 Q371 118 376 105" stroke-width="1.5"/>
+  <path d="M365 130 Q368 120 370 108" stroke-width="1.5"/>
+  <path d="M325 98 Q332 86 338 72" stroke-width="1.5"/>
+  <path d="M325 98 Q328 88 330 76" stroke-width="1.5"/>
+  <path d="M335 210 Q343 200 350 188" stroke-width="1.5"/>
+
+  <!-- Center upper fine branches -->
+  <path d="M198 210 Q190 195 185 178 Q180 160 182 142" stroke-width="2"/>
+  <path d="M198 210 Q205 195 210 178 Q215 160 212 142" stroke-width="2"/>
+  <path d="M182 142 Q175 128 170 112" stroke-width="1.5"/>
+  <path d="M182 142 Q178 130 176 116" stroke-width="1.5"/>
+  <path d="M212 142 Q218 128 222 112" stroke-width="1.5"/>
+  <path d="M212 142 Q216 130 218 116" stroke-width="1.5"/>
+
+  <!-- Bodhi Leaves - large teardrop shaped with pointed tips -->
+  <!-- Left cluster -->
+  <ellipse cx="38" cy="140" rx="12" ry="18" transform="rotate(-20 38 140)" stroke-width="1.5"/>
+  <path d="M38 125 Q44 133 38 158" stroke-width="1" opacity="0.5"/>
+  <ellipse cx="22" cy="100" rx="11" ry="17" transform="rotate(-35 22 100)" stroke-width="1.5"/>
+  <ellipse cx="52" cy="108" rx="10" ry="16" transform="rotate(15 52 108)" stroke-width="1.5"/>
+  <ellipse cx="60" cy="68" rx="10" ry="16" transform="rotate(-10 60 68)" stroke-width="1.5"/>
+  <ellipse cx="76" cy="58" rx="9" ry="14" transform="rotate(20 76 58)" stroke-width="1.5"/>
+  <ellipse cx="48" cy="182" rx="11" ry="16" transform="rotate(-25 48 182)" stroke-width="1.5"/>
+  <ellipse cx="34" cy="145" rx="10" ry="15" transform="rotate(10 34 145)" stroke-width="1.5"/>
+  <ellipse cx="96" cy="170" rx="10" ry="16" transform="rotate(-15 96 170)" stroke-width="1.5"/>
+  <ellipse cx="68" cy="210" rx="11" ry="17" transform="rotate(-30 68 210)" stroke-width="1.5"/>
+  <ellipse cx="84" cy="230" rx="10" ry="15" transform="rotate(10 84 230)" stroke-width="1.5"/>
+
+  <!-- Right cluster -->
+  <ellipse cx="360" cy="140" rx="12" ry="18" transform="rotate(20 360 140)" stroke-width="1.5"/>
+  <ellipse cx="376" cy="100" rx="11" ry="17" transform="rotate(35 376 100)" stroke-width="1.5"/>
+  <ellipse cx="346" cy="108" rx="10" ry="16" transform="rotate(-15 346 108)" stroke-width="1.5"/>
+  <ellipse cx="338" cy="68" rx="10" ry="16" transform="rotate(10 338 68)" stroke-width="1.5"/>
+  <ellipse cx="322" cy="58" rx="9" ry="14" transform="rotate(-20 322 58)" stroke-width="1.5"/>
+  <ellipse cx="350" cy="182" rx="11" ry="16" transform="rotate(25 350 182)" stroke-width="1.5"/>
+  <ellipse cx="364" cy="145" rx="10" ry="15" transform="rotate(-10 364 145)" stroke-width="1.5"/>
+  <ellipse cx="302" cy="170" rx="10" ry="16" transform="rotate(15 302 170)" stroke-width="1.5"/>
+  <ellipse cx="330" cy="210" rx="11" ry="17" transform="rotate(30 330 210)" stroke-width="1.5"/>
+  <ellipse cx="314" cy="230" rx="10" ry="15" transform="rotate(-10 314 230)" stroke-width="1.5"/>
+
+  <!-- Center upper leaves -->
+  <ellipse cx="170" cy="108" rx="11" ry="17" transform="rotate(-15 170 108)" stroke-width="1.5"/>
+  <ellipse cx="185" cy="138" rx="10" ry="16" transform="rotate(-5 185 138)" stroke-width="1.5"/>
+  <ellipse cx="200" cy="100" rx="12" ry="18" stroke-width="1.5"/>
+  <ellipse cx="215" cy="138" rx="10" ry="16" transform="rotate(5 215 138)" stroke-width="1.5"/>
+  <ellipse cx="228" cy="108" rx="11" ry="17" transform="rotate(15 228 108)" stroke-width="1.5"/>
+
+  <!-- Mid-left leaves -->
+  <ellipse cx="108" cy="188" rx="11" ry="17" transform="rotate(-20 108 188)" stroke-width="1.5"/>
+  <ellipse cx="118" cy="200" rx="10" ry="15" transform="rotate(5 118 200)" stroke-width="1.5"/>
+  <ellipse cx="128" cy="218" rx="10" ry="16" transform="rotate(-10 128 218)" stroke-width="1.5"/>
+  <ellipse cx="110" cy="250" rx="11" ry="16" transform="rotate(-25 110 250)" stroke-width="1.5"/>
+  <ellipse cx="132" cy="265" rx="10" ry="15" transform="rotate(15 132 265)" stroke-width="1.5"/>
+  <ellipse cx="155" cy="258" rx="10" ry="16" transform="rotate(-5 155 258)" stroke-width="1.5"/>
+  <ellipse cx="152" cy="275" rx="9" ry="14" transform="rotate(20 152 275)" stroke-width="1.5"/>
+
+  <!-- Mid-right leaves -->
+  <ellipse cx="290" cy="188" rx="11" ry="17" transform="rotate(20 290 188)" stroke-width="1.5"/>
+  <ellipse cx="280" cy="200" rx="10" ry="15" transform="rotate(-5 280 200)" stroke-width="1.5"/>
+  <ellipse cx="270" cy="218" rx="10" ry="16" transform="rotate(10 270 218)" stroke-width="1.5"/>
+  <ellipse cx="288" cy="250" rx="11" ry="16" transform="rotate(25 288 250)" stroke-width="1.5"/>
+  <ellipse cx="266" cy="265" rx="10" ry="15" transform="rotate(-15 266 265)" stroke-width="1.5"/>
+  <ellipse cx="243" cy="258" rx="10" ry="16" transform="rotate(5 243 258)" stroke-width="1.5"/>
+  <ellipse cx="246" cy="275" rx="9" ry="14" transform="rotate(-20 246 275)" stroke-width="1.5"/>
+
+  <!-- Lower left drooping leaves (Bodhi leaves are heart-shaped with long tips) -->
+  <ellipse cx="88" cy="260" rx="10" ry="16" transform="rotate(-30 88 260)" stroke-width="1.5"/>
+  <ellipse cx="168" cy="298" rx="10" ry="15" transform="rotate(-10 168 298)" stroke-width="1.5"/>
+  <ellipse cx="182" cy="308" rx="9" ry="14" transform="rotate(5 182 308)" stroke-width="1.5"/>
+  <!-- Lower right drooping leaves -->
+  <ellipse cx="310" cy="260" rx="10" ry="16" transform="rotate(30 310 260)" stroke-width="1.5"/>
+  <ellipse cx="230" cy="298" rx="10" ry="15" transform="rotate(10 230 298)" stroke-width="1.5"/>
+  <ellipse cx="216" cy="308" rx="9" ry="14" transform="rotate(-5 216 308)" stroke-width="1.5"/>
+
+  <!-- Roots -->
+  <path d="M200 480 Q185 490 165 492 Q145 494 128 488" stroke-width="5"/>
+  <path d="M200 480 Q215 490 235 492 Q255 494 272 488" stroke-width="5"/>
+  <path d="M200 480 Q192 496 180 500" stroke-width="3"/>
+  <path d="M200 480 Q208 496 220 500" stroke-width="3"/>
+  <path d="M165 492 Q148 498 132 498 Q118 497 108 490" stroke-width="3"/>
+  <path d="M235 492 Q252 498 268 498 Q282 497 292 490" stroke-width="3"/>
+  <path d="M128 488 Q115 494 102 492" stroke-width="2"/>
+  <path d="M272 488 Q285 494 298 492" stroke-width="2"/>
+</svg>
