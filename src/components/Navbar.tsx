@@ -42,17 +42,19 @@ export default function Navbar() {
           <div className="flex-shrink-0 flex items-center">
             <Link 
               href="/" 
-              className="flex items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary rounded-md group"
+              className="flex items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary rounded-md group"
               aria-label="NBRF Home"
             >
-              <div className="h-10 w-40 bg-white rounded overflow-hidden shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all flex items-center justify-center">
-                <Image 
-                  src="/logo.png" 
-                  alt="NBRF Logo" 
-                  width={160} 
-                  height={40} 
-                  className="w-full h-full object-cover scale-[1.1]" 
-                />
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center border border-brand-primary/30 group-hover:border-brand-primary group-hover:shadow-[0_0_15px_rgba(16,185,129,0.4)] transition-all overflow-hidden p-1 shrink-0">
+                <Image src="/logo.png" alt="NBRF Logo" width={40} height={40} className="w-full h-full object-contain" />
+              </div>
+              <div className="hidden sm:flex flex-col">
+                <span className="font-mono font-bold text-lg leading-none tracking-tight text-white glow-text group-hover:text-brand-primary transition-colors">
+                  NBRF
+                </span>
+                <span className="text-[9px] uppercase tracking-[0.2em] text-muted font-mono mt-0.5">
+                  Think Tank
+                </span>
               </div>
             </Link>
           </div>
