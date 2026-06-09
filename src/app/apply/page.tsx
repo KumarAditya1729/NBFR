@@ -71,13 +71,15 @@ export default function MembershipForm() {
         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-primary/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="relative z-10 max-w-3xl mx-auto">
-          <Link href="/" className="inline-flex items-center gap-3 mb-6 group">
-            <div className="w-12 h-12 bg-white rounded flex items-center justify-center border border-border overflow-hidden p-1">
-              <Image src="/logo.png" alt="NBRF" width={40} height={40} className="object-contain" />
-            </div>
-            <div className="text-left">
-              <div className="font-mono font-bold text-white text-lg glow-text group-hover:text-brand-primary transition-colors">NBRF</div>
-              <div className="text-[10px] font-mono text-muted uppercase tracking-widest">Think Tank</div>
+          <Link href="/" className="inline-flex items-center mb-6 group">
+            <div className="h-12 w-48 bg-white rounded overflow-hidden shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all flex items-center justify-center">
+              <Image 
+                src="/logo.png" 
+                alt="NBRF Logo" 
+                width={192} 
+                height={48} 
+                className="w-full h-full object-cover scale-[1.1]" 
+              />
             </div>
           </Link>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-primary/30 bg-brand-primary/10 text-brand-primary font-mono text-[10px] uppercase tracking-widest mb-4">
