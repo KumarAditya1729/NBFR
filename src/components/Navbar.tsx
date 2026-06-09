@@ -7,15 +7,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 const navLinks = [
-  { name: "Home", href: "#" },
-  { name: "About", href: "#about" },
-  { name: "Research", href: "#research" },
-  { name: "Publications", href: "#publications" },
-  { name: "Events", href: "#events" },
-  { name: "Membership", href: "#memberships" },
-  { name: "Initiatives", href: "#initiatives" },
-  { name: "Insights", href: "#insights" },
-  { name: "Media", href: "#media" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/#about" },
+  { name: "Discover Bihar", href: "/bihar" },
+  { name: "Research", href: "/#research" },
+  { name: "Publications", href: "/#publications" },
+  { name: "Events", href: "/#events" },
+  { name: "Membership", href: "/#memberships" },
+  { name: "Initiatives", href: "/#initiatives" },
+  { name: "Insights", href: "/#insights" },
+  { name: "Media", href: "/#media" },
 ];
 
 export default function Navbar() {
