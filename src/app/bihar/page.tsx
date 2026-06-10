@@ -33,7 +33,7 @@ export default function DiscoverBihar() {
           </motion.div>
 
           {/* Quick Facts Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-20">
             {[
               { label: "Established", value: "22 March 1912", icon: Clock },
               { label: "Capital", value: "Patna", icon: Building2 },
