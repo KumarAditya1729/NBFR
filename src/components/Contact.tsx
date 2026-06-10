@@ -14,14 +14,8 @@ export default function Contact() {
     const formData = new FormData(formElement);
     
     try {
-      // Note: Replace this with your actual Formspree endpoint or backend URL
-      const endpoint = "https://formspree.io/f/YOUR_FORM_ID_HERE";
-      
-      // If endpoint is still placeholder, just simulate success for the demo
-      if (endpoint.includes("YOUR_FORM_ID_HERE")) {
-        setTimeout(() => setSubmitted(true), 800);
-        return;
-      }
+      // FormSubmit.co endpoint for nbrfngo@gmail.com
+      const endpoint = "https://formsubmit.co/ajax/nbrfngo@gmail.com";
       
       const response = await fetch(endpoint, {
         method: 'POST',
