@@ -3,8 +3,8 @@
 // Title: Interactive Bihar Map | NBRF
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import InteractiveSvg from "@/components/InteractiveSvg";
 import { motion } from "framer-motion";
 import {
   Map, Layers, ZoomIn, ZoomOut, RotateCcw, ExternalLink,
@@ -187,20 +187,11 @@ export default function MapPage() {
                 style={{ transform: `scale(${zoom / 100})` }}
               >
                 <div className="relative w-[90%] h-[90%] drop-shadow-[0_0_40px_rgba(16,185,129,0.2)]">
-                  <Image
+                  <InteractiveSvg
                     src="/bihar-map.svg"
-                    alt="Interactive Bihar Map"
-                    fill
-                    className="object-contain"
-                    style={{
-                      filter: activeOverlay === "development"
-                        ? "invert(1) sepia(1) saturate(5) hue-rotate(100deg) brightness(1.5)"
-                        : activeOverlay === "agriculture"
-                        ? "invert(1) sepia(1) saturate(3) hue-rotate(60deg) brightness(1.4)"
-                        : activeOverlay === "health"
-                        ? "invert(1) sepia(1) saturate(4) hue-rotate(150deg) brightness(1.5)"
-                        : "invert(1) sepia(1) saturate(4) hue-rotate(220deg) brightness(1.4)"
-                    }}
+                    activeDistrict={selectedDistrict}
+                    onDistrictClick={(id) => setSelectedDistrict(id === selectedDistrict ? null : id)}
+                    className="w-full h-full"
                   />
                 </div>
               </div>

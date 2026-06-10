@@ -8,9 +8,35 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    const formElement = e.currentTarget;
+    const formData = new FormData(formElement);
+    
+    try {
+      // Note: Replace this with your actual Formspree endpoint or backend URL
+      const endpoint = "https://formspree.io/f/YOUR_FORM_ID_HERE";
+      
+      // If endpoint is still placeholder, just simulate success for the demo
+      if (endpoint.includes("YOUR_FORM_ID_HERE")) {
+        setTimeout(() => setSubmitted(true), 800);
+        return;
+      }
+      
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        setSubmitted(true);
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+    }
   };
 
   const contacts = [
@@ -131,6 +157,7 @@ export default function Contact() {
                       <label htmlFor="contact-name" className="block text-xs font-mono text-muted uppercase tracking-widest mb-2">Full Name *</label>
                       <input
                         id="contact-name"
+                        name="name"
                         type="text"
                         required
                         value={form.name}
@@ -143,6 +170,7 @@ export default function Contact() {
                       <label htmlFor="contact-email" className="block text-xs font-mono text-muted uppercase tracking-widest mb-2">Email Address *</label>
                       <input
                         id="contact-email"
+                        name="email"
                         type="email"
                         required
                         value={form.email}
@@ -157,6 +185,7 @@ export default function Contact() {
                     <label htmlFor="contact-subject" className="block text-xs font-mono text-muted uppercase tracking-widest mb-2">Subject *</label>
                     <select
                       id="contact-subject"
+                      name="subject"
                       required
                       value={form.subject}
                       onChange={e => setForm({ ...form, subject: e.target.value })}
@@ -176,6 +205,7 @@ export default function Contact() {
                     <label htmlFor="contact-message" className="block text-xs font-mono text-muted uppercase tracking-widest mb-2">Message *</label>
                     <textarea
                       id="contact-message"
+                      name="message"
                       required
                       rows={5}
                       value={form.message}

@@ -18,7 +18,7 @@ export default function PublicationsBento() {
         
         <div className="w-full h-44 rounded-lg overflow-hidden relative border border-border/50">
           <Image
-            src="/featured_research.png"
+            src="/featured_research.webp"
             alt="Featured Research"
             fill
             className="object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
