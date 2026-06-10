@@ -36,7 +36,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex justify-between items-center h-16 rounded-xl px-4 transition-all duration-300 ${
           scrolled 
-            ? 'bg-surface/80 backdrop-blur-md border border-border shadow-[0_0_20px_rgba(0,0,0,0.5)]' 
+            ? 'bg-background/95 backdrop-blur-xl border border-border shadow-lg' 
             : 'bg-transparent'
         }`}>
           {/* Logo */}
@@ -101,9 +101,9 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="xl:hidden absolute top-full left-2 right-2 sm:left-4 sm:right-4 mt-2 max-h-[80vh] overflow-y-auto"
+            className="xl:hidden absolute top-full left-2 right-2 sm:left-4 sm:right-4 mt-2 max-h-[80vh] overflow-y-auto z-[60]"
           >
-            <div className="tech-card p-4 flex flex-col space-y-1">
+            <div className="tech-card bg-background/95 backdrop-blur-xl p-4 flex flex-col space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}

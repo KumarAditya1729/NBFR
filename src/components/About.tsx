@@ -86,7 +86,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-secondary/30 bg-brand-secondary/10 text-brand-secondary font-mono text-[10px] uppercase tracking-widest mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-primary/30 bg-brand-primary/10 text-brand-primary font-mono text-[10px] uppercase tracking-widest mb-4"
           >
             ABOUT // NBRF
           </motion.div>
@@ -95,7 +95,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-mono font-bold text-white mb-6 glow-text-blue"
+            className="text-3xl md:text-5xl font-mono font-bold text-white mb-6 glow-text"
           >
             ABOUT NBRF
           </motion.h2>
@@ -103,20 +103,20 @@ export default function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Tab Navigation */}
-          <div className="lg:col-span-4 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0">
+          <div className="lg:col-span-4 flex flex-row lg:flex-col gap-2 overflow-x-auto scroll-x pb-4 lg:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-3 px-6 py-4 rounded text-left font-mono text-sm transition-all whitespace-nowrap lg:whitespace-normal ${
+                  className={`flex items-center gap-3 px-6 py-4 rounded text-left font-mono text-sm transition-all whitespace-nowrap lg:whitespace-normal shrink-0 lg:shrink ${
                     isActive 
-                      ? 'bg-brand-secondary/10 border border-brand-secondary text-brand-secondary shadow-[0_0_15px_rgba(56,189,248,0.2)]' 
-                      : 'bg-surface border border-border text-muted hover:border-brand-secondary/50 hover:text-white'
+                      ? 'bg-brand-primary/10 border border-brand-primary text-brand-primary shadow-[0_0_15px_rgba(16,185,129,0.2)]' 
+                      : 'bg-surface border border-border text-muted hover:border-brand-primary/50 hover:text-white'
                   }`}
                 >
-                  <tab.icon className={`w-5 h-5 shrink-0 ${isActive ? 'text-brand-secondary' : 'text-muted'}`} />
+                  <tab.icon className={`w-5 h-5 shrink-0 ${isActive ? 'text-brand-primary' : 'text-muted'}`} />
                   {tab.label}
                 </button>
               );
@@ -132,7 +132,7 @@ export default function About() {
           {/* Tab Content */}
           <div className="lg:col-span-8">
             <div className="tech-card p-5 sm:p-8 md:p-10 min-h-[280px] sm:min-h-[400px] relative">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-secondary/5 rounded-full blur-[50px] pointer-events-none"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 rounded-full blur-[50px] pointer-events-none"></div>
               
               <AnimatePresence mode="wait">
                 <motion.div
