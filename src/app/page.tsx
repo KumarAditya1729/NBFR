@@ -1,47 +1,86 @@
+import HomeHero from "@/components/home/HomeHero";
+import PublicationsBento from "@/components/home/PublicationsBento";
+import InteractiveMapBento from "@/components/home/InteractiveMapBento";
+import PolicyDashboard from "@/components/home/PolicyDashboard";
+import FocusAreas from "@/components/home/FocusAreas";
+import ExpertsBento from "@/components/home/ExpertsBento";
+import EventsDataRow from "@/components/home/EventsDataRow";
+import NewsImpactRow from "@/components/home/NewsImpactRow";
+import PartnersSearchRow from "@/components/home/PartnersSearchRow";
 
+// Full-page sections (anchor targets)
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Experts from "@/components/Experts";
 import ResearchVerticals from "@/components/ResearchVerticals";
 import Publications from "@/components/Publications";
-import PolicyBriefs from "@/components/PolicyBriefs";
-import DataLab from "@/components/DataLab";
 import Events from "@/components/Events";
-import ResearchCentres from "@/components/ResearchCentres";
+import Membership from "@/components/Membership";
 import Fellowships from "@/components/Fellowships";
 import Insights from "@/components/Insights";
-import Partners from "@/components/Partners";
 import MediaPress from "@/components/MediaPress";
-import AiAssistant from "@/components/AiAssistant";
-import Newsletter from "@/components/Newsletter";
-import Membership from "@/components/Membership";
+import Partners from "@/components/Partners";
 import Contact from "@/components/Contact";
 import ScrollToTop from "@/components/ScrollToTop";
 
-
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-brand-primary selection:text-white">
+    <>
+      {/* ── Bento Grid Homepage ── */}
+      <main className="min-h-screen bg-background text-foreground selection:bg-brand-primary selection:text-white pb-20 overflow-x-hidden">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-6">
 
-      <Hero />
+            {/* Row 1: Hero & Map */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <div className="lg:col-span-8 flex flex-col gap-6">
+                <HomeHero />
+                <PublicationsBento />
+              </div>
+              <div className="lg:col-span-4 h-full">
+                <InteractiveMapBento />
+              </div>
+            </div>
+
+            {/* Row 2: Dashboard & Focus Areas */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <div className="lg:col-span-8">
+                <PolicyDashboard />
+              </div>
+              <div className="lg:col-span-4">
+                <FocusAreas />
+              </div>
+            </div>
+
+            {/* Row 3: Experts Grid */}
+            <div className="w-full">
+              <ExpertsBento />
+            </div>
+
+            {/* Row 4: Events & Data Visualization */}
+            <EventsDataRow />
+
+            {/* Row 5: News & Impact Metrics */}
+            <NewsImpactRow />
+
+            {/* Row 6: Partners & AI Search */}
+            <PartnersSearchRow />
+
+          </div>
+        </div>
+      </main>
+
+      {/* ── Full Page Sections (Navbar Anchor Targets) ── */}
       <About />
-      <Experts />
       <ResearchVerticals />
       <Publications />
-      <PolicyBriefs />
-      <DataLab />
       <Events />
-      <ResearchCentres />
+      <Membership />
       <Fellowships />
       <Insights />
-      <Partners />
       <MediaPress />
-      <AiAssistant />
-      <Membership />
+      <Partners />
       <Contact />
-      <Newsletter />
       <ScrollToTop />
-
-    </main>
+    </>
   );
 }

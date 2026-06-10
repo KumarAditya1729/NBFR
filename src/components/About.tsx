@@ -131,7 +131,7 @@ export default function About() {
 
           {/* Tab Content */}
           <div className="lg:col-span-8">
-            <div className="tech-card p-8 md:p-10 min-h-[400px] relative">
+            <div className="tech-card p-5 sm:p-8 md:p-10 min-h-[280px] sm:min-h-[400px] relative">
               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-secondary/5 rounded-full blur-[50px] pointer-events-none"></div>
               
               <AnimatePresence mode="wait">

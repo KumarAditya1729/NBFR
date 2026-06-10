@@ -103,7 +103,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="lg:col-span-3"
           >
-            <div className="tech-card p-8 md:p-10 border-brand-primary/20">
+            <div className="tech-card p-5 sm:p-8 md:p-10 border-brand-primary/20">
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}

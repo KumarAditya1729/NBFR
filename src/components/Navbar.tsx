@@ -61,7 +61,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-6">
+          <div className="hidden xl:flex items-center space-x-4 2xl:space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -81,7 +81,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex items-center lg:hidden">
+          <div className="flex items-center xl:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-muted hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary rounded-md"
@@ -101,7 +101,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden absolute top-full left-4 right-4 mt-2 max-h-[80vh] overflow-y-auto"
+            className="xl:hidden absolute top-full left-2 right-2 sm:left-4 sm:right-4 mt-2 max-h-[80vh] overflow-y-auto"
           >
             <div className="tech-card p-4 flex flex-col space-y-1">
               {navLinks.map((link) => (

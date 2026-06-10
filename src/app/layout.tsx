@@ -16,8 +16,43 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "NBRF - Cyber Security & Governance Think Tank",
-  description: "Advancing Research, Policy, Innovation and State Development",
+  title: {
+    default: "NBRF — Nav Bihar Renaissance Foundation",
+    template: "%s | NBRF",
+  },
+  description:
+    "Bihar's pioneering think tank driving development through Research, Policy, Impact, and Action across all 38 districts.",
+  keywords: [
+    "NBRF",
+    "Nav Bihar Renaissance Foundation",
+    "Bihar think tank",
+    "Bihar policy",
+    "Bihar research",
+    "Patna",
+    "Bihar development",
+  ],
+  authors: [{ name: "NBRF" }],
+  creator: "Nav Bihar Renaissance Foundation",
+  metadataBase: new URL("https://nbrf.org.in"),
+  openGraph: {
+    title: "NBRF — Nav Bihar Renaissance Foundation",
+    description:
+      "Bihar's pioneering think tank driving development through Research, Policy, Impact, and Action.",
+    url: "https://nbrf.org.in",
+    siteName: "NBRF",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NBRF — Nav Bihar Renaissance Foundation",
+    description:
+      "Bihar's pioneering think tank driving development through Research, Policy, Impact, and Action.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -34,7 +69,7 @@ export default function RootLayout({
           forcedTheme="dark"
           disableTransitionOnChange
         >
-          <div className="relative w-full overflow-hidden flex flex-col min-h-screen">
+          <div className="relative w-full overflow-x-hidden flex flex-col min-h-screen">
             <Navbar />
             <main className="flex-grow pt-20">
               {children}

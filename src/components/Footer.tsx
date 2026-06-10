@@ -25,8 +25,11 @@ export default function Footer() {
               Nav Bihar Renaissance Foundation (NBRF) is Bihar&apos;s pioneering think tank, dedicated to addressing the state&apos;s developmental challenges through data-driven research and policy recommendations.
             </p>
             <div className="flex gap-4">
-              <a href="#" aria-label="LinkedIn" className="w-10 h-10 rounded bg-surface border border-border flex items-center justify-center text-muted hover:text-[#0A66C2] hover:border-[#0A66C2] transition-colors">
+              <a href="https://www.linkedin.com/company/nbrfofficial/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 rounded bg-surface border border-border flex items-center justify-center text-muted hover:text-[#0A66C2] hover:border-[#0A66C2] transition-colors">
                 <span className="font-bold text-lg">in</span>
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61590632909150" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 rounded bg-surface border border-border flex items-center justify-center text-muted hover:text-[#1877F2] hover:border-[#1877F2] transition-colors">
+                <span className="font-bold text-lg">f</span>
               </a>
               <a href="#" aria-label="X (Twitter)" className="w-10 h-10 rounded bg-surface border border-border flex items-center justify-center text-muted hover:text-white hover:border-white transition-colors">
                 <span className="font-bold text-lg">𝕏</span>
@@ -45,7 +48,7 @@ export default function Footer() {
               <li><Link href="#publications" className="hover:text-brand-primary transition-colors">Publications</Link></li>
               <li><Link href="#events" className="hover:text-brand-primary transition-colors">Events</Link></li>
               <li><Link href="#memberships" className="hover:text-brand-primary transition-colors">Membership</Link></li>
-              <li><Link href="#careers" className="hover:text-brand-primary transition-colors">Careers</Link></li>
+              <li><Link href="#memberships" className="hover:text-brand-primary transition-colors">Careers</Link></li>
               <li><Link href="#contact" className="hover:text-brand-primary transition-colors">Contact</Link></li>
             </ul>
           </div>
@@ -55,7 +58,7 @@ export default function Footer() {
             <ul className="space-y-4 text-sm font-sans">
               <li><Link href="#initiatives" className="hover:text-brand-primary transition-colors">Centers & Initiatives</Link></li>
               <li><Link href="#insights" className="hover:text-brand-primary transition-colors">Insights & Articles</Link></li>
-              <li><Link href="#policy" className="hover:text-brand-primary transition-colors">Policy Briefs</Link></li>
+              <li><Link href="#publications" className="hover:text-brand-primary transition-colors">Policy Briefs</Link></li>
               <li><Link href="#media" className="hover:text-brand-primary transition-colors">Media & Press</Link></li>
               <li><Link href="#partners" className="hover:text-brand-primary transition-colors">Partner Ecosystem</Link></li>
             </ul>

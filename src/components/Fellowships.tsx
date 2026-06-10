@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Fellowships() {
   return (
-    <section id="memberships" className="py-24 bg-background bg-grid relative overflow-hidden">
+    <section id="initiatives" className="py-24 bg-background bg-grid relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

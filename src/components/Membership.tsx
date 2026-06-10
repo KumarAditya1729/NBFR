@@ -25,7 +25,7 @@ export default function Membership() {
   ];
 
   return (
-    <section id="contribute" className="py-24 bg-surface border-t border-border relative overflow-hidden">
+    <section id="memberships" className="py-24 bg-surface border-t border-border relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
 
       {/* Bodhi Tree Background Watermark */}
