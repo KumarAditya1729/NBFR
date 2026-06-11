@@ -39,7 +39,7 @@ const experts = [
   },
   {
     name: "Shashank Shrivastava",
-    title: "Director",
+    title: "Manager",
     desc: "Experienced leader driving strategic research and institutional development at NBRF.",
     image: "/directors/shashank-shrivastava.jpg",
   },
