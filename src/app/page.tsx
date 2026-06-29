@@ -7,6 +7,11 @@ import ExpertsBento from "@/components/home/ExpertsBento";
 import EventsDataRow from "@/components/home/EventsDataRow";
 import NewsImpactRow from "@/components/home/NewsImpactRow";
 import PartnersSearchRow from "@/components/home/PartnersSearchRow";
+import ImpactCounter from "@/components/home/ImpactCounter";
+import BiharInNumbers from "@/components/home/BiharInNumbers";
+import BiharTimeline from "@/components/home/BiharTimeline";
+import AskThinkTank from "@/components/home/AskThinkTank";
+import NalandaParallax from "@/components/home/NalandaParallax";
 
 // Full-page sections (anchor targets)
 import Hero from "@/components/Hero";
@@ -35,10 +40,31 @@ export default function Home() {
               <HomeHero />
             </div>
 
+            {/* Bihar Timeline */}
+            <div className="w-full">
+              <BiharTimeline />
+            </div>
+
+            {/* Nalanda Parallax */}
+            <div className="w-full">
+              <NalandaParallax />
+            </div>
+
             {/* Row 2: Map Full Width */}
             <div className="w-full h-full">
               <InteractiveMapBento />
             </div>
+
+            {/* Impact Counter Band */}
+            </div>
+          </div>
+        </main>
+        <ImpactCounter />
+        <main className="bg-background text-foreground overflow-x-hidden pb-20">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col gap-6">
+            {/* Bihar in Numbers */}
+            <BiharInNumbers />
 
             {/* Row 3: Publications */}
             <div className="w-full">
@@ -68,6 +94,9 @@ export default function Home() {
 
             {/* Row 6: Partners & AI Search */}
             <PartnersSearchRow />
+
+            {/* Ask the Think Tank */}
+            <AskThinkTank />
 
           </div>
         </div>
