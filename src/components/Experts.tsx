@@ -99,7 +99,7 @@ export default function Experts() {
                 className={`tech-card group overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 ${isExpanded ? 'ring-1 ring-brand-secondary' : ''}`}
               >
                 {/* Photo area */}
-                <div className="relative h-80 overflow-hidden shrink-0">
+                <div className="relative h-64 overflow-hidden shrink-0">
                   {expert.image ? (
                     <Image
                       src={expert.image}
@@ -118,15 +118,15 @@ export default function Experts() {
                     </div>
                   )}
                   {/* Gradient overlay at bottom */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
                   {/* Director badge */}
-                  <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-background/80 backdrop-blur px-2 py-1 rounded border border-border">
+                  <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-black/60 backdrop-blur px-2 py-1 rounded border border-white/10">
                     <div className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse" />
-                    <span className="text-[10px] font-mono text-brand-primary">DIRECTOR</span>
+                    <span className="text-[10px] font-mono text-white">DIRECTOR</span>
                   </div>
                   {/* Name overlaid at bottom */}
                   <div className="absolute bottom-0 left-0 right-0 z-20 p-5">
-                    <h3 className="text-xl font-mono font-bold text-brand-primary leading-tight">
+                    <h3 className="text-xl font-mono font-bold text-white leading-tight">
                       {expert.name}
                     </h3>
                     <p className="text-brand-primary font-mono text-xs uppercase tracking-widest mt-1">
@@ -189,20 +189,20 @@ export default function Experts() {
               viewport={{ once: true }}
               className="tech-card group overflow-hidden flex flex-col w-full max-w-xs hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="relative h-72 overflow-hidden shrink-0">
+              <div className="relative h-64 overflow-hidden shrink-0">
                 <Image
                   src="/directors/shashank-shrivastava.jpg"
                   alt="Shashank Shrivastava"
                   fill
                   className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent z-10" />
-                <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-background/80 backdrop-blur px-2 py-1 rounded border border-border">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
+                <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-black/60 backdrop-blur px-2 py-1 rounded border border-white/10">
                   <div className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse" />
-                  <span className="text-[10px] font-mono text-brand-primary">MANAGEMENT</span>
+                  <span className="text-[10px] font-mono text-white">MANAGEMENT</span>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 z-20 p-5">
-                  <h3 className="text-xl font-mono font-bold text-brand-primary leading-tight">Shashank Shrivastava</h3>
+                  <h3 className="text-xl font-mono font-bold text-white leading-tight">Shashank Shrivastava</h3>
                   <p className="text-brand-accent font-mono text-xs uppercase tracking-widest mt-1">Manager, NBRF Think Tank</p>
                 </div>
               </div>
