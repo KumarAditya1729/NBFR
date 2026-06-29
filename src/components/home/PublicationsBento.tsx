@@ -1,6 +1,6 @@
 "use client";
 
-import { Download, ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 

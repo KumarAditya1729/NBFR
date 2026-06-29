@@ -1,6 +1,6 @@
 "use client";
 
-import { Leaf, MonitorSmartphone, Building2, BookOpenCheck, ArrowRight, Landmark, Wheat, GraduationCap, HeartPulse } from "lucide-react";
+import { ArrowRight, Landmark, Wheat, GraduationCap, HeartPulse } from "lucide-react";
 import Link from "next/link";
 
 export default function FocusAreas() {

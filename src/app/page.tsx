@@ -14,7 +14,7 @@ import AskThinkTank from "@/components/home/AskThinkTank";
 import NalandaParallax from "@/components/home/NalandaParallax";
 
 // Full-page sections (anchor targets)
-import Hero from "@/components/Hero";
+
 import About from "@/components/About";
 import ResearchVerticals from "@/components/ResearchVerticals";
 import Publications from "@/components/Publications";
