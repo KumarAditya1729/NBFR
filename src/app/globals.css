@@ -5,24 +5,24 @@
   --font-mono: var(--font-space), "Space Grotesk", ui-monospace, monospace;
   --font-serif: var(--font-playfair), "Playfair Display", ui-serif, serif;
 
-  --color-brand-primary: #EA580C; /* vibrant orange */
-  --color-brand-primary-dark: #C2410C;
-  --color-brand-secondary: #0F172A; /* slate 900 */
-  --color-brand-accent: #FDBA74;
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-dark: var(--brand-primary-dark);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-accent: var(--brand-accent);
   
-  --color-background: #FAFAFA;
-  --color-surface: #FFFFFF;
-  --color-surface-alt: #F1F5F9; /* slate 100 */
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
   
-  --color-foreground: #0F172A; /* slate 900 */
-  --color-muted: #64748B; /* slate 500 */
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
   
-  --color-border: #E2E8F0; /* slate 200 */
+  --color-border: var(--border);
   
-  --color-success: #059669;
-  --color-warning: #D97706;
-  --color-error: #DC2626;
-  --color-info: #2563EB;
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
   
   /* Think Tank Categories */
   --color-cat-economy: #1E3A8A; /* Deep Blue */
@@ -54,6 +54,29 @@
 
     color-scheme: light;
     scroll-behavior: smooth;
+  }
+
+  .dark {
+    --brand-primary: #EA580C;
+    --brand-primary-dark: #C2410C;
+    --brand-secondary: #0F172A;
+    --brand-accent: #FDBA74;
+    
+    --background: #0B1120; /* Very dark slate blue */
+    --surface: #131B2F; /* Slightly lighter slate blue */
+    --surface-alt: #1E293B; /* Slate 800 */
+    
+    --foreground: #F8FAFC; /* Slate 50 */
+    --muted: #94A3B8; /* Slate 400 */
+    
+    --border: #334155; /* Slate 700 */
+    
+    --success: #10B981;
+    --warning: #F59E0B;
+    --error: #EF4444;
+    --info: #3B82F6;
+
+    color-scheme: dark;
   }
 
   html, body {
