@@ -105,7 +105,7 @@ export default function Experts() {
                       src={expert.image}
                       alt={expert.name}
                       fill
-                      className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                      className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                     />
                   ) : (
                     <div className="w-full h-full bg-background flex flex-col items-center justify-center gap-3">
@@ -194,7 +194,7 @@ export default function Experts() {
                   src="/directors/shashank-shrivastava.jpg"
                   alt="Shashank Shrivastava"
                   fill
-                  className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
                 <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-black/60 backdrop-blur px-2 py-1 rounded border border-white/10">
