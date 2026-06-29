@@ -26,6 +26,7 @@ import MediaPress from "@/components/MediaPress";
 import Partners from "@/components/Partners";
 import Contact from "@/components/Contact";
 import ScrollToTop from "@/components/ScrollToTop";
+import Experts from "@/components/Experts";
 
 export default function Home() {
   return (
@@ -104,6 +105,7 @@ export default function Home() {
 
       {/* ── Full Page Sections (Navbar Anchor Targets) ── */}
       <About />
+      <Experts />
       <ResearchVerticals />
       <Publications />
       <Events />
