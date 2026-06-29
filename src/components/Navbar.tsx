@@ -34,9 +34,9 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'pt-2' : 'pt-4'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex justify-between items-center h-16 rounded-xl px-4 transition-all duration-300 ${
+        <div className={`flex justify-between items-center h-16 rounded-full px-4 transition-all duration-300 ${
           scrolled 
-            ? 'bg-background/95 backdrop-blur-xl border border-border shadow-lg' 
+            ? 'glass-panel' 
             : 'bg-transparent'
         }`}>
           {/* Logo */}
@@ -50,7 +50,7 @@ export default function Navbar() {
                 <Image src="/logo.png" alt="NBRF Logo" width={40} height={40} className="w-full h-full object-contain" />
               </div>
               <div className="hidden sm:flex flex-col">
-                <span className="font-mono font-bold text-lg leading-none tracking-tight text-white glow-text group-hover:text-brand-primary transition-colors">
+                <span className="font-mono font-bold text-lg leading-none tracking-tight text-foreground group-hover:text-brand-primary transition-colors">
                   NBRF
                 </span>
                 <span className="text-[9px] uppercase tracking-[0.2em] text-muted font-mono mt-0.5">
@@ -66,9 +66,10 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-xs font-mono text-muted hover:text-white hover:glow-text transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary rounded-sm py-1"
+                className="text-xs font-semibold text-foreground hover:text-brand-primary transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary rounded-sm py-1 relative group"
               >
                 {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-brand-primary transition-all duration-300 group-hover:w-full rounded-full"></span>
               </Link>
             ))}
             <Link 
@@ -84,7 +85,7 @@ export default function Navbar() {
           <div className="flex items-center xl:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-muted hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary rounded-md"
+              className="p-2 text-foreground hover:text-brand-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary rounded-md"
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? "Close main menu" : "Open main menu"}
             >
@@ -103,12 +104,12 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             className="xl:hidden absolute top-full left-2 right-2 sm:left-4 sm:right-4 mt-2 max-h-[80vh] overflow-y-auto z-[60]"
           >
-            <div className="tech-card bg-background/95 backdrop-blur-xl p-4 flex flex-col space-y-1">
+            <div className="tech-card bg-white backdrop-blur-xl p-4 flex flex-col space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="block text-sm font-mono text-muted hover:text-brand-primary py-3 px-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary rounded-md"
+                  className="block text-sm font-semibold text-foreground hover:text-brand-primary py-3 px-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary rounded-md"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}

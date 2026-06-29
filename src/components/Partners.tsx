@@ -64,7 +64,7 @@ export default function Partners() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-mono font-bold text-white mb-6 glow-text-blue"
+            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6 glow-text-blue"
           >
             PARTNER WITH NBRF
           </motion.h2>
@@ -94,7 +94,7 @@ export default function Partners() {
                 <type.icon className={`w-5 h-5 ${type.color}`} />
               </div>
               <div>
-                <h3 className={`font-mono font-bold text-white mb-2 text-sm group-hover:${type.color} transition-colors`}>
+                <h3 className={`font-mono font-bold text-brand-primary mb-2 text-sm group-hover:${type.color} transition-colors`}>
                   {type.title}
                 </h3>
                 <p className="text-muted text-xs font-sans leading-relaxed">{type.desc}</p>
@@ -112,7 +112,7 @@ export default function Partners() {
           >
             <Handshake className="w-8 h-8 text-brand-primary" />
             <div>
-              <h3 className="font-mono font-bold text-white mb-2 text-sm">Become a Partner</h3>
+              <h3 className="font-mono font-bold text-brand-primary mb-2 text-sm">Become a Partner</h3>
               <p className="text-muted text-xs font-sans leading-relaxed">Interested in collaborating? Reach out and let&apos;s build Bihar&apos;s future together.</p>
             </div>
             <Link href="#contact" className="tech-button-primary inline-flex items-center gap-2 text-xs py-2 px-4">
@@ -129,7 +129,7 @@ export default function Partners() {
           className="flex flex-col sm:flex-row items-center justify-between gap-4 border border-border rounded p-6 bg-surface/50"
         >
           <div>
-            <p className="font-mono font-bold text-white text-sm">No partners listed yet — be our first.</p>
+            <p className="font-mono font-bold text-brand-primary text-sm">No partners listed yet — be our first.</p>
             <p className="text-muted text-xs font-sans mt-1">NBRF is actively building its partner network. Your organisation could be one of our founding partners.</p>
           </div>
           <Link href="#contact" className="tech-button shrink-0 inline-flex items-center gap-2 border-brand-secondary/30 text-brand-secondary hover:bg-brand-secondary/10 hover:border-brand-secondary">

@@ -42,7 +42,7 @@ export default function FocusAreas() {
   return (
     <div className="tech-card p-6 md:p-8 flex flex-col h-full gap-6">
       <div className="flex justify-between items-center">
-        <h2 className="font-mono font-bold text-xl text-white">Focus Areas</h2>
+        <h2 className="font-mono font-bold text-xl text-brand-primary">Focus Areas</h2>
         <Link href="/#research" className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:border-brand-primary hover:text-brand-primary transition-colors">
           <ArrowRight className="w-4 h-4" />
         </Link>
@@ -55,7 +55,7 @@ export default function FocusAreas() {
               <area.icon className="w-5 h-5" />
             </div>
             <div>
-              <h3 className={`font-mono font-bold text-sm text-white transition-colors ${area.color}`}>{area.title}</h3>
+              <h3 className={`font-mono font-bold text-sm text-brand-primary transition-colors ${area.color}`}>{area.title}</h3>
               <p className="text-[10px] text-muted font-sans">{area.desc}</p>
             </div>
           </Link>

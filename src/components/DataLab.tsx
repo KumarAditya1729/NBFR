@@ -62,7 +62,7 @@ export default function DataLab() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-mono font-bold text-white mb-6 glow-text-blue"
+            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6 glow-text-blue"
           >
             RESEARCH IMPACT OVERVIEW
           </motion.h2>
@@ -94,7 +94,7 @@ export default function DataLab() {
               </div>
               <div>
                 <div className={`text-4xl font-mono font-bold ${goal.color} mb-1`}>{goal.value}</div>
-                <div className="text-white font-mono font-bold text-sm mb-2">{goal.label}</div>
+                <div className="text-brand-primary font-mono font-bold text-sm mb-2">{goal.label}</div>
                 <p className="text-muted text-xs font-sans leading-relaxed">{goal.desc}</p>
               </div>
               {/* Progress bar - empty, showing potential */}
@@ -119,7 +119,7 @@ export default function DataLab() {
             <div className="w-16 h-16 rounded-full bg-brand-primary/10 border border-brand-primary/30 flex items-center justify-center mx-auto mb-6">
               <BarChart3 className="w-8 h-8 text-brand-primary" />
             </div>
-            <h3 className="text-2xl md:text-3xl font-mono font-bold text-white mb-4">
+            <h3 className="text-2xl md:text-3xl font-mono font-bold text-brand-primary mb-4">
               Help Us Build Bihar&apos;s Data Ecosystem
             </h3>
             <p className="text-muted text-lg font-sans max-w-2xl mx-auto mb-8 leading-relaxed">

@@ -57,7 +57,7 @@ export default function Insights() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-mono font-bold text-white glow-text mb-6"
+            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary glow-text mb-6"
           >
             INSIGHTS & ARTICLES
           </motion.h2>
@@ -86,7 +86,7 @@ export default function Insights() {
             <div className="w-16 h-16 rounded-full bg-brand-primary/10 border border-brand-primary/30 flex items-center justify-center mx-auto mb-6">
               <PenTool className="w-8 h-8 text-brand-primary" />
             </div>
-            <h3 className="text-2xl md:text-3xl font-mono font-bold text-white mb-4">
+            <h3 className="text-2xl md:text-3xl font-mono font-bold text-brand-primary mb-4">
               Write for NBRF
             </h3>
             <p className="text-muted text-lg font-sans max-w-2xl mx-auto mb-8 leading-relaxed">
@@ -127,7 +127,7 @@ export default function Insights() {
                 <format.icon className={`w-5 h-5 ${format.color}`} />
               </div>
               <div>
-                <h4 className={`font-mono font-bold text-white mb-2 text-sm group-hover:${format.color} transition-colors`}>
+                <h4 className={`font-mono font-bold text-brand-primary mb-2 text-sm group-hover:${format.color} transition-colors`}>
                   {format.title}
                 </h4>
                 <p className="text-muted text-xs font-sans leading-relaxed">{format.desc}</p>

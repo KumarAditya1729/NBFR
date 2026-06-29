@@ -51,7 +51,7 @@ export default function MapPage() {
       <div className="border-b border-border bg-surface/80 backdrop-blur-md sticky top-0 z-40">
         <div className="max-w-[1400px] mx-auto px-3 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-2 sm:gap-4">
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            <Link href="/" className="flex items-center gap-1.5 text-muted hover:text-white transition-colors text-xs font-mono">
+            <Link href="/" className="flex items-center gap-1.5 text-muted hover:text-brand-primary transition-colors text-xs font-mono">
               <ArrowLeft className="w-4 h-4" /> <span className="hidden sm:inline">Home</span>
             </Link>
             <span className="text-border hidden sm:inline">|</span>
@@ -69,7 +69,7 @@ export default function MapPage() {
                 className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 rounded text-[9px] sm:text-[10px] font-mono transition-all border shrink-0 ${
                   activeOverlay === o.id
                     ? "border-brand-primary bg-brand-primary/20 text-brand-primary"
-                    : "border-border text-muted hover:border-brand-primary/40 hover:text-white"
+                    : "border-border text-muted hover:border-brand-primary/40 hover:text-brand-primary"
                 }`}
               >
                 <o.icon className={`w-3 h-3 ${activeOverlay === o.id ? o.color : ""}`} />
@@ -86,7 +86,7 @@ export default function MapPage() {
           {/* Left Sidebar — hidden on mobile, shown on xl */}
           <div className="hidden xl:flex xl:col-span-3 flex-col gap-4">
             <div className="tech-card p-5">
-              <h2 className="font-mono font-bold text-white text-sm mb-4 flex items-center gap-2">
+              <h2 className="font-mono font-bold text-brand-primary text-sm mb-4 flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-brand-primary" /> Districts
                 <span className="ml-auto text-[10px] font-mono text-muted border border-border rounded px-1.5 py-0.5">38 Total</span>
               </h2>
@@ -98,7 +98,7 @@ export default function MapPage() {
                     className={`w-full text-left px-3 py-2.5 rounded text-xs font-mono transition-all ${
                       selectedDistrict === d.name
                         ? "bg-brand-primary/20 text-brand-primary border border-brand-primary/40"
-                        : "text-muted hover:bg-surface-hover hover:text-white border border-transparent"
+                        : "text-muted hover:bg-surface-hover hover:text-brand-primary border border-transparent"
                     }`}
                   >
                     <div className="flex justify-between items-center">
@@ -113,7 +113,7 @@ export default function MapPage() {
                       >
                         <div>
                           <div className="text-[9px] text-muted uppercase tracking-widest">Population</div>
-                          <div className="text-white font-bold text-xs">{d.pop}</div>
+                          <div className="text-brand-primary font-bold text-xs">{d.pop}</div>
                         </div>
                         <div>
                           <div className="text-[9px] text-muted uppercase tracking-widest">HDI</div>
@@ -128,14 +128,14 @@ export default function MapPage() {
             </div>
 
             <div className="tech-card p-5">
-              <h2 className="font-mono font-bold text-white text-sm mb-4 flex items-center gap-2">
+              <h2 className="font-mono font-bold text-brand-primary text-sm mb-4 flex items-center gap-2">
                 <Layers className="w-4 h-4 text-brand-secondary" /> Regions
               </h2>
               <div className="flex flex-col gap-2">
                 {regions.map((r) => (
                   <div key={r.name} className="border border-border rounded p-3 hover:border-brand-secondary/40 transition-colors">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-xs font-mono font-bold text-white">{r.name}</span>
+                      <span className="text-xs font-mono font-bold text-brand-primary">{r.name}</span>
                       <span className="text-[9px] font-mono text-brand-secondary border border-brand-secondary/30 px-1.5 py-0.5 rounded">{r.districts} districts</span>
                     </div>
                     <p className="text-[10px] text-muted leading-relaxed">{r.focus}</p>
@@ -240,7 +240,7 @@ export default function MapPage() {
           {/* Right Sidebar — shown below map on mobile */}
           <div className="xl:col-span-3 flex flex-col gap-4">
             <div className="tech-card p-5">
-              <h2 className="font-mono font-bold text-white text-sm mb-4 flex items-center gap-2">
+              <h2 className="font-mono font-bold text-brand-primary text-sm mb-4 flex items-center gap-2">
                 <Activity className="w-4 h-4 text-brand-primary" /> Development Indicators
               </h2>
               <div className="flex flex-col gap-4">
@@ -254,7 +254,7 @@ export default function MapPage() {
                   <div key={ind.label}>
                     <div className="flex justify-between text-[10px] font-mono mb-1.5">
                       <span className="text-muted">{ind.label}</span>
-                      <span className="text-white">{ind.value}{ind.label.includes("Index") ? "" : "%"}</span>
+                      <span className="text-brand-primary">{ind.value}{ind.label.includes("Index") ? "" : "%"}</span>
                     </div>
                     <div className="h-1.5 bg-surface rounded-full overflow-hidden">
                       <motion.div
@@ -270,7 +270,7 @@ export default function MapPage() {
             </div>
 
             <div className="tech-card p-5">
-              <h2 className="font-mono font-bold text-white text-sm mb-4 flex items-center gap-2">
+              <h2 className="font-mono font-bold text-brand-primary text-sm mb-4 flex items-center gap-2">
                 <BookOpen className="w-4 h-4 text-brand-secondary" /> Key Research Zones
               </h2>
               <div className="flex flex-col gap-3">
@@ -281,7 +281,7 @@ export default function MapPage() {
                   { zone: "Seemanchal", tag: "Border Economy", color: "border-brand-secondary/40" },
                 ].map((z) => (
                   <div key={z.zone} className={`border ${z.color} rounded p-3 hover:bg-surface/50 transition-colors cursor-pointer`}>
-                    <div className="text-xs font-mono font-bold text-white">{z.zone}</div>
+                    <div className="text-xs font-mono font-bold text-brand-primary">{z.zone}</div>
                     <div className="text-[9px] font-mono text-muted uppercase tracking-widest mt-0.5">{z.tag}</div>
                   </div>
                 ))}
@@ -293,7 +293,7 @@ export default function MapPage() {
                 <Users className="w-5 h-5 text-brand-secondary" />
               </div>
               <div>
-                <div className="text-xs font-mono font-bold text-white group-hover:text-brand-secondary transition-colors">State Snapshot</div>
+                <div className="text-xs font-mono font-bold text-brand-primary group-hover:text-brand-secondary transition-colors">State Snapshot</div>
                 <div className="text-[10px] text-muted mt-0.5">Full demographic data dashboard</div>
               </div>
               <ExternalLink className="w-4 h-4 text-muted ml-auto shrink-0 group-hover:text-brand-secondary transition-colors" />

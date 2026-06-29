@@ -24,7 +24,7 @@ export default function DiscoverBihar() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-primary/30 bg-brand-primary/10 text-brand-primary font-mono text-[10px] uppercase tracking-widest mb-6">
               <MapPin className="w-3 h-3" /> State Profile
             </div>
-            <h1 className="text-4xl md:text-5xl font-mono font-bold text-white mb-6 tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-mono font-bold text-brand-primary mb-6 tracking-tight">
               Discover <span className="text-brand-primary glow-text">Bihar</span>
             </h1>
             <p className="text-muted text-lg font-sans leading-relaxed">
@@ -48,7 +48,7 @@ export default function DiscoverBihar() {
                 className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 text-center hover:border-brand-primary/50 transition-colors"
               >
                 <fact.icon className="w-6 h-6 text-brand-primary mx-auto mb-3" />
-                <div className="text-2xl font-mono font-bold text-white mb-1">{fact.value}</div>
+                <div className="text-2xl font-mono font-bold text-brand-primary mb-1">{fact.value}</div>
                 <div className="text-xs text-muted font-sans uppercase tracking-widest">{fact.label}</div>
               </motion.div>
             ))}
@@ -60,7 +60,7 @@ export default function DiscoverBihar() {
       <section className="py-24 bg-surface border-y border-border relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
-            <h2 className="text-3xl font-mono font-bold text-white mb-4 flex items-center gap-3">
+            <h2 className="text-3xl font-mono font-bold text-brand-primary mb-4 flex items-center gap-3">
               <Wheat className="w-8 h-8 text-brand-primary" /> Agricultural Powerhouse
             </h2>
             <p className="text-muted max-w-2xl">
@@ -72,27 +72,27 @@ export default function DiscoverBihar() {
             {/* Top Achievements */}
             <div className="md:col-span-1 space-y-4">
               <div className="bg-background border border-border p-6 rounded-xl border-l-4 border-l-brand-primary">
-                <h3 className="text-xl font-mono font-bold text-white mb-2">🥇 Litchi</h3>
+                <h3 className="font-mono font-bold text-xl text-brand-primary mb-3">Shape Bihar&apos;s Future</h3>
                 <p className="text-muted text-sm">Produces 71% of India&apos;s total Litchi output.</p>
               </div>
               <div className="bg-background border border-border p-6 rounded-xl border-l-4 border-l-brand-primary">
-                <h3 className="text-xl font-mono font-bold text-white mb-2">🥇 Makhana (Fox Nut)</h3>
+                <h3 className="text-xl font-mono font-bold text-brand-primary mb-2">🥇 Makhana (Fox Nut)</h3>
                 <p className="text-muted text-sm">Produces 85% of India&apos;s and 90% of the World&apos;s Makhana.</p>
               </div>
               <div className="bg-background border border-border p-6 rounded-xl border-l-4 border-l-brand-accent">
-                <h3 className="text-xl font-mono font-bold text-white mb-2">🥉 Tobacco & Maize</h3>
+                <h3 className="text-xl font-mono font-bold text-brand-primary mb-2">🥉 Tobacco & Maize</h3>
                 <p className="text-muted text-sm">3rd largest tobacco producer and 10% of national maize output.</p>
               </div>
             </div>
 
             {/* Green Revolution & Organic Farming */}
             <div className="md:col-span-2 bg-gradient-to-br from-background to-surface border border-brand-primary/20 rounded-xl p-8">
-              <h3 className="text-2xl font-mono font-bold text-white mb-6 flex items-center gap-2">
+              <h3 className="text-2xl font-mono font-bold text-brand-primary mb-6 flex items-center gap-2">
                 <Leaf className="w-6 h-6 text-brand-primary" /> The Green Revolution & Organic Future
               </h3>
               <div className="grid sm:grid-cols-2 gap-8">
                 <div>
-                  <h4 className="font-bold text-white mb-3 border-b border-border pb-2">Organic Corridor (2026)</h4>
+                  <h4 className="font-bold text-brand-primary mb-3 border-b border-border pb-2">Organic Corridor (2026)</h4>
                   <ul className="space-y-3 text-sm text-muted">
                     <li className="flex items-start gap-2"><Target className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" /> 13 districts implementing dedicated organic farming.</li>
                     <li className="flex items-start gap-2"><Target className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" /> Goal of 5,700 hectares under natural farming.</li>
@@ -100,11 +100,11 @@ export default function DiscoverBihar() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-bold text-white mb-3 border-b border-border pb-2">Crop Diversity</h4>
+                  <h4 className="font-bold text-brand-primary mb-3 border-b border-border pb-2">Crop Diversity</h4>
                   <ul className="space-y-3 text-sm text-muted">
-                    <li><strong className="text-white">Kharif:</strong> Rice, Maize, Pigeon Pea, Jute</li>
-                    <li><strong className="text-white">Rabi:</strong> Wheat, Gram, Lentils, Mustard</li>
-                    <li><strong className="text-white">Horticulture:</strong> Mango (13% national), Guava, Banana</li>
+                    <li><strong className="text-brand-primary">Kharif:</strong> Rice, Maize, Pigeon Pea, Jute</li>
+                    <li><strong className="text-brand-primary">Rabi:</strong> Wheat, Gram, Lentils, Mustard</li>
+                    <li><strong className="text-brand-primary">Horticulture:</strong> Mango (13% national), Guava, Banana</li>
                   </ul>
                 </div>
               </div>
@@ -122,7 +122,7 @@ export default function DiscoverBihar() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="mb-16">
-            <h2 className="text-3xl font-mono font-bold text-white mb-4 flex items-center gap-3">
+            <h2 className="text-3xl font-mono font-bold text-brand-primary mb-4 flex items-center gap-3">
               <TreeDeciduous className="w-8 h-8 text-brand-primary" /> Flora & Fauna
             </h2>
             <p className="text-muted max-w-2xl">
@@ -140,42 +140,42 @@ export default function DiscoverBihar() {
               <div key={idx} className="bg-surface border border-border rounded-xl p-6 text-center hover:-translate-y-1 transition-transform">
                 <symbol.icon className="w-8 h-8 text-brand-accent mx-auto mb-4" />
                 <div className="text-xs text-brand-primary font-mono uppercase tracking-widest mb-2">{symbol.title}</div>
-                <div className="font-bold text-white mb-1">{symbol.name}</div>
+                <div className="font-bold text-brand-primary mb-1">{symbol.name}</div>
                 <div className="text-xs text-muted italic">{symbol.desc}</div>
               </div>
             ))}
           </div>
 
           <div className="bg-surface/50 border border-border rounded-xl p-8">
-            <h3 className="text-xl font-mono font-bold text-white mb-6">Protected Areas & Reserves</h3>
+            <h3 className="text-xl font-mono font-bold text-brand-primary mb-6">Protected Areas & Reserves</h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-brand-primary"></div>
-                  <strong className="text-white">Valmiki Tiger Reserve (West Champaran)</strong>
+                  <strong className="text-brand-primary">Valmiki Tiger Reserve (West Champaran)</strong>
                 </div>
                 <p className="text-sm text-muted pl-5">Shelters Bengal Tigers, Indian Leopards, Sloth Bears, and over 250 bird species.</p>
               </div>
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-brand-accent"></div>
-                  <strong className="text-white">Vikramshila Gangetic Dolphin Sanctuary</strong>
+                  <strong className="text-brand-primary">Vikramshila Gangetic Dolphin Sanctuary</strong>
                 </div>
                 <p className="text-sm text-muted pl-5">A 60km stretch of the Ganges protecting the endangered Gangetic Dolphin (50% of India&apos;s population).</p>
               </div>
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-white"></div>
-                  <strong className="text-white">Kaimur Wildlife Sanctuary</strong>
+                  <strong className="text-brand-primary">Kaimur Wildlife Sanctuary</strong>
                 </div>
                 <p className="text-sm text-muted pl-5">The largest sanctuary in Bihar (1,342 sq km), home to diverse flora including Sal and Mahua forests.</p>
               </div>
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-white"></div>
-                  <strong className="text-white">Kanwar Lake Bird Sanctuary</strong>
+                  <strong className="text-brand-primary">Kanwar Lake Bird Sanctuary</strong>
                 </div>
-                <p className="text-sm text-muted pl-5">Asia's largest freshwater oxbow lake, hosting migratory birds and rich wetland biodiversity.</p>
+                <p className="text-sm text-muted pl-5">Asia&apos;s largest freshwater oxbow lake, hosting migratory birds and rich wetland biodiversity.</p>
               </div>
             </div>
           </div>
@@ -186,7 +186,7 @@ export default function DiscoverBihar() {
       <section className="py-24 bg-surface border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
-            <h2 className="text-3xl font-mono font-bold text-white mb-4">
+            <h2 className="text-3xl font-mono font-bold text-brand-primary mb-4">
               Multi-Dimensional Analysis
             </h2>
             <p className="text-muted max-w-2xl mx-auto">
@@ -196,7 +196,7 @@ export default function DiscoverBihar() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-background border border-border rounded-xl p-8">
-              <h3 className="text-xl font-mono font-bold text-white mb-4 border-b border-border pb-4">Historical Legacy</h3>
+              <h3 className="text-xl font-mono font-bold text-brand-primary mb-4 border-b border-border pb-4">Historical Legacy</h3>
               <ul className="space-y-4 text-sm text-muted">
                 <li><strong className="text-brand-primary">Ancient Era:</strong> Magadha kingdom, Maurya & Gupta Empires (Golden Age). First residential universities at Nalanda & Vikramshila.</li>
                 <li><strong className="text-brand-primary">Medieval Era:</strong> Sher Shah Suri&apos;s administrative reforms, Grand Trunk Road.</li>
@@ -205,16 +205,16 @@ export default function DiscoverBihar() {
             </div>
 
             <div className="bg-background border border-border rounded-xl p-8">
-              <h3 className="text-xl font-mono font-bold text-white mb-4 border-b border-border pb-4">Cultural Ecosystem</h3>
+              <h3 className="text-xl font-mono font-bold text-brand-primary mb-4 border-b border-border pb-4">Cultural Ecosystem</h3>
               <ul className="space-y-4 text-sm text-muted">
-                <li><strong className="text-white">Languages:</strong> Hindi, Urdu, Maithili, Bhojpuri, Magahi, Angika.</li>
-                <li><strong className="text-white">Visual Arts:</strong> Madhubani/Mithila Painting (GI Tagged), Patna Qalam.</li>
-                <li><strong className="text-white">Cuisine:</strong> Litti Chokha, Sattu, Khaja (Silao), Thekua, Makhana.</li>
+                <li><strong className="text-brand-primary">Languages:</strong> Hindi, Urdu, Maithili, Bhojpuri, Magahi, Angika.</li>
+                <li><strong className="text-brand-primary">Visual Arts:</strong> Madhubani/Mithila Painting (GI Tagged), Patna Qalam.</li>
+                <li><strong className="text-brand-primary">Cuisine:</strong> Litti Chokha, Sattu, Khaja (Silao), Thekua, Makhana.</li>
               </ul>
             </div>
 
             <div className="bg-background border border-border rounded-xl p-8">
-              <h3 className="text-xl font-mono font-bold text-white mb-4 border-b border-border pb-4">Future Trajectory (2030)</h3>
+              <h3 className="text-xl font-mono font-bold text-brand-primary mb-4 border-b border-border pb-4">Future Trajectory (2030)</h3>
               <ul className="space-y-4 text-sm text-muted">
                 <li><strong className="text-brand-accent">Infrastructure:</strong> Bihta IT City, Ganga Expressway, NW-1 Inland Waterways.</li>
                 <li><strong className="text-brand-accent">Demographics:</strong> 10 million youth to be skilled by 2025. Highest demographic dividend in India.</li>
@@ -229,7 +229,7 @@ export default function DiscoverBihar() {
       <section className="py-24 bg-background border-t border-border text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <BookOpen className="w-12 h-12 text-brand-primary mx-auto mb-6" />
-          <h2 className="text-3xl font-mono font-bold text-white mb-6">Global Research & Publications</h2>
+          <h2 className="text-3xl font-mono font-bold text-brand-primary mb-6">Global Research & Publications</h2>
           <p className="text-muted text-lg leading-relaxed mb-8">
             Bihar serves as a critical focal point for global academic research. Key areas of study include 
             <strong> Epidemiology & Public Health</strong> (Kala-azar elimination strategies published in The Lancet), 
@@ -237,11 +237,11 @@ export default function DiscoverBihar() {
             <strong> Economics</strong> (World Bank policy research on agricultural growth and poverty dynamics).
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-white">World Bank</span>
-            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-white">The Lancet</span>
-            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-white">WHO / TDR</span>
-            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-white">ICMR</span>
-            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-white">Oxford University Press</span>
+            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-brand-primary">World Bank</span>
+            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-brand-primary">The Lancet</span>
+            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-brand-primary">WHO / TDR</span>
+            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-brand-primary">ICMR</span>
+            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-brand-primary">Oxford University Press</span>
           </div>
         </div>
       </section>

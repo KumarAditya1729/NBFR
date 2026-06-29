@@ -43,7 +43,7 @@ export default function AiAssistant() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-primary/30 bg-brand-primary/10 text-brand-primary font-mono text-[10px] uppercase tracking-widest mb-4">
               AI // RESEARCH ASSISTANT
             </div>
-            <h2 className="text-3xl md:text-5xl font-mono font-bold text-white mb-6 glow-text">
+            <h2 className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6 glow-text">
               ASK NBRF
             </h2>
             <p className="text-muted text-lg font-sans mb-8">
@@ -60,7 +60,7 @@ export default function AiAssistant() {
                 <button
                   key={i}
                   onClick={() => setQuery(suggestion)}
-                  className="w-full text-left px-4 py-3 bg-surface border border-border text-sm font-mono text-white hover:border-brand-primary hover:text-brand-primary transition-colors flex items-center gap-3 group rounded"
+                  className="w-full text-left px-4 py-3 bg-surface border border-border text-sm font-mono text-brand-primary hover:border-brand-primary hover:text-brand-primary transition-colors flex items-center gap-3 group rounded"
                 >
                   <MessageSquare className="w-4 h-4 text-muted group-hover:text-brand-primary" />
                   {suggestion}
@@ -78,7 +78,7 @@ export default function AiAssistant() {
                     <BookOpen className="w-4 h-4 text-brand-primary" />
                   </div>
                   <div>
-                    <div className="font-mono text-sm text-white font-bold">NBRF Research Assistant</div>
+                    <div className="font-mono text-sm text-brand-primary font-bold">NBRF Research Assistant</div>
                     <div className="font-mono text-[10px] text-brand-primary flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse inline-block"></span>
                       Online
@@ -105,10 +105,10 @@ export default function AiAssistant() {
                     )}
                     <div className={`max-w-[80%] px-4 py-3 rounded-lg text-sm font-sans leading-relaxed ${
                       msg.role === "user" 
-                        ? "bg-brand-primary/20 border border-brand-primary/30 text-white ml-auto"
+                        ? "bg-brand-primary/20 border border-brand-primary/30 text-brand-primary ml-auto"
                         : msg.role === "system"
                         ? "text-muted text-xs font-mono"
-                        : "bg-surface border border-border text-white"
+                        : "bg-surface border border-border text-brand-primary"
                     }`}>
                       {msg.content}
                     </div>
@@ -136,7 +136,7 @@ export default function AiAssistant() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Ask about NBRF research, Bihar policy..."
-                    className="flex-1 bg-surface border border-border rounded text-white text-sm py-2 px-4 outline-none focus:border-brand-primary transition-colors font-sans"
+                    className="flex-1 bg-surface border border-border rounded text-brand-primary text-sm py-2 px-4 outline-none focus:border-brand-primary transition-colors font-sans"
                     spellCheck={false}
                   />
                   <button

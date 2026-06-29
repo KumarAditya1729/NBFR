@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { BookOpen, FileText, UserPlus, ArrowDown } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -25,20 +26,20 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-background">
       {/* Bihar Map Background */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.07] pointer-events-none">
-        <img
+      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.04] pointer-events-none">
+        <Image
           src="/bihar-map.svg"
           alt=""
           aria-hidden="true"
-          className="w-full max-w-[900px] h-auto object-contain"
-          style={{ filter: "invert(1) sepia(1) saturate(5) hue-rotate(100deg) brightness(1.5)" }}
+          fill
+          className="object-contain max-w-[900px] mx-auto"
         />
       </div>
 
-      {/* Glow orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand-primary/15 rounded-full blur-[140px] pointer-events-none z-0" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-brand-secondary/15 rounded-full blur-[140px] pointer-events-none z-0" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-brand-accent/10 rounded-full blur-[100px] pointer-events-none z-0" />
+      {/* Soft Glow orbs */}
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-brand-primary/10 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-brand-accent/20 rounded-full blur-[100px] pointer-events-none z-0" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex-1 flex flex-col items-center justify-center">
 
@@ -47,7 +48,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-primary/40 bg-brand-primary/10 text-brand-primary font-mono text-xs mb-8 shadow-[0_0_20px_rgba(16,185,129,0.15)]"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 text-brand-primary-dark font-mono text-xs mb-8 shadow-sm backdrop-blur-sm"
         >
           <span className="w-2 h-2 rounded-full bg-brand-primary animate-pulse" />
           ESTABLISHED 2024 &nbsp;·&nbsp; PATNA, BIHAR
@@ -58,11 +59,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl sm:text-6xl md:text-8xl font-bold font-mono tracking-tighter mb-6 text-white leading-none"
+          className="text-4xl sm:text-6xl md:text-8xl font-bold font-mono tracking-tighter mb-6 text-hero-gradient leading-none"
         >
           Nav Bihar{" "}
           <br className="hidden sm:block" />
-          <span className="glow-text text-brand-primary">Renaissance</span>
+          <span className="glow-text text-hero-gradient">Renaissance</span>
           <br className="hidden sm:block" />
           Foundation
         </motion.h1>
@@ -136,7 +137,7 @@ export default function Hero() {
               <div className="text-3xl md:text-4xl font-mono font-bold text-brand-primary glow-text mb-1">
                 {stat.value}
               </div>
-              <div className="text-xs text-white font-mono uppercase tracking-widest mb-1">
+              <div className="text-xs text-brand-primary font-mono uppercase tracking-widest mb-1">
                 {stat.label}
               </div>
               <div className="text-[10px] text-muted font-sans">{stat.sub}</div>

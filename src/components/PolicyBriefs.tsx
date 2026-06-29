@@ -36,7 +36,7 @@ export default function PolicyBriefs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-mono font-bold text-white glow-text-blue mb-6"
+            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary glow-text-blue mb-6"
           >
             POLICY BRIEFS
           </motion.h2>
@@ -65,7 +65,7 @@ export default function PolicyBriefs() {
             <div className="w-16 h-16 rounded-full bg-brand-secondary/10 border border-brand-secondary/30 flex items-center justify-center mx-auto mb-6">
               <FileText className="w-8 h-8 text-brand-secondary" />
             </div>
-            <h3 className="text-2xl md:text-3xl font-mono font-bold text-white mb-4">
+            <h3 className="text-2xl md:text-3xl font-mono font-bold text-brand-primary mb-4">
               Help Shape Bihar&apos;s Policy Agenda
             </h3>
             <p className="text-muted text-lg font-sans max-w-2xl mx-auto mb-8 leading-relaxed">
@@ -106,7 +106,7 @@ export default function PolicyBriefs() {
                 <brief.icon className={`w-5 h-5 ${brief.color}`} />
               </div>
               <div>
-                <h4 className="font-mono font-bold text-white mb-1 text-sm group-hover:text-brand-secondary transition-colors">
+                <h4 className="font-mono font-bold text-brand-primary mb-1 text-sm group-hover:text-brand-secondary transition-colors">
                   {brief.title}
                 </h4>
                 <p className="text-muted text-xs font-sans leading-relaxed">{brief.desc}</p>

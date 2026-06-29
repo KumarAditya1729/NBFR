@@ -17,7 +17,7 @@ export default function Newsletter() {
             <Mail className="w-8 h-8 text-brand-primary" aria-hidden="true" />
           </div>
           
-          <h2 className="text-3xl md:text-5xl font-mono font-bold text-white mb-4 glow-text">
+          <h2 className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-4 glow-text">
             STAY INFORMED
           </h2>
           <p className="text-lg text-muted mb-10 max-w-2xl mx-auto font-sans">
@@ -30,7 +30,7 @@ export default function Newsletter() {
               id="newsletter-email"
               type="email" 
               placeholder="Enter your email address..." 
-              className="flex-grow px-6 py-4 rounded bg-[#0A0A0A] border border-border focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary font-mono text-sm text-white"
+              className="flex-grow px-6 py-4 rounded bg-[#0A0A0A] border border-border focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary font-mono text-sm text-brand-primary"
               required
             />
             <button 

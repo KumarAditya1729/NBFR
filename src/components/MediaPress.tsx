@@ -47,7 +47,7 @@ export default function MediaPress() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-mono font-bold text-white mb-6"
+            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6"
           >
             MEDIA & PRESS
           </motion.h2>
@@ -77,7 +77,7 @@ export default function MediaPress() {
                 <item.icon className={`w-6 h-6 ${item.color}`} />
               </div>
               <div>
-                <h3 className="font-mono font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">
+                <h3 className="font-mono font-bold text-brand-primary mb-2 group-hover:text-brand-accent transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-muted text-sm font-sans leading-relaxed">{item.desc}</p>
@@ -98,7 +98,7 @@ export default function MediaPress() {
             <div className="w-14 h-14 rounded-full bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center mx-auto mb-5">
               <Newspaper className="w-7 h-7 text-brand-accent" />
             </div>
-            <h3 className="text-2xl font-mono font-bold text-white mb-4">No Press Coverage Yet</h3>
+            <h3 className="text-2xl font-mono font-bold text-brand-primary mb-4">No Press Coverage Yet</h3>
             <p className="text-muted text-base font-sans max-w-xl mx-auto mb-8 leading-relaxed">
               As a newly founded think tank, NBRF hasn&apos;t featured in the press yet. Are you a journalist covering Bihar&apos;s development, policy, or governance? We&apos;d love to connect.
             </p>
@@ -121,7 +121,7 @@ export default function MediaPress() {
           className="flex flex-col sm:flex-row items-center justify-between gap-4 border border-border rounded p-6 bg-surface/50"
         >
           <div>
-            <p className="font-mono font-bold text-white text-sm">Press & Media Contact</p>
+            <p className="font-mono font-bold text-brand-primary text-sm">Press & Media Contact</p>
             <p className="text-muted text-xs font-sans mt-1">For interviews, press releases, and media enquiries, reach out to NBRF&apos;s communications team.</p>
           </div>
           <Link href="#contact" className="tech-button shrink-0 inline-flex items-center gap-2 border-brand-accent/30 text-brand-accent hover:bg-brand-accent/10 hover:border-brand-accent">

@@ -62,7 +62,7 @@ export default function Publications() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-mono font-bold text-white mb-6"
+            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6"
           >
             FEATURED RESEARCH
           </motion.h2>
@@ -92,7 +92,7 @@ export default function Publications() {
               <Handshake className="w-8 h-8 text-brand-accent" />
             </div>
 
-            <h3 className="text-2xl md:text-4xl font-mono font-bold text-white mb-4">
+            <h3 className="text-2xl md:text-4xl font-mono font-bold text-brand-primary mb-4">
               We Need Your Cooperation
             </h3>
             <p className="text-muted text-lg font-sans max-w-2xl mx-auto mb-8 leading-relaxed">
@@ -134,7 +134,7 @@ export default function Publications() {
                   <area.icon className={`w-5 h-5 ${area.color}`} />
                 </div>
                 <div>
-                  <h4 className={`font-mono font-bold text-white mb-2 group-hover:${area.color} transition-colors`}>
+                  <h4 className={`font-mono font-bold text-brand-primary mb-2 group-hover:${area.color} transition-colors`}>
                     {area.title}
                   </h4>
                   <p className="text-muted text-xs font-sans leading-relaxed">
@@ -154,7 +154,7 @@ export default function Publications() {
           className="flex flex-col sm:flex-row items-center justify-between gap-4 border border-border rounded p-6 bg-surface/50"
         >
           <div>
-            <p className="font-mono font-bold text-white text-sm">Are you a researcher or policy expert?</p>
+            <p className="font-mono font-bold text-brand-primary text-sm">Are you a researcher or policy expert?</p>
             <p className="text-muted text-xs font-sans mt-1">Contribute your work and help build Bihar&apos;s research ecosystem.</p>
           </div>
           <Link

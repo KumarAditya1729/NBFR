@@ -14,7 +14,7 @@ export default function NotFound() {
 
       {/* Bihar map watermark */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-80 h-80 opacity-[0.04] pointer-events-none">
-        <Image src="/bihar-map.svg" alt="" fill className="object-contain" style={{ filter: "invert(1) sepia(1) saturate(5) hue-rotate(100deg)" }} />
+        <Image src="/bihar-map.svg" alt="" fill className="object-contain" />
       </div>
 
       <div className="relative z-10 text-center max-w-xl mx-auto">
@@ -49,7 +49,7 @@ export default function NotFound() {
             Page Not Found
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-mono font-bold text-white mb-4">
+          <h1 className="text-2xl sm:text-3xl font-mono font-bold text-brand-primary mb-4">
             This page doesn&apos;t exist
           </h1>
           <p className="text-muted font-sans text-sm sm:text-base leading-relaxed mb-10">
@@ -71,7 +71,7 @@ export default function NotFound() {
                 className="flex flex-col items-center gap-2 p-4 rounded-xl border border-border bg-surface hover:border-brand-primary/50 hover:bg-brand-primary/5 transition-all group"
               >
                 <link.icon className="w-5 h-5 text-muted group-hover:text-brand-primary transition-colors" />
-                <span className="text-xs font-mono text-muted group-hover:text-white transition-colors">{link.label}</span>
+                <span className="text-xs font-mono text-muted group-hover:text-brand-primary transition-colors">{link.label}</span>
               </Link>
             ))}
           </div>

@@ -71,7 +71,7 @@ export default function Experts() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-mono font-bold text-white mb-6 glow-text-blue"
+            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6 glow-text-blue"
           >
             BOARD OF DIRECTORS
           </motion.h2>
@@ -122,11 +122,11 @@ export default function Experts() {
                   {/* Director badge */}
                   <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-background/80 backdrop-blur px-2 py-1 rounded border border-border">
                     <div className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse" />
-                    <span className="text-[10px] font-mono text-white">DIRECTOR</span>
+                    <span className="text-[10px] font-mono text-brand-primary">DIRECTOR</span>
                   </div>
                   {/* Name overlaid at bottom */}
                   <div className="absolute bottom-0 left-0 right-0 z-20 p-5">
-                    <h3 className="text-xl font-mono font-bold text-white leading-tight">
+                    <h3 className="text-xl font-mono font-bold text-brand-primary leading-tight">
                       {expert.name}
                     </h3>
                     <p className="text-brand-primary font-mono text-xs uppercase tracking-widest mt-1">
@@ -199,10 +199,10 @@ export default function Experts() {
                 <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent z-10" />
                 <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-background/80 backdrop-blur px-2 py-1 rounded border border-border">
                   <div className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse" />
-                  <span className="text-[10px] font-mono text-white">MANAGEMENT</span>
+                  <span className="text-[10px] font-mono text-brand-primary">MANAGEMENT</span>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 z-20 p-5">
-                  <h3 className="text-xl font-mono font-bold text-white leading-tight">Shashank Shrivastava</h3>
+                  <h3 className="text-xl font-mono font-bold text-brand-primary leading-tight">Shashank Shrivastava</h3>
                   <p className="text-brand-accent font-mono text-xs uppercase tracking-widest mt-1">Manager, NBRF Think Tank</p>
                 </div>
               </div>

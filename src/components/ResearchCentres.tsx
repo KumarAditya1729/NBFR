@@ -85,7 +85,7 @@ export default function ResearchCentres() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-3xl md:text-5xl font-mono font-bold text-white glow-text"
+              className="text-3xl md:text-5xl font-mono font-bold text-brand-primary glow-text"
             >
               CENTERS & INITIATIVES
             </motion.h2>
@@ -119,7 +119,7 @@ export default function ResearchCentres() {
                 <div className="w-12 h-12 rounded bg-surface border border-border flex items-center justify-center mb-6 group-hover:bg-background transition-colors">
                   <centre.icon className={`w-6 h-6 ${centre.color}`} />
                 </div>
-                <h3 className="text-xl md:text-2xl font-mono font-bold text-white mb-4 group-hover:text-brand-primary transition-colors">
+                <h3 className="text-xl md:text-2xl font-mono font-bold text-brand-primary mb-4 group-hover:text-brand-primary transition-colors">
                   {centre.name}
                 </h3>
                 <p className="text-muted font-sans text-sm md:text-base leading-relaxed">
@@ -145,7 +145,7 @@ export default function ResearchCentres() {
           className="tech-card p-8 border-brand-primary/30 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
         >
           <div>
-            <h3 className="font-mono font-bold text-white text-lg mb-1">Help Co-Found a Research Centre</h3>
+            <h3 className="font-mono font-bold text-brand-primary text-lg mb-1">Help Co-Found a Research Centre</h3>
             <p className="text-muted text-sm font-sans">Are you a domain expert, academic institution, or NGO? Partner with NBRF to establish one of these research centres.</p>
           </div>
           <Link href="#contact" className="tech-button-primary shrink-0 inline-flex items-center gap-2">

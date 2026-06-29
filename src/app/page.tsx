@@ -26,22 +26,26 @@ export default function Home() {
   return (
     <>
       {/* ── Bento Grid Homepage ── */}
-      <main className="min-h-screen bg-background text-foreground selection:bg-brand-primary selection:text-white pb-20 overflow-x-hidden">
+      <main className="min-h-screen bg-background text-foreground selection:bg-brand-primary selection:text-brand-primary pb-20 overflow-x-hidden">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-6">
 
-            {/* Row 1: Hero & Map */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-              <div className="lg:col-span-8 flex flex-col gap-6">
-                <HomeHero />
-                <PublicationsBento />
-              </div>
-              <div className="lg:col-span-4 h-full">
-                <InteractiveMapBento />
-              </div>
+            {/* Row 1: Hero */}
+            <div className="w-full">
+              <HomeHero />
             </div>
 
-            {/* Row 2: Dashboard & Focus Areas */}
+            {/* Row 2: Map Full Width */}
+            <div className="w-full h-full">
+              <InteractiveMapBento />
+            </div>
+
+            {/* Row 3: Publications */}
+            <div className="w-full">
+              <PublicationsBento />
+            </div>
+
+            {/* Row 4: Dashboard & Focus Areas */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
               <div className="lg:col-span-8">
                 <PolicyDashboard />

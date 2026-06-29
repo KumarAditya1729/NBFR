@@ -119,7 +119,7 @@ export default function ResearchVerticals() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-mono font-bold text-white mb-6 glow-text"
+            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6 glow-text"
           >
             RESEARCH VERTICALS
           </motion.h2>
@@ -150,7 +150,7 @@ export default function ResearchVerticals() {
                 <div className={`w-12 h-12 rounded bg-background border border-border flex items-center justify-center mb-5 ${vertical.border} transition-all duration-300`}>
                   <vertical.icon className={`w-6 h-6 ${vertical.color}`} />
                 </div>
-                <h3 className={`text-base font-mono font-bold text-white mb-3 group-hover:${vertical.color} transition-colors leading-snug`}>
+                <h3 className={`text-base font-mono font-bold text-brand-primary mb-3 group-hover:${vertical.color} transition-colors leading-snug`}>
                   {vertical.name}
                 </h3>
                 <p className="text-muted text-xs font-sans leading-relaxed flex-grow">

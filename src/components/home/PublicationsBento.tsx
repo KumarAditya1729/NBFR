@@ -11,7 +11,7 @@ export default function PublicationsBento() {
       {/* Featured Publication */}
       <div className="tech-card p-6 flex flex-col gap-4">
         <div className="flex justify-between items-start">
-          <h3 className="font-mono font-bold text-lg text-white">Featured Research</h3>
+          <h3 className="font-mono font-bold text-lg text-brand-primary">Featured Research</h3>
         </div>
         
         <div className="text-sm font-bold text-brand-primary">We Need Your Cooperation</div>
@@ -32,7 +32,7 @@ export default function PublicationsBento() {
         </div>
         
         <p className="text-sm text-muted line-clamp-3">
-          As a newly founded think tank, NBRF is in the process of building its first body of research. We invite researchers, academics, policymakers, and domain experts to collaborate with us in shaping Bihar's development narrative.
+          As a newly founded think tank, NBRF is in the process of building its first body of research. We invite researchers, academics, policymakers, and domain experts to collaborate with us in shaping Bihar&apos;s development narrative.
         </p>
 
         <div className="flex gap-3 mt-auto pt-4 border-t border-border/50">
@@ -48,7 +48,7 @@ export default function PublicationsBento() {
       {/* Latest Publications */}
       <div className="tech-card p-6 flex flex-col gap-4">
         <div className="flex justify-between items-center mb-2">
-          <h3 className="font-mono font-bold text-lg text-white">Upcoming Categories</h3>
+          <h3 className="font-mono font-bold text-lg text-brand-primary">Upcoming Categories</h3>
           <Link href="#publications" className="text-xs font-mono text-brand-primary hover:underline flex items-center gap-1">
             View All <ArrowRight className="w-3 h-3" />
           </Link>
@@ -83,7 +83,7 @@ export default function PublicationsBento() {
           ].map((item, i) => (
             <div key={i} className="py-3 flex flex-col gap-1 group cursor-pointer">
               <div className="flex justify-between items-start gap-4">
-                <h4 className="text-sm font-semibold text-white group-hover:text-brand-primary transition-colors">{item.title}</h4>
+                <h4 className="text-sm font-semibold text-brand-primary group-hover:text-brand-primary transition-colors">{item.title}</h4>
                 <span className="text-[10px] font-mono border border-border px-2 py-0.5 rounded text-muted whitespace-nowrap bg-surface">
                   {item.tag}
                 </span>

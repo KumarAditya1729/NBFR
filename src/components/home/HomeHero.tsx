@@ -30,22 +30,22 @@ export default function HomeHero() {
           </div>
         </div>
 
-        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-mono font-bold tracking-tight text-white leading-[1.1]">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-brand-primary leading-[1.1]">
           Nav Bihar <span className="text-brand-primary">Renaissance</span> Foundation
         </h1>
 
-        <p className="text-muted/80 text-xs sm:text-sm md:text-base max-w-3xl leading-relaxed">
-          Bihar's pioneering think tank driving development through Research, Policy, Impact, and Action. We identify developmental gaps across Bihar's social, economic, and cultural sectors — and provide data-driven recommendations to policymakers, institutions, and stakeholders.
+        <p className="text-muted/80 text-xs sm:text-sm md:text-base max-w-2xl leading-relaxed">
+          Bihar&apos;s pioneering think tank driving development through Research, Policy, Impact, and Action. We identify developmental gaps across Bihar&apos;s social, economic, and cultural sectors — and provide data-driven recommendations to policymakers, institutions, and stakeholders.
         </p>
 
         {/* Action Buttons */}
         <div className="flex flex-row gap-2 sm:gap-3 flex-wrap">
-          <Link href="#about" className="tech-button-primary flex items-center justify-center gap-2 py-2.5 sm:py-4 px-5 sm:px-8 text-xs sm:text-sm whitespace-nowrap">
-            About NBRF
+          <Link href="#about" className="tech-button-primary flex items-center justify-center gap-2 py-2.5 sm:py-4 px-5 sm:px-8 text-xs sm:text-sm whitespace-nowrap group hover:-translate-y-0.5 transition-transform">
+            Learn About NBRF
           </Link>
-          <Link href="#research" className="tech-button flex items-center justify-center gap-2 py-2.5 sm:py-4 px-5 sm:px-8 text-xs sm:text-sm whitespace-nowrap">
-            Research Areas
-            <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+          <Link href="#research" className="tech-button flex items-center justify-center gap-2 py-2.5 sm:py-4 px-5 sm:px-8 text-xs sm:text-sm whitespace-nowrap group hover:-translate-y-0.5 transition-transform">
+            Explore Our Research
+            <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 

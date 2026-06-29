@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { UserPlus, FileText, Users, Network, ShieldCheck } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Membership() {
@@ -30,12 +31,12 @@ export default function Membership() {
 
       {/* Bodhi Tree Background Watermark */}
       <div className="absolute left-[-60px] top-1/2 -translate-y-1/2 z-0 pointer-events-none opacity-[0.05] w-[380px]">
-        <img
+        <Image
           src="/bodhi-tree.svg"
           alt=""
           aria-hidden="true"
-          className="w-full h-auto"
-          style={{ filter: "invert(1) sepia(1) saturate(3) hue-rotate(260deg) brightness(1.5)" }}
+          fill
+          className="object-contain"
         />
       </div>
       
@@ -56,7 +57,7 @@ export default function Membership() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-3xl md:text-5xl font-mono font-bold text-white mb-6"
+              className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6"
             >
               WANT TO CONTRIBUTE TO THE DEVELOPMENT OF BIHAR?
             </motion.h2>
@@ -100,7 +101,7 @@ export default function Membership() {
               transition={{ delay: 0.2 }}
               className="tech-card p-8 md:p-10 border-brand-accent/20"
             >
-              <h3 className="text-xl font-mono font-bold text-white mb-8 border-b border-border pb-4">
+              <h3 className="text-xl font-mono font-bold text-brand-primary mb-8 border-b border-border pb-4">
                 WHY JOIN NBRF?
               </h3>
               
@@ -117,7 +118,7 @@ export default function Membership() {
                     <div className="w-10 h-10 shrink-0 rounded bg-background border border-border flex items-center justify-center mt-1 group-hover:border-brand-accent group-hover:bg-brand-accent/10 transition-colors">
                       <benefit.icon className="w-5 h-5 text-brand-accent" />
                     </div>
-                    <p className="text-muted text-sm md:text-base font-sans pt-1 group-hover:text-white transition-colors">
+                    <p className="text-muted text-sm md:text-base font-sans pt-1 group-hover:text-brand-primary transition-colors">
                       {benefit.text}
                     </p>
                   </motion.li>

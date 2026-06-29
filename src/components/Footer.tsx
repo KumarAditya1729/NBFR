@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#050505] text-muted pt-20 pb-10 border-t-2 border-brand-primary">
+    <footer className="bg-surface-alt text-foreground pt-20 pb-10 border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="lg:col-span-2">
@@ -13,7 +13,7 @@ export default function Footer() {
                 <Image src="/logo.png" alt="NBRF Logo" width={40} height={40} className="object-contain" />
               </div>
               <div className="flex flex-col">
-                <span className="font-mono font-bold text-xl leading-none tracking-tight text-white glow-text group-hover:text-brand-primary transition-colors">
+                <span className="font-mono font-bold text-xl leading-none tracking-tight text-foreground group-hover:text-brand-primary transition-colors">
                   NBRF
                 </span>
                 <span className="text-xs uppercase tracking-widest font-mono text-muted">
@@ -21,28 +21,28 @@ export default function Footer() {
                 </span>
               </div>
             </Link>
-            <p className="text-sm font-sans mb-6 max-w-sm">
+            <p className="text-sm font-sans mb-6 max-w-sm text-muted">
               Nav Bihar Renaissance Foundation (NBRF) is Bihar&apos;s pioneering think tank, dedicated to addressing the state&apos;s developmental challenges through data-driven research and policy recommendations.
             </p>
             <div className="flex gap-4">
-              <a href="https://www.linkedin.com/company/nbrfofficial/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 rounded bg-surface border border-border flex items-center justify-center text-muted hover:text-[#0A66C2] hover:border-[#0A66C2] transition-colors">
+              <a href="https://www.linkedin.com/company/nbrfofficial/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 rounded bg-surface border border-border flex items-center justify-center text-muted hover:text-[#0A66C2] hover:border-[#0A66C2] transition-all hover:-translate-y-1">
                 <span className="font-bold text-lg">in</span>
               </a>
-              <a href="https://www.facebook.com/profile.php?id=61590632909150" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 rounded bg-surface border border-border flex items-center justify-center text-muted hover:text-[#1877F2] hover:border-[#1877F2] transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61590632909150" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 rounded bg-surface border border-border flex items-center justify-center text-muted hover:text-[#1877F2] hover:border-[#1877F2] transition-all hover:-translate-y-1">
                 <span className="font-bold text-lg">f</span>
               </a>
-              <a href="#" aria-label="X (Twitter)" className="w-10 h-10 rounded bg-surface border border-border flex items-center justify-center text-muted hover:text-white hover:border-white transition-colors">
+              <a href="#" aria-label="X (Twitter)" className="w-10 h-10 rounded bg-surface border border-border flex items-center justify-center text-muted hover:text-foreground hover:border-foreground transition-all hover:-translate-y-1">
                 <span className="font-bold text-lg">𝕏</span>
               </a>
-              <a href="#" aria-label="YouTube" className="w-10 h-10 rounded bg-surface border border-border flex items-center justify-center text-muted hover:text-[#FF0000] hover:border-[#FF0000] transition-colors">
+              <a href="#" aria-label="YouTube" className="w-10 h-10 rounded bg-surface border border-border flex items-center justify-center text-muted hover:text-[#FF0000] hover:border-[#FF0000] transition-all hover:-translate-y-1">
                 <Video className="w-4 h-4" aria-hidden="true" />
               </a>
             </div>
           </div>
 
           <div>
-            <h4 className="text-white font-mono font-bold text-sm mb-6 uppercase tracking-widest">Navigation</h4>
-            <ul className="space-y-4 text-sm font-sans">
+            <h4 className="text-foreground font-mono font-bold text-sm mb-6 uppercase tracking-widest">Navigation</h4>
+            <ul className="space-y-4 text-sm font-sans text-muted">
               <li><Link href="#about" className="hover:text-brand-primary transition-colors">About</Link></li>
               <li><Link href="#research" className="hover:text-brand-primary transition-colors">Research</Link></li>
               <li><Link href="#publications" className="hover:text-brand-primary transition-colors">Publications</Link></li>
@@ -54,8 +54,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-mono font-bold text-sm mb-6 uppercase tracking-widest">Resources</h4>
-            <ul className="space-y-4 text-sm font-sans">
+            <h4 className="text-foreground font-mono font-bold text-sm mb-6 uppercase tracking-widest">Resources</h4>
+            <ul className="space-y-4 text-sm font-sans text-muted">
               <li><Link href="#initiatives" className="hover:text-brand-primary transition-colors">Centers & Initiatives</Link></li>
               <li><Link href="#insights" className="hover:text-brand-primary transition-colors">Insights & Articles</Link></li>
               <li><Link href="#publications" className="hover:text-brand-primary transition-colors">Policy Briefs</Link></li>
@@ -65,8 +65,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-mono font-bold text-sm mb-6 uppercase tracking-widest">Contact</h4>
-            <ul className="space-y-4 text-sm font-sans">
+            <h4 className="text-foreground font-mono font-bold text-sm mb-6 uppercase tracking-widest">Contact</h4>
+            <ul className="space-y-4 text-sm font-sans text-muted">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-brand-primary shrink-0 mt-0.5" aria-hidden="true" />
                 <span>Patna, Bihar</span>

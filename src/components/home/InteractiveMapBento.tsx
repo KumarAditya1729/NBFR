@@ -9,13 +9,12 @@ export default function InteractiveMapBento() {
     <div className="tech-card p-6 flex flex-col items-center justify-center h-full min-h-[280px] sm:min-h-[400px] relative overflow-hidden group">
       {/* Background Map Graphic */}
       <div className="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none p-8">
-        <div className="relative w-full h-full max-w-[80%] max-h-[80%] drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+        <div className="relative w-full h-full max-w-[80%] max-h-[80%] drop-shadow-[0_0_15px_rgba(234,88,12,0.15)]">
           <Image
             src="/bihar-map.svg"
             alt="Bihar Map"
             fill
-            className="object-contain"
-            style={{ filter: "invert(1) sepia(1) saturate(5) hue-rotate(100deg) brightness(1.5)" }}
+            className="object-contain opacity-20"
           />
         </div>
       </div>
@@ -29,7 +28,7 @@ export default function InteractiveMapBento() {
         </div>
         
         <div>
-          <h3 className="font-mono font-bold text-xl text-white mb-2">Interactive Bihar Map</h3>
+          <h3 className="font-mono font-bold text-xl text-brand-primary mb-2">Interactive Bihar Map</h3>
           <p className="text-sm text-muted max-w-[250px] mx-auto">Explore development hotspots, policy impact zones, and district-level data.</p>
         </div>
 

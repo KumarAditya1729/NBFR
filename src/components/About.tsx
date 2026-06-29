@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { Users, Target, Rocket, Eye, Info } from "lucide-react";
 import Link from "next/link";
 
@@ -19,7 +20,7 @@ export default function About() {
     about: (
       <div className="space-y-4 text-muted font-sans text-sm md:text-base leading-relaxed">
         <p>
-          <strong className="text-white">The Nav Bihar Renaissance Foundation (NBRF)</strong> is Bihar&apos;s pioneering think tank, dedicated to addressing the state&apos;s developmental challenges. With data-driven insights and research, we provide strategic solutions across social, economic, cultural, and other sectors, enabling Bihar to realize its full potential.
+          <strong className="text-brand-primary">The Nav Bihar Renaissance Foundation (NBRF)</strong> is Bihar&apos;s pioneering think tank, dedicated to addressing the state&apos;s developmental challenges. With data-driven insights and research, we provide strategic solutions across social, economic, cultural, and other sectors, enabling Bihar to realize its full potential.
         </p>
         <p>
           Bihar has a glorious past; it was the centre of political and spiritual power of India. Patliputra was the capital of Maurya Empire and later Gupta Empire. Bihar was the land that Gautam Buddha obtained enlightenment from when he started sending the messages of his new faith—Buddhism. Mahavir, the 24th Tirthankara of Jain religion, was from Vaishali.
@@ -71,12 +72,12 @@ export default function About() {
 
       {/* Bodhi Tree Background Watermark */}
       <div className="absolute right-[-40px] top-1/2 -translate-y-1/2 z-0 pointer-events-none opacity-[0.06] w-[420px]">
-        <img
+        <Image
           src="/bodhi-tree.svg"
           alt=""
           aria-hidden="true"
-          className="w-full h-auto"
-          style={{ filter: "invert(1) sepia(1) saturate(3) hue-rotate(100deg) brightness(1.5)" }}
+          fill
+          className="object-contain"
         />
       </div>
       
@@ -95,7 +96,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-mono font-bold text-white mb-6 glow-text"
+            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6 glow-text"
           >
             ABOUT NBRF
           </motion.h2>
@@ -113,7 +114,7 @@ export default function About() {
                   className={`flex items-center gap-3 px-6 py-4 rounded text-left font-mono text-sm transition-all whitespace-nowrap lg:whitespace-normal shrink-0 lg:shrink ${
                     isActive 
                       ? 'bg-brand-primary/10 border border-brand-primary text-brand-primary shadow-[0_0_15px_rgba(16,185,129,0.2)]' 
-                      : 'bg-surface border border-border text-muted hover:border-brand-primary/50 hover:text-white'
+                      : 'bg-surface border border-border text-muted hover:border-brand-primary/50 hover:text-brand-primary'
                   }`}
                 >
                   <tab.icon className={`w-5 h-5 shrink-0 ${isActive ? 'text-brand-primary' : 'text-muted'}`} />
@@ -142,7 +143,7 @@ export default function About() {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h3 className="text-2xl font-mono font-bold text-white mb-6 uppercase tracking-tight">
+                  <h3 className="text-2xl font-mono font-bold text-brand-primary mb-6 uppercase tracking-tight">
                     {tabs.find(t => t.id === activeTab)?.label}
                   </h3>
                   {content[activeTab as keyof typeof content]}

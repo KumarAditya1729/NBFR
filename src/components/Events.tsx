@@ -56,7 +56,7 @@ export default function Events() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-mono font-bold text-white mb-6"
+            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6"
           >
             UPCOMING SUMMITS
           </motion.h2>
@@ -91,7 +91,7 @@ export default function Events() {
                 </span>
               </div>
               <div className="flex-grow">
-                <h3 className="text-lg font-mono font-bold text-white mb-3 group-hover:text-brand-primary transition-colors">
+                <h3 className="text-lg font-mono font-bold text-brand-primary mb-3 group-hover:text-brand-primary transition-colors">
                   {event.title}
                 </h3>
                 <p className="text-muted text-sm font-sans leading-relaxed">{event.desc}</p>
@@ -114,7 +114,7 @@ export default function Events() {
           className="tech-card p-8 border-brand-primary/30 flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div>
-            <h3 className="font-mono font-bold text-white text-lg mb-1">Get Notified When Events Are Announced</h3>
+            <h3 className="font-mono font-bold text-brand-primary text-lg mb-1">Get Notified When Events Are Announced</h3>
             <p className="text-muted text-sm font-sans">Register your interest and we&apos;ll reach out with event details, venue, and registration links.</p>
           </div>
           <Link href="#contact" className="tech-button-primary shrink-0 inline-flex items-center gap-2">
@@ -125,7 +125,7 @@ export default function Events() {
         {/* Archived Events */}
         <div className="border-t border-border pt-16 mt-16">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-mono font-bold text-white flex items-center gap-3">
+            <h3 className="text-2xl font-mono font-bold text-brand-primary flex items-center gap-3">
               <ImageIcon className="w-6 h-6 text-brand-secondary" />
               ARCHIVED EVENTS
             </h3>
@@ -139,7 +139,7 @@ export default function Events() {
             <div className="w-14 h-14 rounded-full bg-brand-secondary/10 border border-brand-secondary/30 flex items-center justify-center mx-auto mb-5">
               <ImageIcon className="w-7 h-7 text-brand-secondary" />
             </div>
-            <h4 className="font-mono font-bold text-white text-lg mb-3">No Archived Events Yet</h4>
+            <h4 className="font-mono font-bold text-brand-primary text-lg mb-3">No Archived Events Yet</h4>
             <p className="text-muted font-sans text-sm max-w-lg mx-auto mb-6 leading-relaxed">
               NBRF is at its founding stage. Our first events are being planned. Once held, photos, recordings, and summaries will be archived here for public access.
             </p>

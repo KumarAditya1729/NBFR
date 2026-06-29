@@ -60,7 +60,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-mono font-bold text-white mb-4 glow-text"
+            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-4 glow-text"
           >
             CONTACT US
           </motion.h2>
@@ -91,13 +91,13 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-xs font-mono text-muted uppercase tracking-widest mb-1">{item.label}</p>
-                  <p className="text-white font-sans text-sm">{item.value}</p>
+                  <p className="text-brand-primary font-sans text-sm">{item.value}</p>
                 </div>
               </div>
             ))}
 
             <div className="tech-card p-6 border-brand-primary/20">
-              <h3 className="font-mono font-bold text-white text-sm mb-4">WAYS TO ENGAGE</h3>
+              <h3 className="font-mono font-bold text-brand-primary text-sm mb-4">WAYS TO ENGAGE</h3>
               <ul className="space-y-3">
                 {[
                   "Research collaboration",
@@ -134,7 +134,7 @@ export default function Contact() {
                     <CheckCircle className="w-8 h-8 text-brand-primary" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-mono font-bold text-white mb-2">Message Received</h3>
+                    <h3 className="text-xl font-mono font-bold text-brand-primary mb-2">Message Received</h3>
                     <p className="text-muted font-sans text-sm">Thank you for reaching out. Our team will get back to you soon.</p>
                   </div>
                   <button
@@ -157,7 +157,7 @@ export default function Contact() {
                         value={form.name}
                         onChange={e => setForm({ ...form, name: e.target.value })}
                         placeholder="Your name"
-                        className="w-full bg-background border border-border rounded px-4 py-3 text-white text-sm font-sans outline-none focus:border-brand-primary transition-colors"
+                        className="w-full bg-background border border-border rounded px-4 py-3 text-brand-primary text-sm font-sans outline-none focus:border-brand-primary transition-colors"
                       />
                     </div>
                     <div>
@@ -170,7 +170,7 @@ export default function Contact() {
                         value={form.email}
                         onChange={e => setForm({ ...form, email: e.target.value })}
                         placeholder="your@email.com"
-                        className="w-full bg-background border border-border rounded px-4 py-3 text-white text-sm font-sans outline-none focus:border-brand-primary transition-colors"
+                        className="w-full bg-background border border-border rounded px-4 py-3 text-brand-primary text-sm font-sans outline-none focus:border-brand-primary transition-colors"
                       />
                     </div>
                   </div>
@@ -183,7 +183,7 @@ export default function Contact() {
                       required
                       value={form.subject}
                       onChange={e => setForm({ ...form, subject: e.target.value })}
-                      className="w-full bg-background border border-border rounded px-4 py-3 text-white text-sm font-sans outline-none focus:border-brand-primary transition-colors"
+                      className="w-full bg-background border border-border rounded px-4 py-3 text-brand-primary text-sm font-sans outline-none focus:border-brand-primary transition-colors"
                     >
                       <option value="" disabled>Select a subject...</option>
                       <option>Research Collaboration</option>
@@ -205,7 +205,7 @@ export default function Contact() {
                       value={form.message}
                       onChange={e => setForm({ ...form, message: e.target.value })}
                       placeholder="Tell us how you'd like to engage with NBRF..."
-                      className="w-full bg-background border border-border rounded px-4 py-3 text-white text-sm font-sans outline-none focus:border-brand-primary transition-colors resize-none"
+                      className="w-full bg-background border border-border rounded px-4 py-3 text-brand-primary text-sm font-sans outline-none focus:border-brand-primary transition-colors resize-none"
                     />
                   </div>
 

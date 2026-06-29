@@ -80,7 +80,7 @@ export default function SnapshotPage() {
       <div className="border-b border-border bg-surface/80 backdrop-blur-md sticky top-0 z-40">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-2 text-muted hover:text-white transition-colors text-xs font-mono">
+            <Link href="/" className="flex items-center gap-2 text-muted hover:text-brand-primary transition-colors text-xs font-mono">
               <ArrowLeft className="w-4 h-4" /> Home
             </Link>
             <span className="text-border">|</span>
@@ -105,11 +105,11 @@ export default function SnapshotPage() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-secondary/30 bg-brand-secondary/10 text-brand-secondary font-mono text-[10px] uppercase tracking-widest mb-4">
             <Activity className="w-3 h-3" /> Data Dashboard · Bihar 2024
           </div>
-          <h1 className="text-4xl md:text-5xl font-mono font-bold text-white mb-4 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-mono font-bold text-brand-primary mb-4 leading-tight">
             Bihar <span className="text-brand-secondary glow-text-blue">State Snapshot</span>
           </h1>
-          <p className="text-muted text-lg max-w-3xl leading-relaxed">
-            A comprehensive, data-driven overview of Bihar's socioeconomic, demographic, and developmental landscape — curated by NBRF researchers.
+          <p className="text-muted/80 text-sm md:text-base font-sans max-w-2xl leading-relaxed">
+            Bihar&apos;s demographic and administrative scale requires precise, data-driven interventions. NBRF utilizes this macro data to formulate hyper-local policy solutions.
           </p>
         </motion.div>
 
@@ -127,7 +127,7 @@ export default function SnapshotPage() {
                 <s.icon className={`w-5 h-5 ${s.color}`} />
               </div>
               <div className={`text-2xl font-mono font-bold ${s.color} mb-1`}>{s.value}</div>
-              <div className="text-xs font-mono text-white mb-1">{s.label}</div>
+              <div className="text-xs font-mono text-brand-primary mb-1">{s.label}</div>
               <div className="text-[10px] text-muted leading-tight">{s.sub}</div>
             </motion.div>
           ))}
@@ -135,14 +135,14 @@ export default function SnapshotPage() {
 
         {/* Quick demographics strip */}
         <div className="tech-card p-5 mb-10">
-          <h2 className="text-sm font-mono font-bold text-white mb-5 flex items-center gap-2">
+          <h2 className="text-sm font-mono font-bold text-brand-primary mb-5 flex items-center gap-2">
             <MapPin className="w-4 h-4 text-brand-primary" /> Quick Demographics
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-4">
             {demographics.map((d) => (
               <div key={d.label} className="flex flex-col gap-1 p-3 border border-border rounded hover:border-brand-primary/30 transition-colors">
                 <d.icon className="w-4 h-4 text-brand-primary mb-1" />
-                <div className="text-sm font-mono font-bold text-white">{d.value}</div>
+                <div className="text-sm font-mono font-bold text-brand-primary">{d.value}</div>
                 <div className="text-[10px] text-muted">{d.label}</div>
               </div>
             ))}
@@ -160,7 +160,7 @@ export default function SnapshotPage() {
               transition={{ delay: i * 0.1 }}
               className="tech-card p-6"
             >
-              <h3 className="font-mono font-bold text-white text-base mb-5 flex items-center gap-2">
+              <h3 className="font-mono font-bold text-brand-primary text-base mb-5 flex items-center gap-2">
                 <sector.icon className={`w-5 h-5 ${sector.color}`} /> {sector.title}
               </h3>
               <div className="flex flex-col gap-0 divide-y divide-border/50">
@@ -170,7 +170,7 @@ export default function SnapshotPage() {
                       <div className="text-xs font-mono text-muted">{item.label}</div>
                       <div className="text-[10px] text-muted/60 mt-0.5">{item.note}</div>
                     </div>
-                    <div className="text-sm font-mono font-bold text-white whitespace-nowrap">{item.value}</div>
+                    <div className="text-sm font-mono font-bold text-brand-primary whitespace-nowrap">{item.value}</div>
                   </div>
                 ))}
               </div>
@@ -180,7 +180,7 @@ export default function SnapshotPage() {
 
         {/* Agriculture spotlight */}
         <div className="tech-card p-6 mb-10 border-green-400/20">
-          <h2 className="font-mono font-bold text-white text-base mb-6 flex items-center gap-2">
+          <h2 className="font-mono font-bold text-brand-primary text-base mb-6 flex items-center gap-2">
             <Wheat className="w-5 h-5 text-green-400" /> Agricultural Powerhouse
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4">
@@ -193,7 +193,7 @@ export default function SnapshotPage() {
               <div key={c.crop} className="border border-green-400/20 rounded-lg p-4 bg-green-400/5 text-center">
                 <div className="text-2xl font-mono font-bold text-green-400 mb-1">{c.share}</div>
                 <div className="text-[10px] text-muted mb-2">{c.title}</div>
-                <div className="text-xs font-mono font-bold text-white">{c.crop}</div>
+                <div className="text-xs font-mono font-bold text-brand-primary">{c.crop}</div>
               </div>
             ))}
           </div>
@@ -202,7 +202,7 @@ export default function SnapshotPage() {
         {/* Future Vision */}
         <div className="tech-card p-6 border-brand-accent/20 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none" />
-          <h2 className="font-mono font-bold text-white text-base mb-6 flex items-center gap-2 relative z-10">
+          <h2 className="font-mono font-bold text-brand-primary text-base mb-6 flex items-center gap-2 relative z-10">
             <TrendingUp className="w-5 h-5 text-brand-accent" /> Bihar Vision 2030
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 relative z-10">
@@ -213,7 +213,7 @@ export default function SnapshotPage() {
             ].map((v) => (
               <div key={v.goal} className="border border-border rounded-lg p-5">
                 <div className={`text-xl font-mono font-bold ${v.color} mb-1`}>{v.target}</div>
-                <div className="text-sm font-mono font-bold text-white mb-2">{v.goal}</div>
+                <div className="text-sm font-mono font-bold text-brand-primary mb-2">{v.goal}</div>
                 <div className="text-xs text-muted leading-relaxed">{v.detail}</div>
               </div>
             ))}

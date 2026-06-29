@@ -51,7 +51,7 @@ export default function MembershipForm() {
           <div className="w-20 h-20 rounded-full bg-brand-primary/10 border border-brand-primary/30 flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-10 h-10 text-brand-primary" />
           </div>
-          <h1 className="text-2xl font-mono font-bold text-white mb-3">Application Submitted</h1>
+          <h1 className="text-2xl font-mono font-bold text-brand-primary mb-3">Application Submitted</h1>
           <p className="text-muted font-sans text-sm mb-8 leading-relaxed">
             Thank you for applying to NBRF. Your membership application has been received and will be reviewed by our Governing Board. You will be contacted shortly.
           </p>
@@ -76,14 +76,14 @@ export default function MembershipForm() {
               <Image src="/logo.png" alt="NBRF Logo" width={40} height={40} className="w-full h-full object-contain" />
             </div>
             <div className="text-left">
-              <div className="font-mono font-bold text-white text-lg glow-text group-hover:text-brand-primary transition-colors">NBRF</div>
+              <div className="font-mono font-bold text-brand-primary text-lg glow-text group-hover:text-brand-primary transition-colors">NBRF</div>
               <div className="text-[10px] font-mono text-muted uppercase tracking-widest mt-0.5">Think Tank</div>
             </div>
           </Link>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-primary/30 bg-brand-primary/10 text-brand-primary font-mono text-[10px] uppercase tracking-widest mb-4">
             MEMBERSHIP // APPLICATION
           </div>
-          <h1 className="text-3xl md:text-4xl font-mono font-bold text-white mb-3">
+          <h1 className="text-3xl md:text-4xl font-mono font-bold text-brand-primary mb-3">
             Membership Application Form
           </h1>
           <p className="text-muted font-sans text-sm italic max-w-2xl mx-auto leading-relaxed">
@@ -110,6 +110,7 @@ export default function MembershipForm() {
             <label htmlFor="photo-upload" className="cursor-pointer">
               {photo ? (
                 <div className="w-28 h-36 rounded border-2 border-brand-primary overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={photo} alt="Passport photo" className="w-full h-full object-cover" />
                 </div>
               ) : (
@@ -149,7 +150,7 @@ export default function MembershipForm() {
                   <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${category === opt.key ? "border-brand-primary" : "border-muted"}`}>
                     {category === opt.key && <div className="w-2 h-2 rounded-full bg-brand-primary" />}
                   </div>
-                  <span className="font-mono text-sm font-bold text-white">{opt.label}</span>
+                  <span className="font-mono text-sm font-bold text-brand-primary">{opt.label}</span>
                 </div>
                 <p className="text-xs text-muted font-sans mb-2">{opt.desc}</p>
                 <span className="text-brand-primary font-mono text-xs font-bold">Admission: {opt.fee}</span>
@@ -165,7 +166,7 @@ export default function MembershipForm() {
             <Field label="Date of Birth *" id="dob" type="date" required />
             <div>
               <label className="block text-xs font-mono text-muted uppercase tracking-widest mb-2">Gender *</label>
-              <select id="gender" required defaultValue="" className="w-full bg-background border border-border rounded px-4 py-3 text-white text-sm font-sans outline-none focus:border-brand-secondary transition-colors">
+              <select id="gender" required defaultValue="" className="w-full bg-background border border-border rounded px-4 py-3 text-brand-primary text-sm font-sans outline-none focus:border-brand-secondary transition-colors">
                 <option value="" disabled>Select gender</option>
                 <option>Male</option>
                 <option>Female</option>
@@ -232,7 +233,7 @@ export default function MembershipForm() {
         <div className="tech-card p-6 border-brand-primary/20">
           <div className="flex items-center gap-2 mb-5">
             <FileText className="w-4 h-4 text-brand-primary" />
-            <h3 className="font-mono font-bold text-white text-sm uppercase tracking-widest">Admission Fee Schedule</h3>
+            <h3 className="font-mono font-bold text-brand-primary text-sm uppercase tracking-widest">Admission Fee Schedule</h3>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm font-sans">
@@ -249,7 +250,7 @@ export default function MembershipForm() {
                   { cat: "Honorary Member", fee: "Nil" },
                 ].map((row) => (
                   <tr key={row.cat} className={`border-b border-border/50 ${category && fees[category] === row.fee ? "bg-brand-primary/5" : ""}`}>
-                    <td className="py-3 px-4 text-white">{row.cat}</td>
+                    <td className="py-3 px-4 text-brand-primary">{row.cat}</td>
                     <td className="py-3 px-4 text-brand-primary font-mono font-bold text-right">{row.fee}</td>
                   </tr>
                 ))}
@@ -261,7 +262,7 @@ export default function MembershipForm() {
 
         {/* Terms & Conditions */}
         <div className="tech-card p-6 border-border">
-          <h3 className="font-mono font-bold text-white text-sm uppercase tracking-widest mb-5">Terms, Conditions & Membership Rules</h3>
+          <h3 className="font-mono font-bold text-brand-primary text-sm uppercase tracking-widest mb-5">Terms, Conditions & Membership Rules</h3>
           <ol className="space-y-3">
             {[
               "The applicant must be at least 18 years of age.",
@@ -286,7 +287,7 @@ export default function MembershipForm() {
 
         {/* Declaration */}
         <div className="tech-card p-6 border-brand-primary/20">
-          <h3 className="font-mono font-bold text-white text-sm uppercase tracking-widest mb-4">Declaration</h3>
+          <h3 className="font-mono font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Declaration</h3>
           <p className="text-sm text-muted font-sans leading-relaxed mb-6">
             I hereby declare that the information provided in this application form is true and correct to the best of my knowledge and belief. I have carefully read and understood the Terms, Conditions, and Membership Rules of Nav Bihar Renaissance Foundation (NBRF). I agree to abide by them and actively work towards the objectives and interests of the Foundation. I understand that my membership may be suspended or terminated if my conduct, activities, or actions are found detrimental to the interests, reputation, or objectives of the organization.
           </p>
@@ -302,7 +303,7 @@ export default function MembershipForm() {
             >
               {agreed && <CheckCircle className="w-3.5 h-3.5 text-background" />}
             </div>
-            <span className="text-sm text-muted font-sans leading-relaxed group-hover:text-white transition-colors">
+            <span className="text-sm text-muted font-sans leading-relaxed group-hover:text-brand-primary transition-colors">
               By submitting this application, I voluntarily seek membership in NBRF and undertake to cooperate with the Governing Board, committees, and office bearers in carrying out the activities and mission of the Foundation. *
             </span>
           </label>
@@ -347,7 +348,7 @@ function Section({ icon: Icon, title, color, children }: {
         <div className={`w-9 h-9 rounded bg-${color}/10 border border-${color}/30 flex items-center justify-center`}>
           <Icon className={`w-4 h-4 text-${color}`} />
         </div>
-        <h2 className={`font-mono font-bold text-white text-base uppercase tracking-widest`}>{title}</h2>
+        <h2 className={`font-mono font-bold text-brand-primary text-base uppercase tracking-widest`}>{title}</h2>
       </div>
       {children}
     </motion.div>
@@ -365,7 +366,7 @@ function Field({ label, id, type = "text", placeholder, required }: {
         type={type}
         placeholder={placeholder}
         required={required}
-        className="w-full bg-background border border-border rounded px-4 py-3 text-white text-sm font-sans outline-none focus:border-brand-primary transition-colors placeholder:text-muted/50"
+        className="w-full bg-background border border-border rounded px-4 py-3 text-brand-primary text-sm font-sans outline-none focus:border-brand-primary transition-colors placeholder:text-muted/50"
       />
     </div>
   );
@@ -382,7 +383,7 @@ function TextArea({ label, id, placeholder, rows = 4, required }: {
         rows={rows}
         placeholder={placeholder}
         required={required}
-        className="w-full bg-background border border-border rounded px-4 py-3 text-white text-sm font-sans outline-none focus:border-brand-primary transition-colors resize-none placeholder:text-muted/50"
+        className="w-full bg-background border border-border rounded px-4 py-3 text-brand-primary text-sm font-sans outline-none focus:border-brand-primary transition-colors resize-none placeholder:text-muted/50"
       />
     </div>
   );
