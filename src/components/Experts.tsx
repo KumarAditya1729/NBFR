@@ -99,13 +99,13 @@ export default function Experts() {
                 className={`tech-card group overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 ${isExpanded ? 'ring-1 ring-brand-secondary' : ''}`}
               >
                 {/* Photo area */}
-                <div className="relative h-64 overflow-hidden shrink-0">
+                <div className="relative h-64 overflow-hidden shrink-0 bg-surface-alt/50">
                   {expert.image ? (
                     <Image
                       src={expert.image}
                       alt={expert.name}
                       fill
-                      className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                      className="object-contain object-center grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                     />
                   ) : (
                     <div className="w-full h-full bg-background flex flex-col items-center justify-center gap-3">
@@ -189,12 +189,12 @@ export default function Experts() {
               viewport={{ once: true }}
               className="tech-card group overflow-hidden flex flex-col w-full max-w-xs hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="relative h-64 overflow-hidden shrink-0">
+              <div className="relative h-64 overflow-hidden shrink-0 bg-surface-alt/50">
                 <Image
                   src="/directors/shashank-shrivastava.jpg"
                   alt="Shashank Shrivastava"
                   fill
-                  className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  className="object-contain object-center grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
                 <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-black/60 backdrop-blur px-2 py-1 rounded border border-white/10">
