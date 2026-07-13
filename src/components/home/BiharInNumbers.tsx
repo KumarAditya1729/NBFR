@@ -18,9 +18,9 @@ const facts = [
     color: "var(--color-cat-social)",
   },
   {
-    value: "1,106",
+    value: "1,106 / km²",
     label: "Population Density",
-    description: "Per sq. km — one of India's highest",
+    description: "Per sq. km — highest in India (Census 2011)",
     icon: "👥",
     color: "var(--color-cat-policy)",
   },

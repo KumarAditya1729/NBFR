@@ -2,15 +2,15 @@
 
 export default function DataPulseTicker() {
   const stats = [
-    "🏛️ Bihar — Land of Ancient Wisdom",
-    "👥 130 Million+ Population",
+    "🏛️ Magadh Empire (6th Century BC) & Mauryan Dynasty (321 BC)",
+    "👥 Population Density: 1106 / km² (Highest in India)",
+    "📚 Literacy Rate: 61.8% (2011 Census)",
     "🗺️ 38 Districts Across the State",
     "🌾 ~89% Rural Population",
-    "📚 61.8% Literacy Rate (2011 Census)",
     "🎓 Home to Ancient Nalanda University",
     "🌊 Ganges, Gandak, Kosi — Major Rivers",
     "🏭 14th Largest State by GDP",
-    "🌱 Major Producer of Maize & Litchi",
+    "🌱 Major Producer of Makhana, Maize & Litchi",
     "📊 GDP Growth: ~10% (2022-23)",
     "🏆 Birthplace of Buddhism & Jainism",
     "🏙️ Patna — Capital & Largest City",

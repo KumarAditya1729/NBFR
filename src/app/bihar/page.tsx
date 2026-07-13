@@ -198,7 +198,7 @@ export default function DiscoverBihar() {
             <div className="bg-background border border-border rounded-xl p-8">
               <h3 className="text-xl font-mono font-bold text-brand-primary mb-4 border-b border-border pb-4">Historical Legacy</h3>
               <ul className="space-y-4 text-sm text-muted">
-                <li><strong className="text-brand-primary">Ancient Era:</strong> Magadha kingdom, Maurya & Gupta Empires (Golden Age). First residential universities at Nalanda & Vikramshila.</li>
+                <li><strong className="text-brand-primary">Ancient Era (6th Century BC onward):</strong> Magadha Empire & Mahajanapada dominance, followed by Maurya & Gupta Empires (Golden Age). First residential universities at Nalanda & Vikramshila.</li>
                 <li><strong className="text-brand-primary">Medieval Era:</strong> Sher Shah Suri&apos;s administrative reforms, Grand Trunk Road.</li>
                 <li><strong className="text-brand-primary">Colonial & Modern:</strong> Champaran Satyagraha (1917), JP Movement (1974).</li>
               </ul>

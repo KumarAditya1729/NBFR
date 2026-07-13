@@ -6,12 +6,20 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const events = [
   {
-    year: "321 BC",
+    year: "6th Century BC",
     era: "Ancient",
-    title: "Magadha Empire",
-    desc: "The Magadha Empire, centred in Bihar, became one of the world's first great empires under Chandragupta Maurya and the Maurya dynasty.",
+    title: "Magadh Empire",
+    desc: "Emerging in the 6th century BC in ancient Bihar, the Magadh Empire became India's most powerful Mahajanapada under rulers like Bimbisara and Ajatashatru.",
     icon: "👑",
     color: "#B45309",
+  },
+  {
+    year: "321 BC",
+    era: "Ancient",
+    title: "Mauryan Dynasty / Empire",
+    desc: "Founded by Chandragupta Maurya with Pataliputra (Patna) as its capital, the Mauryan Dynasty united most of the Indian subcontinent into a vast ancient empire.",
+    icon: "🏛️",
+    color: "#D97706",
   },
   {
     year: "268 BC",
