@@ -23,13 +23,13 @@ export default function About() {
           <strong className="text-brand-primary">The Nav Bihar Renaissance Foundation (NBRF)</strong> is Bihar&apos;s pioneering think tank, dedicated to addressing the state&apos;s developmental challenges. With data-driven insights and research, we provide strategic solutions across social, economic, cultural, and other sectors, enabling Bihar to realize its full potential.
         </p>
         <p>
-          Bihar has a glorious past; it was the centre of political and spiritual power of India. Patliputra was the capital of Maurya Empire and later Gupta Empire. Bihar was the land that Gautam Buddha obtained enlightenment from when he started sending the messages of his new faith—Buddhism. Mahavir, the 24th Tirthankara of Jain religion, was from Vaishali.
+          Bihar has a glorious past; it was the centre of political and spiritual power in India. Pataliputra was the capital of the Maurya Empire and later the Gupta Empire. Bihar was the land where Gautam Buddha obtained enlightenment when he began spreading the teachings of his new faith—Buddhism. Mahavir, the 24th Tirthankara of Jainism, was from Vaishali.
         </p>
         <p>
-          Today Bihar is visited by Buddhists and Jains from all over the world who visit its pilgrimages connected with the lives of these great religious leaders. Later, Patna became an important centre of Sikhism also as the last guru, Guru Govind Singh, was born in Patna City. In modern times Patna developed as an important trade centre.
+          Today, Bihar is visited by global travelers and pilgrims drawn to historical landmarks connected with the lives of these great religious leaders. Later, Patna became an important centre of Sikhism also as the tenth guru, Guru Govind Singh, was born in Patna City. In modern times, Patna developed as an important trade and administrative centre.
         </p>
         <p>
-          After independence till late 1950s the administration of Bihar was cited as excellent. But the downfall of the State began during mid-1960s and 1970s. Now Bihar Renaissance Foundation has been set up for the purpose of identifying developmental gaps in various sectors and suggesting measures to fill them. We will submit our survey and research-based reports to stakeholders and request them to implement our recommendations.
+          After independence, until the late 1950s, the administration of Bihar was cited as excellent. However, challenges emerged during the mid-1960s and 1970s. Now, the Nav Bihar Renaissance Foundation has been set up to identify developmental gaps in various sectors and suggest actionable measures to bridge them. We submit our survey and research-based reports to stakeholders and collaborate closely to implement our recommendations.
         </p>
       </div>
     ),

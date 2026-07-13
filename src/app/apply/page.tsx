@@ -221,9 +221,9 @@ export default function MembershipForm() {
         {/* Contribution to NBRF */}
         <Section icon={Target} title="Contribution to NBRF" color="brand-accent">
           <TextArea
-            label="How would you like to contribute to NBRF&apos;s objectives and activities? *"
+            label="How would you like to contribute to NBRF's objectives and activities? *"
             id="contribution"
-            placeholder="Describe how you plan to actively contribute to NBRF&apos;s research, policy, events, outreach, or other activities..."
+            placeholder="Describe how you plan to actively contribute to NBRF's research, policy, events, outreach, or other activities..."
             rows={6}
             required
           />

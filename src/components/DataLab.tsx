@@ -20,7 +20,7 @@ export default function DataLab() {
       border: "hover:border-brand-secondary/50",
       value: "20+",
       label: "Policy Briefs",
-      desc: "Actionable policy recommendations to submit to Bihar&apos;s government stakeholders.",
+      desc: "Actionable policy recommendations to submit to Bihar's government stakeholders.",
     },
     {
       icon: Users,
@@ -36,7 +36,7 @@ export default function DataLab() {
       border: "hover:border-brand-primary/50",
       value: "38",
       label: "Districts Covered",
-      desc: "Field research and data collection across all of Bihar&apos;s districts.",
+      desc: "Field research and data collection across all of Bihar's districts.",
     },
   ];
 

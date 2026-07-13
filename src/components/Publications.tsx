@@ -12,7 +12,7 @@ export default function Publications() {
       border: "group-hover:border-brand-primary",
       bg: "bg-brand-primary/10",
       title: "Policy Briefs",
-      desc: "In-depth analysis of Bihar&apos;s governance, agriculture, and social development policies.",
+      desc: "In-depth analysis of Bihar's governance, agriculture, and social development policies.",
     },
     {
       icon: FileText,
@@ -20,7 +20,7 @@ export default function Publications() {
       border: "group-hover:border-brand-secondary",
       bg: "bg-brand-secondary/10",
       title: "Research Reports",
-      desc: "Data-driven reports on economic, educational, and health indicators across Bihar&apos;s 38 districts.",
+      desc: "Data-driven reports on economic, educational, and health indicators across Bihar's 38 districts.",
     },
     {
       icon: FileText,
@@ -36,7 +36,7 @@ export default function Publications() {
       border: "group-hover:border-brand-primary",
       bg: "bg-brand-primary/10",
       title: "Survey & Field Studies",
-      desc: "Ground-level research from Bihar&apos;s villages and cities to inform actionable recommendations.",
+      desc: "Ground-level research from Bihar's villages and cities to inform actionable recommendations.",
     },
   ];
 

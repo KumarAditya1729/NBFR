@@ -58,10 +58,10 @@ export default function Fellowships() {
             <div className="md:w-1/2 w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { icon: BookOpen, title: "Research Membership", desc: "For researchers and academics advancing Bihar&apos;s development agenda." },
+                  { icon: BookOpen, title: "Research Membership", desc: "For researchers and academics advancing Bihar's development agenda." },
                   { icon: UserPlus, title: "Policy Membership", desc: "For mid-career professionals and administrators shaping governance." },
                   { icon: GraduationCap, title: "Student Membership", desc: "Mentorship and engagement for outstanding university students." },
-                  { icon: Globe, title: "Visiting Scholar", desc: "Global experts collaborating on Bihar&apos;s development research." },
+                  { icon: Globe, title: "Visiting Scholar", desc: "Global experts collaborating on Bihar's development research." },
                 ].map((item, i) => (
                   <motion.div 
                     key={i}

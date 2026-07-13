@@ -8,7 +8,7 @@ export default function AiAssistant() {
   const [isTyping, setIsTyping] = useState(false);
   const [messages, setMessages] = useState([
     { role: "system", content: "NBRF Research Assistant initialized." },
-    { role: "assistant", content: "Welcome to the NBRF Research Assistant. Ask me about Bihar&apos;s development, our policy research, or any initiatives we are working on." }
+    { role: "assistant", content: "Welcome to the NBRF Research Assistant. Ask me about Bihar's development, our policy research, or any initiatives we are working on." }
   ]);
 
   const handleSend = (e: React.FormEvent) => {
@@ -53,9 +53,9 @@ export default function AiAssistant() {
             <div className="space-y-3">
               <p className="text-xs font-mono text-brand-secondary uppercase tracking-widest">Suggested Questions:</p>
               {[
-                "What is NBRF&apos;s mission?",
-                "Explain Bihar&apos;s development challenges",
-                "What are NBRF&apos;s key research areas?",
+                "What is NBRF's mission?",
+                "Explain Bihar's development challenges",
+                "What are NBRF's key research areas?",
               ].map((suggestion, i) => (
                 <button
                   key={i}

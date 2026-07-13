@@ -10,13 +10,13 @@ export default function MediaPress() {
       icon: Megaphone,
       color: "text-brand-accent",
       title: "Press Releases",
-      desc: "Official announcements on NBRF&apos;s research launches, partnerships, and events — distributed to media outlets on request.",
+      desc: "Official announcements on NBRF's research launches, partnerships, and events — distributed to media outlets on request.",
     },
     {
       icon: Newspaper,
       color: "text-brand-primary",
       title: "Media Coverage",
-      desc: "NBRF welcomes journalists and reporters covering Bihar&apos;s development, governance, and social policy sectors.",
+      desc: "NBRF welcomes journalists and reporters covering Bihar's development, governance, and social policy sectors.",
     },
     {
       icon: Radio,

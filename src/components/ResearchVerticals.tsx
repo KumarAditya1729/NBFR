@@ -19,7 +19,7 @@ export default function ResearchVerticals() {
   const verticals = [
     {
       name: "Governance & Public Administration",
-      desc: "Strengthening democratic institutions, administrative accountability, and service delivery reform across Bihar&apos;s 38 districts.",
+      desc: "Strengthening democratic institutions, administrative accountability, and service delivery reform across Bihar's 38 districts.",
       icon: Landmark,
       color: "text-brand-primary",
       glow: "group-hover:shadow-[0_0_20px_rgba(16,185,129,0.25)]",
@@ -27,7 +27,7 @@ export default function ResearchVerticals() {
     },
     {
       name: "Agriculture & Rural Economy",
-      desc: "Transforming Bihar&apos;s agrarian backbone through crop diversification, irrigation policy, and farmer income security frameworks.",
+      desc: "Transforming Bihar's agrarian backbone through crop diversification, irrigation policy, and farmer income security frameworks.",
       icon: Wheat,
       color: "text-brand-secondary",
       glow: "group-hover:shadow-[0_0_20px_rgba(56,189,248,0.25)]",
@@ -35,7 +35,7 @@ export default function ResearchVerticals() {
     },
     {
       name: "Education & Skill Development",
-      desc: "Bridging literacy gaps, reforming school infrastructure, and aligning higher education with Bihar&apos;s workforce needs.",
+      desc: "Bridging literacy gaps, reforming school infrastructure, and aligning higher education with Bihar's workforce needs.",
       icon: GraduationCap,
       color: "text-brand-accent",
       glow: "group-hover:shadow-[0_0_20px_rgba(139,92,246,0.25)]",
@@ -59,7 +59,7 @@ export default function ResearchVerticals() {
     },
     {
       name: "Migration & Labour Policy",
-      desc: "Addressing Bihar&apos;s large-scale migration through data-driven labour policy, diaspora engagement, and remittance economics.",
+      desc: "Addressing Bihar's large-scale migration through data-driven labour policy, diaspora engagement, and remittance economics.",
       icon: Compass,
       color: "text-brand-accent",
       glow: "group-hover:shadow-[0_0_20px_rgba(139,92,246,0.25)]",
@@ -83,7 +83,7 @@ export default function ResearchVerticals() {
     },
     {
       name: "Cultural Heritage & Tourism",
-      desc: "Leveraging Bihar&apos;s rich Buddhist, Jain, and Sikh heritage — Nalanda, Bodh Gaya, Vaishali — as engines of economic and cultural diplomacy.",
+      desc: "Leveraging Bihar's rich Buddhist, Jain, and Sikh heritage — Nalanda, Bodh Gaya, Vaishali — as engines of economic and cultural diplomacy.",
       icon: Globe,
       color: "text-brand-accent",
       glow: "group-hover:shadow-[0_0_20px_rgba(139,92,246,0.25)]",

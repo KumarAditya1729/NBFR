@@ -18,7 +18,7 @@ export default function Partners() {
       color: "text-brand-secondary",
       border: "hover:border-brand-secondary/50",
       title: "Government Bodies",
-      desc: "Work alongside Bihar&apos;s state departments to translate research into actionable policy.",
+      desc: "Work alongside Bihar's state departments to translate research into actionable policy.",
     },
     {
       icon: Briefcase,
@@ -39,7 +39,7 @@ export default function Partners() {
       color: "text-brand-secondary",
       border: "hover:border-brand-secondary/50",
       title: "Industry & Corporates",
-      desc: "Channel CSR and strategic partnerships toward Bihar&apos;s development ecosystem.",
+      desc: "Channel CSR and strategic partnerships toward Bihar's development ecosystem.",
     },
   ];
 

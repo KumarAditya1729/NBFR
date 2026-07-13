@@ -8,7 +8,7 @@ export default function Events() {
   const plannedEvents = [
     {
       title: "NBRF Inaugural Conference",
-      desc: "A founding convening bringing together researchers, administrators, and civil society to launch NBRF&apos;s research agenda for Bihar.",
+      desc: "A founding convening bringing together researchers, administrators, and civil society to launch NBRF's research agenda for Bihar.",
       type: "CONFERENCE",
       location: "Patna, Bihar",
       icon: Calendar,
@@ -17,7 +17,7 @@ export default function Events() {
     },
     {
       title: "Bihar Development Policy Dialogue",
-      desc: "An open roundtable for policymakers, academics, and development professionals to discuss Bihar&apos;s most pressing challenges.",
+      desc: "An open roundtable for policymakers, academics, and development professionals to discuss Bihar's most pressing challenges.",
       type: "ROUNDTABLE",
       location: "Patna / Virtual",
       icon: MapPin,
@@ -26,7 +26,7 @@ export default function Events() {
     },
     {
       title: "District-Level Field Research Drive",
-      desc: "NBRF&apos;s first field data collection initiative across all 38 districts — gathering ground-level evidence for our research verticals.",
+      desc: "NBRF's first field data collection initiative across all 38 districts — gathering ground-level evidence for our research verticals.",
       type: "FIELD PROGRAM",
       location: "All 38 Districts",
       icon: Clock,

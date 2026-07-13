@@ -4,31 +4,31 @@ import { useEffect, useRef } from "react";
 import { motion, useInView, animate } from "framer-motion";
 
 const stats = [
-  { value: 38, label: "Districts", suffix: "", description: "Across the State" },
-  { value: 130, label: "Million", suffix: "M+", description: "People of Bihar" },
-  { value: 4, label: "Pillars", suffix: "", description: "Research, Policy, Impact, Action" },
-  { value: 1, label: "Mission", suffix: "", description: "Bihar Renaissance" },
-  { value: 2024, label: "Founded", suffix: "", description: "Year of Establishment" },
+  { value: 38, label: "Districts", suffix: "", description: "Across the State", fallbackText: "38" },
+  { value: 110, label: "Million", suffix: "M+", description: "People of Bihar", fallbackText: "110M+" },
+  { value: 4, label: "Pillars", suffix: "", description: "Research, Policy, Impact, Action", fallbackText: "4" },
+  { value: 1, label: "Mission", suffix: "", description: "Bihar Renaissance", fallbackText: "1 Unified", isStatic: true },
+  { value: 2024, label: "Founded", suffix: "", description: "Year of Establishment", fallbackText: "2024", isStatic: true },
 ];
 
-function Counter({ value, suffix }: { value: number; suffix: string }) {
+function Counter({ value, suffix, fallbackText, isStatic }: { value: number; suffix: string; fallbackText: string; isStatic?: boolean }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "0px" });
 
   useEffect(() => {
-    if (!inView || !ref.current) return;
+    if (isStatic || !inView || !ref.current) return;
     const el = ref.current;
     const controls = animate(0, value, {
-      duration: 2,
+      duration: 1.8,
       ease: "easeOut",
       onUpdate(v) {
         el.textContent = Math.round(v).toLocaleString() + suffix;
       },
     });
     return () => controls.stop();
-  }, [inView, value, suffix]);
+  }, [inView, value, suffix, isStatic]);
 
-  return <span ref={ref}>0{suffix}</span>;
+  return <span ref={ref}>{fallbackText}</span>;
 }
 
 export default function ImpactCounter() {
@@ -59,7 +59,7 @@ export default function ImpactCounter() {
               className="flex flex-col items-center gap-1 group"
             >
               <div className="text-4xl sm:text-5xl font-serif font-bold text-white group-hover:text-brand-accent transition-colors duration-300">
-                <Counter value={stat.value} suffix={stat.suffix} />
+                <Counter value={stat.value} suffix={stat.suffix} fallbackText={stat.fallbackText} isStatic={stat.isStatic} />
               </div>
               <div className="text-xs font-mono font-bold text-brand-accent uppercase tracking-widest mt-1">
                 {stat.label}
