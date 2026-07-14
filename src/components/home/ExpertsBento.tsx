@@ -17,7 +17,7 @@ export default function ExpertsBento({ experts = [] }: { experts?: any[] }) {
         <Users className="w-10 h-10 text-muted/40" />
         <div>
           <p className="text-sm font-mono font-bold text-muted">Board of Directors</p>
-          <p className="text-xs text-muted/70 mt-1">
+          <p className="text-xs text-muted mt-1">
             Director profiles will appear here once added via{" "}
             <Link href="/studio" className="text-brand-primary hover:underline">Sanity Studio</Link>.
           </p>

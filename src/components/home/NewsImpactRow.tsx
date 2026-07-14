@@ -16,7 +16,7 @@ export default function NewsImpactRow() {
         </div>
 
         <div className="flex flex-col items-center justify-center py-12 text-center h-full">
-          <h3 className="font-mono text-xl font-bold text-brand-primary/40 mb-2">Coming Soon</h3>
+          <h3 className="font-mono text-xl font-bold text-muted mb-2" aria-hidden="true">Coming Soon</h3>
           <p className="text-muted text-sm">Our insights and articles are currently being drafted.</p>
         </div>
       </div>
@@ -29,7 +29,7 @@ export default function NewsImpactRow() {
         </div>
 
         <div className="flex flex-col items-center justify-center h-full text-center min-h-[150px]">
-          <h3 className="font-mono text-xl font-bold text-brand-primary/40 mb-2">Coming Soon</h3>
+          <h3 className="font-mono text-xl font-bold text-muted mb-2" aria-hidden="true">Coming Soon</h3>
           <p className="text-muted text-sm">Impact metrics will be tracked here.</p>
         </div>
       </div>

@@ -60,7 +60,7 @@ export default function AskThinkTank() {
               ))}
             </div>
 
-            <div className="text-[10px] font-mono text-muted/60 border-t border-border pt-4 mt-2">
+            <div className="text-[10px] font-mono text-muted border-t border-border pt-4 mt-2">
               Our team reviews all submissions and responds within 5–7 working days.
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function AskThinkTank() {
                       placeholder="Share your research question, policy concern, or inquiry about Bihar's development..."
                       className="bg-surface border border-border rounded-lg px-3 py-2.5 text-sm text-foreground placeholder:text-muted/50 outline-none focus:border-brand-primary transition-colors resize-none"
                     />
-                    <div className="text-right text-[10px] font-mono text-muted/60">
+                    <div className="text-right text-[10px] font-mono text-muted">
                       {form.question.length} characters
                     </div>
                   </div>

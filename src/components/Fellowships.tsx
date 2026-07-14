@@ -72,7 +72,7 @@ export default function Fellowships() {
                     className="bg-background/50 border border-border p-6 rounded hover:border-brand-primary transition-colors"
                   >
                     <item.icon className="w-6 h-6 text-brand-primary mb-4" />
-                    <h4 className="font-mono font-bold text-brand-primary mb-2 text-sm">{item.title}</h4>
+                    <h3 className="font-mono font-bold text-brand-primary mb-2 text-sm">{item.title}</h3>
                     <p className="text-muted text-xs font-sans">{item.desc}</p>
                   </motion.div>
                 ))}

@@ -295,7 +295,7 @@ export default function GlobalSearchClient({
         </div>
 
         {/* ── FILTER TABS ROW ── */}
-        <div className="mt-4 pt-4 border-t border-border/50 flex flex-col gap-2">
+        <div className="mt-4 pt-4 border-t border-border/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 
           {/* Tabs — scrollable row */}
           <div className="flex items-center gap-1.5 font-mono text-xs overflow-x-auto pb-1 scrollbar-none">

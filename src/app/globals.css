@@ -33,8 +33,8 @@
 
 @layer base {
   :root {
-    --brand-primary: #EA580C;
-    --brand-primary-dark: #C2410C;
+    --brand-primary: #C2410C;
+    --brand-primary-dark: #9A3412;
     --brand-secondary: #0F172A;
     --brand-accent: #FDBA74;
     
@@ -122,6 +122,12 @@
   a {
     color: var(--brand-primary);
     transition: color 0.3s ease;
+  }
+
+  /* Inline links within text blocks must be underlined (WCAG 1.4.1) */
+  p a, li a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
   
   a:hover {

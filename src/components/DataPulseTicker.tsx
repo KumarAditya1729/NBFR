@@ -21,7 +21,7 @@ export default function DataPulseTicker() {
 
   return (
     <div
-      className="fixed top-[96px] lg:top-[128px] left-0 right-0 z-40 overflow-hidden border-b border-brand-primary/20 bg-background/80 backdrop-blur-sm"
+      className="fixed top-[112px] lg:top-[144px] left-0 right-0 z-40 overflow-hidden border-b border-brand-primary/20 bg-background/80 backdrop-blur-sm"
       aria-hidden="true"
     >
       <div className="flex items-center h-8 gap-0">

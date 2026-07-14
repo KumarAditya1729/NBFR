@@ -26,7 +26,7 @@ export default function HomeHero() {
               <span className="w-2 h-2 rounded-full bg-brand-primary animate-pulse shrink-0" />
               ESTABLISHED 2024 · PATNA, BIHAR
             </div>
-            <div className="text-[9px] sm:text-[10px] font-mono text-muted/60 mt-0.5">Nav Bihar Renaissance Foundation — Think Tank</div>
+            <div className="text-[9px] sm:text-[10px] font-mono text-muted mt-0.5">Nav Bihar Renaissance Foundation — Think Tank</div>
           </div>
         </div>
 

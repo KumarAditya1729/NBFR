@@ -117,7 +117,7 @@ export default function Experts({ experts: expertsProp }: { experts?: any[] } = 
               </div>
               <div>
                 <p className="font-mono font-bold text-muted">No Director profiles yet</p>
-                <p className="text-xs text-muted/70 mt-1">Add expert profiles via <a href="/studio" className="text-brand-primary hover:underline">Sanity Studio</a> to display the Board of Directors here.</p>
+                <p className="text-xs text-muted mt-1">Add expert profiles via <a href="/studio" className="text-brand-primary hover:underline">Sanity Studio</a> to display the Board of Directors here.</p>
               </div>
             </div>
           ) : displayExperts.map((expert, i) => {
@@ -178,10 +178,16 @@ export default function Experts({ experts: expertsProp }: { experts?: any[] } = 
                 </div>
 
                 {/* Bio section */}
-                <div className="p-5 h-[280px] overflow-y-auto scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent">
-                  <p className="text-sm text-muted font-sans leading-relaxed whitespace-pre-line">
+                <div className="p-5 flex flex-col flex-1">
+                  <p className={`text-sm text-muted font-sans leading-relaxed whitespace-pre-line ${isExpanded ? '' : 'line-clamp-4'}`}>
                     {expert.bio}
                   </p>
+                  <button 
+                    onClick={() => toggleBio(expert.hash)}
+                    className="text-brand-primary text-xs font-mono mt-3 self-start hover:underline"
+                  >
+                    {isExpanded ? 'Show Less' : 'Read More'}
+                  </button>
                 </div>
               </motion.div>
             );
@@ -215,6 +221,7 @@ export default function Experts({ experts: expertsProp }: { experts?: any[] } = 
                   alt="Photo of Shashank Shrivastava"
                   fill
                   sizes="320px"
+                  priority
                   className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />

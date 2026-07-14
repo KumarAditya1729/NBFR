@@ -111,13 +111,14 @@ export default function About() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
+                  aria-pressed={isActive}
                   className={`flex items-center gap-3 px-6 py-4 rounded text-left font-mono text-sm transition-all whitespace-nowrap lg:whitespace-normal shrink-0 lg:shrink ${
                     isActive 
-                      ? 'bg-brand-primary/10 border border-brand-primary text-brand-primary shadow-[0_0_15px_rgba(16,185,129,0.2)]' 
-                      : 'bg-surface border border-border text-muted hover:border-brand-primary/50 hover:text-brand-primary'
+                      ? 'bg-brand-primary border border-brand-primary text-white' 
+                      : 'bg-surface border border-border text-foreground hover:border-brand-primary/50 hover:text-brand-primary'
                   }`}
                 >
-                  <tab.icon className={`w-5 h-5 shrink-0 ${isActive ? 'text-brand-primary' : 'text-muted'}`} />
+                  <tab.icon className={`w-5 h-5 shrink-0 ${isActive ? 'text-white' : 'text-muted'}`} />
                   {tab.label}
                 </button>
               );

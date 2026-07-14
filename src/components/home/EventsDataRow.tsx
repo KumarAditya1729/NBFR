@@ -23,7 +23,7 @@ export default function EventsDataRow({ events = [], datasets = [] }: { events?:
             <div className="flex flex-col items-center justify-center gap-2 py-8 text-center">
               <Calendar className="w-8 h-8 text-muted/40" />
               <p className="text-xs font-mono text-muted">No events scheduled yet.</p>
-              <p className="text-[11px] text-muted/60">Add events via <Link href="/studio" className="text-brand-primary hover:underline">Sanity Studio</Link>.</p>
+              <p className="text-[11px] text-muted">Add events via <Link href="/studio" className="text-brand-primary hover:underline">Sanity Studio</Link>.</p>
             </div>
           ) : displayEvents.slice(0, 3).map((evt, idx) => (
             <Link key={idx} href="#events" className="group p-3 rounded-lg border border-border/40 bg-surface-alt/30 hover:border-brand-primary/50 transition-all">
@@ -62,7 +62,7 @@ export default function EventsDataRow({ events = [], datasets = [] }: { events?:
             <div className="col-span-2 flex flex-col items-center justify-center gap-2 py-10 text-center">
               <BarChart2 className="w-8 h-8 text-muted/40" />
               <p className="text-xs font-mono text-muted">No indicators published yet.</p>
-              <p className="text-[11px] text-muted/60">Add datasets via <Link href="/studio" className="text-brand-primary hover:underline">Sanity Studio</Link> or explore the <Link href="/bihar" className="text-brand-primary hover:underline">Bihar Observatory</Link>.</p>
+              <p className="text-[11px] text-muted">Add datasets via <Link href="/studio" className="text-brand-primary hover:underline">Sanity Studio</Link> or explore the <Link href="/bihar" className="text-brand-primary hover:underline">Bihar Observatory</Link>.</p>
             </div>
           ) : displayDatasets.slice(0, 4).map((data, idx) => (
             <div key={idx} className="p-3.5 rounded-lg border border-border/40 bg-surface/50 flex flex-col justify-between">

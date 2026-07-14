@@ -22,7 +22,7 @@ export default function PublicationsBento({ publications = [] }: { publications?
             <BookOpen className="w-10 h-10 text-muted/40" />
             <div className="text-center">
               <p className="text-sm font-mono font-bold text-muted">{i === 0 ? "Featured Research" : "Latest Publications"}</p>
-              <p className="text-xs text-muted/70 mt-1">
+              <p className="text-xs text-muted mt-1">
                 Publications will appear here once added via{" "}
                 <Link href="/studio" className="text-brand-primary hover:underline">Sanity Studio</Link>.
               </p>

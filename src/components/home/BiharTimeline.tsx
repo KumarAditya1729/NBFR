@@ -213,8 +213,7 @@ export default function BiharTimeline() {
         </div>
       </div>
 
-      {/* Progress dots */}
-      <div className="flex justify-center gap-1.5 mt-6">
+      <div className="flex justify-center mt-6">
         {events.map((_, i) => (
           <button
             key={i}
@@ -226,13 +225,17 @@ export default function BiharTimeline() {
               scrollRef.current.scrollTo({ left: i * cardW, behavior: "smooth" });
               setActiveIndex(i);
             }}
-            className="rounded-full transition-all duration-300"
-            style={{
-              width: activeIndex === i ? "24px" : "8px",
-              height: "8px",
-              backgroundColor: activeIndex === i ? "var(--color-brand-primary)" : "var(--color-border)",
-            }}
-          />
+            className="flex items-center justify-center w-8 h-8 focus:outline-none"
+          >
+            <span
+              className="rounded-full transition-all duration-300"
+              style={{
+                width: activeIndex === i ? "24px" : "8px",
+                height: "8px",
+                backgroundColor: activeIndex === i ? "var(--color-brand-primary)" : "var(--color-border)",
+              }}
+            />
+          </button>
         ))}
       </div>
     </section>
