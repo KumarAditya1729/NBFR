@@ -5,42 +5,9 @@ import { Calendar, MapPin, Mail, Clock, ChevronRight, ImageIcon } from "lucide-r
 import Link from "next/link";
 
 export default function Events({ events: eventsProp }: { events?: any[] } = {}) {
-  const defaultEvents = [
-    {
-      title: "NBRF Inaugural Conference",
-      description: "A founding convening bringing together researchers, administrators, and civil society to launch NBRF's research agenda for Bihar.",
-      eventType: "CONFERENCE",
-      location: "Patna, Bihar",
-      eventDate: "TBD",
-      icon: Calendar,
-      color: "text-brand-primary",
-      border: "group-hover:border-brand-primary",
-    },
-    {
-      title: "Bihar Development Policy Dialogue",
-      description: "An open roundtable for policymakers, academics, and development professionals to discuss Bihar's most pressing challenges.",
-      eventType: "ROUNDTABLE",
-      location: "Patna / Virtual",
-      eventDate: "TBD",
-      icon: MapPin,
-      color: "text-brand-accent",
-      border: "group-hover:border-brand-accent",
-    },
-    {
-      title: "District-Level Field Research Drive",
-      description: "NBRF's first field data collection initiative across all 38 districts — gathering ground-level evidence for our research verticals.",
-      eventType: "FIELD PROGRAM",
-      location: "All 38 Districts",
-      eventDate: "TBD",
-      icon: Clock,
-      color: "text-brand-primary",
-      border: "group-hover:border-brand-primary",
-    },
-  ];
-
   const iconsList = [Calendar, MapPin, Clock];
   const displayEvents = (eventsProp && eventsProp.length > 0)
-    ? eventsProp.map((e, idx) => ({
+    ? eventsProp.map((e: any, idx: number) => ({
         title: e.title || "NBRF Research Symposium",
         description: e.description || e.desc || "",
         eventType: e.eventType || e.type || "CONFERENCE",
@@ -50,7 +17,7 @@ export default function Events({ events: eventsProp }: { events?: any[] } = {}) 
         color: idx % 2 === 0 ? "text-brand-primary" : "text-brand-accent",
         border: idx % 2 === 0 ? "group-hover:border-brand-primary" : "group-hover:border-brand-accent",
       }))
-    : defaultEvents;
+    : [];
 
   return (
     <section id="events" className="py-24 bg-background relative overflow-hidden">
@@ -89,23 +56,29 @@ export default function Events({ events: eventsProp }: { events?: any[] } = {}) 
         </div>
 
         {/* Planned Events */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {displayEvents.map((event, i) => {
-            const IconComp = event.icon || Calendar;
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {displayEvents.length === 0 ? (
+            <div className="col-span-1 md:col-span-3 py-16 text-center tech-card border-brand-primary/20">
+              <Calendar className="w-12 h-12 text-muted/30 mx-auto mb-4" />
+              <h3 className="font-mono font-bold text-muted text-lg mb-2">No upcoming events scheduled</h3>
+              <p className="text-muted text-sm font-sans max-w-md mx-auto">Please check back later for announcements on upcoming conferences, roundtables, and research drives.</p>
+            </div>
+          ) : displayEvents.map((event: any, index: number) => {
+            const Icon = event.icon;
             return (
               <motion.div
-                key={i}
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`tech-card p-7 flex flex-col gap-5 group border border-border transition-all duration-300 ${event.border} hover:-translate-y-1`}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`tech-card p-6 flex flex-col h-full group cursor-pointer ${event.border}`}
               >
-                <div className="flex items-start justify-between">
-                  <div className="w-11 h-11 rounded bg-background border border-border flex items-center justify-center">
-                    <IconComp className={`w-5 h-5 ${event.color}`} />
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`p-2 rounded-lg bg-surface/50 border border-border/50 group-hover:bg-brand-primary/10 transition-colors`}>
+                    <Icon className={`w-5 h-5 ${event.color}`} />
                   </div>
-                  <span className={`text-[10px] font-mono ${event.color} bg-background px-2 py-1 rounded border border-border uppercase`}>
+                  <span className={`text-[10px] font-mono tracking-wider ${event.color}`}>
                     {event.eventType}
                   </span>
                 </div>
