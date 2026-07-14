@@ -33,7 +33,7 @@ export default function PartnersSearchRow({ partners = [] }: { partners?: any[] 
             <div className="col-span-2 flex flex-col items-center justify-center gap-2 py-8 text-center">
               <Handshake className="w-8 h-8 text-muted/40" />
               <p className="text-xs font-mono text-muted">No partners listed yet.</p>
-              <p className="text-[11px] text-muted">Add partners via <Link href="/studio" className="text-brand-primary hover:underline">Sanity Studio</Link>.</p>
+              <p className="text-[11px] text-muted">Partnership details will be updated soon.</p>
             </div>
           ) : displayPartners.slice(0, 4).map((part, idx) => (
             <div key={idx} className="p-3.5 rounded-lg border border-border/40 bg-surface/40 flex flex-col justify-between hover:border-brand-primary/40 transition-all">

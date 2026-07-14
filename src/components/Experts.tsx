@@ -117,7 +117,7 @@ export default function Experts({ experts: expertsProp }: { experts?: any[] } = 
               </div>
               <div>
                 <p className="font-mono font-bold text-muted">No Director profiles yet</p>
-                <p className="text-xs text-muted mt-1">Add expert profiles via <a href="/studio" className="text-brand-primary hover:underline">Sanity Studio</a> to display the Board of Directors here.</p>
+                <p className="text-xs text-muted mt-1">Our Board of Directors profiles will be updated shortly.</p>
               </div>
             </div>
           ) : displayExperts.map((expert, i) => {

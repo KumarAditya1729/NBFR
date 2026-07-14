@@ -24,7 +24,7 @@ export default function PublicationsBento({ publications = [] }: { publications?
               <p className="text-sm font-mono font-bold text-muted">{i === 0 ? "Featured Research" : "Latest Publications"}</p>
               <p className="text-xs text-muted mt-1">
                 Publications will appear here once added via{" "}
-                <Link href="/studio" className="text-brand-primary hover:underline">Sanity Studio</Link>.
+                <p className="text-[11px] text-muted mt-1">Research publications will be available soon.</p>
               </p>
             </div>
             <Link href="/publications" className="tech-button text-xs px-4 py-2">
