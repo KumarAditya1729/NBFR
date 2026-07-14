@@ -28,7 +28,7 @@ export default function InteractiveMapBento() {
         </div>
         
         <div>
-          <h3 className="font-mono font-bold text-xl text-brand-primary mb-2">Interactive Bihar Map</h3>
+          <h2 className="font-mono font-bold text-xl text-brand-primary mb-2">Interactive Bihar Map</h2>
           <p className="text-sm text-muted max-w-[250px] mx-auto">Explore development hotspots, policy impact zones, and district-level data.</p>
         </div>
 

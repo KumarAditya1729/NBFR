@@ -43,7 +43,7 @@
     --surface-alt: #F1F5F9;
     
     --foreground: #0F172A;
-    --muted: #64748B;
+    --muted: #475569;
     
     --border: #E2E8F0;
     
@@ -129,8 +129,9 @@
   }
 
   *:focus-visible {
-    outline: 2px solid var(--brand-primary);
-    outline-offset: 2px;
+    outline: 3px solid var(--brand-primary) !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 6px rgba(234, 88, 12, 0.25) !important;
   }
 
   input, textarea, select {
@@ -141,10 +142,10 @@
     border: 1px solid var(--border);
   }
 
-  input:focus, textarea:focus, select:focus {
-    box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.1);
-    border-color: var(--brand-primary);
-    outline: none;
+  input:focus, textarea:focus, select:focus, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.25) !important;
+    border-color: var(--brand-primary) !important;
+    outline: none !important;
   }
 
   /* Custom scrollbar */
@@ -280,5 +281,14 @@
       #F1F5F9 75%
     );
     background-size: 200% 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

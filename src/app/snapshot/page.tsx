@@ -88,9 +88,14 @@ export default function SnapshotPage() {
               <Activity className="w-4 h-4" /> Bihar State Snapshot
             </div>
           </div>
-          <Link href="/map" className="tech-button py-2 px-4 text-xs flex items-center gap-2">
-            Open Map <ExternalLink className="w-3 h-3" />
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link href="/bihar" className="tech-button-primary py-2 px-4 text-xs flex items-center gap-1.5 font-bold">
+              District Observatory & CSV <ExternalLink className="w-3 h-3" />
+            </Link>
+            <Link href="/map" className="tech-button py-2 px-4 text-xs flex items-center gap-1.5">
+              GIS Map <ExternalLink className="w-3 h-3" />
+            </Link>
+          </div>
         </div>
       </div>
 

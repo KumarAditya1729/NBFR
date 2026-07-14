@@ -1,7 +1,5 @@
 import HomeHero from "@/components/home/HomeHero";
 import PublicationsBento from "@/components/home/PublicationsBento";
-import InteractiveMapBento from "@/components/home/InteractiveMapBento";
-import PolicyDashboard from "@/components/home/PolicyDashboard";
 import FocusAreas from "@/components/home/FocusAreas";
 import ExpertsBento from "@/components/home/ExpertsBento";
 import EventsDataRow from "@/components/home/EventsDataRow";
@@ -11,10 +9,21 @@ import ImpactCounter from "@/components/home/ImpactCounter";
 import BiharInNumbers from "@/components/home/BiharInNumbers";
 import BiharTimeline from "@/components/home/BiharTimeline";
 import AskThinkTank from "@/components/home/AskThinkTank";
-import NalandaParallax from "@/components/home/NalandaParallax";
+import dynamic from "next/dynamic";
 
-// Full-page sections (anchor targets)
+const InteractiveMapBento = dynamic(() => import("@/components/home/InteractiveMapBento"), {
+  loading: () => <div className="min-h-[400px] w-full tech-card animate-pulse bg-surface/50" />,
+});
 
+const PolicyDashboard = dynamic(() => import("@/components/home/PolicyDashboard"), {
+  loading: () => <div className="min-h-[380px] w-full tech-card animate-pulse bg-surface/50" />,
+});
+
+const NalandaParallax = dynamic(() => import("@/components/home/NalandaParallax"), {
+  loading: () => <div className="min-h-[350px] w-full tech-card animate-pulse bg-surface/50" />,
+});
+
+// Full-page domain sections (anchor targets)
 import About from "@/components/About";
 import ResearchVerticals from "@/components/ResearchVerticals";
 import Publications from "@/components/Publications";
@@ -28,93 +37,108 @@ import Contact from "@/components/Contact";
 import ScrollToTop from "@/components/ScrollToTop";
 import Experts from "@/components/Experts";
 
-export default function Home() {
+import { sanityFetch } from "@/sanity/lib/client";
+import {
+  ALL_PUBLICATIONS_QUERY,
+  ALL_EXPERTS_QUERY,
+  ALL_EVENTS_QUERY,
+  ALL_PARTNERS_QUERY,
+  ALL_VERTICALS_QUERY,
+  ALL_DATASETS_QUERY,
+} from "@/sanity/lib/queries";
+import type {
+  Publication,
+  Expert,
+  EventItem,
+  Partner,
+  ResearchVertical,
+  BiharDataset,
+} from "@/sanity/lib/fallbackData";
+
+export default async function Home() {
+  const [publications, experts, events, partners, verticals, datasets] = await Promise.all([
+    sanityFetch<Publication[]>({ query: ALL_PUBLICATIONS_QUERY, revalidate: 3600 }),
+    sanityFetch<Expert[]>({ query: ALL_EXPERTS_QUERY, revalidate: 3600 }),
+    sanityFetch<EventItem[]>({ query: ALL_EVENTS_QUERY, revalidate: 3600 }),
+    sanityFetch<Partner[]>({ query: ALL_PARTNERS_QUERY, revalidate: 3600 }),
+    sanityFetch<ResearchVertical[]>({ query: ALL_VERTICALS_QUERY, revalidate: 3600 }),
+    sanityFetch<BiharDataset[]>({ query: ALL_DATASETS_QUERY, revalidate: 3600 }),
+  ]);
+
   return (
     <>
-      {/* ── Bento Grid Homepage ── */}
       <main className="min-h-screen bg-background text-foreground selection:bg-brand-primary selection:text-brand-primary pb-20 overflow-x-hidden">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-6">
+        
+        {/* ── SEGMENT 1: HERO & HISTORICAL CONTINUUM ── */}
+        <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12 pt-4">
+          <HomeHero />
+          <BiharTimeline />
+          <NalandaParallax />
+        </section>
 
-            {/* Row 1: Hero */}
-            <div className="w-full">
-              <HomeHero />
+        {/* ── SEGMENT 2: ABOUT NBRF & MISSION (#about) ── */}
+        <About />
+
+        {/* ── SEGMENT 3: BIHAR GIS & EMPIRICAL OBSERVATORY ── */}
+        <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
+          <InteractiveMapBento />
+          <ImpactCounter />
+          <BiharInNumbers />
+        </section>
+
+        {/* ── SEGMENT 4: RESEARCH VERTICALS & POLICY DASHBOARD (#research) ── */}
+        <ResearchVerticals verticals={verticals} />
+        <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full">
+            <div className="lg:col-span-8">
+              <PolicyDashboard />
             </div>
-
-            {/* Bihar Timeline */}
-            <div className="w-full">
-              <BiharTimeline />
-            </div>
-
-            {/* Nalanda Parallax */}
-            <div className="w-full">
-              <NalandaParallax />
-            </div>
-
-            {/* Row 2: Map Full Width */}
-            <div className="w-full h-full">
-              <InteractiveMapBento />
-            </div>
-
-            {/* Impact Counter Band */}
+            <div className="lg:col-span-4 flex flex-col gap-6">
+              <FocusAreas />
             </div>
           </div>
-        </main>
-        <ImpactCounter />
-        <main className="bg-background text-foreground overflow-x-hidden pb-20">
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col gap-6">
-            {/* Bihar in Numbers */}
-            <BiharInNumbers />
+        </section>
 
-            {/* Row 3: Publications */}
-            <div className="w-full">
-              <PublicationsBento />
-            </div>
+        {/* ── SEGMENT 5: PUBLICATIONS & RESEARCH ARCHIVE (#publications) ── */}
+        <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+          <PublicationsBento publications={publications} />
+        </section>
+        <Publications publications={publications} />
 
-            {/* Row 4: Dashboard & Focus Areas */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-              <div className="lg:col-span-8">
-                <PolicyDashboard />
-              </div>
-              <div className="lg:col-span-4">
-                <FocusAreas />
-              </div>
-            </div>
+        {/* ── SEGMENT 6: BOARD OF DIRECTORS, EXPERTS & FELLOWSHIPS (#experts, #initiatives) ── */}
+        <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+          <ExpertsBento experts={experts} />
+        </section>
+        <Experts experts={experts} />
+        <Fellowships />
 
-            {/* Row 3: Experts Grid */}
-            <div className="w-full">
-              <ExpertsBento />
-            </div>
+        {/* ── SEGMENT 7: EVENTS & EMPIRICAL DATA CENTER (#events) ── */}
+        <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+          <EventsDataRow events={events} datasets={datasets} />
+        </section>
+        <Events events={events} />
 
-            {/* Row 4: Events & Data Visualization */}
-            <EventsDataRow />
+        {/* ── SEGMENT 8: NEWS, MEDIA & INSIGHTS (#insights, #media) ── */}
+        <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+          <NewsImpactRow />
+        </section>
+        <Insights />
+        <MediaPress />
 
-            {/* Row 5: News & Impact Metrics */}
-            <NewsImpactRow />
+        {/* ── SEGMENT 9: ECOSYSTEM PARTNERS & INSTITUTIONAL MEMBERSHIP (#partners, #memberships) ── */}
+        <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+          <PartnersSearchRow partners={partners} />
+        </section>
+        <Partners partners={partners} />
+        <Membership />
 
-            {/* Row 6: Partners & AI Search */}
-            <PartnersSearchRow />
+        {/* ── SEGMENT 10: AI THINK TANK ASSISTANT & CONTACT (#contact) ── */}
+        <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+          <AskThinkTank />
+        </section>
+        <Contact />
 
-            {/* Ask the Think Tank */}
-            <AskThinkTank />
-
-          </div>
-        </div>
       </main>
-
-      {/* ── Full Page Sections (Navbar Anchor Targets) ── */}
-      <About />
-      <Experts />
-      <ResearchVerticals />
-      <Publications />
-      <Events />
-      <Membership />
-      <Fellowships />
-      <Insights />
-      <MediaPress />
-      <Partners />
-      <Contact />
       <ScrollToTop />
     </>
   );

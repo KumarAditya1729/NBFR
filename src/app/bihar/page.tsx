@@ -1,250 +1,197 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { 
-  MapPin, TreeDeciduous, Wheat, BookOpen, Clock, 
-  Users, Target, Leaf, Fish, Bird, Building2
-} from "lucide-react";
+import type { Metadata } from "next";
+import { sanityFetch } from "@/sanity/lib/client";
+import { ALL_DATASETS_QUERY, ALL_DISTRICTS_QUERY } from "@/sanity/lib/queries";
+import type { BiharDataset, DistrictFactsheet } from "@/sanity/lib/fallbackData";
+import BiharObservatoryClient from "@/components/observatory/BiharObservatoryClient";
+import Link from "next/link";
 import Image from "next/image";
+import {
+  MapPin, TreeDeciduous, Wheat, BookOpen, Clock,
+  Users, Target, Leaf, Fish, Bird, Building2, ArrowLeft,
+  Activity, Sparkles
+} from "lucide-react";
 
-export default function DiscoverBihar() {
+export const metadata: Metadata = {
+  title: "Bihar Data Observatory & State Factsheet Hub | Nav Bihar Renaissance Foundation (NBRF)",
+  description:
+    "Interactive open-data observatory for Bihar. Explore district-level factsheets across all 38 districts, empirical economic indicators, GSDP benchmarks, and download standardized datasets in CSV format.",
+  openGraph: {
+    title: "NBRF Bihar Data Observatory & District Factsheets",
+    description: "Multi-dimensional empirical data on Bihar's economy, literacy, demography, and rural livelihoods.",
+    url: "https://nbrf.in/bihar",
+    siteName: "Nav Bihar Renaissance Foundation",
+    type: "website",
+  },
+};
+
+export default async function BiharObservatoryPage() {
+  const [datasets, districts] = await Promise.all([
+    sanityFetch<BiharDataset[]>({ query: ALL_DATASETS_QUERY, revalidate: 3600 }),
+    sanityFetch<DistrictFactsheet[]>({ query: ALL_DISTRICTS_QUERY, revalidate: 3600 }),
+  ]);
+
+  const datasetJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: "NBRF Bihar State & District Data Observatory",
+    description:
+      "Comprehensive empirical datasets covering district-level factsheets for all 38 districts of Bihar, agricultural yields, GSDP growth rates, fiscal indicators, and demography.",
+    url: "https://nbrf.in/bihar",
+    keywords: [
+      "Bihar economy",
+      "Bihar demographics",
+      "Patna GSDP",
+      "District factsheets Bihar",
+      "NBRF open data",
+    ],
+    creator: {
+      "@type": "Organization",
+      name: "Nav Bihar Renaissance Foundation (NBRF)",
+      url: "https://nbrf.in",
+    },
+    distribution: [
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/csv",
+        contentUrl: "https://nbrf.in/bihar",
+      },
+    ],
+  };
+
   return (
-    <main className="min-h-screen bg-background">
-      {/* HERO SECTION */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-brand-primary/10 rounded-full blur-[100px] pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+    <main className="min-h-screen bg-background text-foreground selection:bg-brand-primary selection:text-brand-primary pb-24 overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetJsonLd) }}
+      />
+      {/* Decorative Grid Background */}
+      <div className="absolute inset-0 h-[650px] bg-grid opacity-20 pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-brand-primary/5 rounded-full blur-[160px] pointer-events-none" />
+
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-12">
+        {/* Top Navigation */}
+        <div className="flex items-center justify-between mb-8">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-xs font-mono text-muted hover:text-brand-primary transition-colors py-1.5 px-3 rounded border border-border/60 bg-surface/50"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-primary/30 bg-brand-primary/10 text-brand-primary font-mono text-[10px] uppercase tracking-widest mb-6">
-              <MapPin className="w-3 h-3" /> State Profile
+            <ArrowLeft className="w-3.5 h-3.5" /> Back to Think Tank Portal
+          </Link>
+          
+          <div className="flex items-center gap-3">
+            <Link
+              href="/snapshot"
+              className="text-xs font-mono text-muted hover:text-foreground px-3 py-1.5 rounded border border-border bg-surface"
+            >
+              Macro Snapshot →
+            </Link>
+            <Link
+              href="/map"
+              className="text-xs font-mono text-brand-primary hover:bg-brand-primary/10 px-3 py-1.5 rounded border border-brand-primary/40 bg-brand-primary/5 font-bold"
+            >
+              GIS District Map
+            </Link>
+          </div>
+        </div>
+
+        {/* ── Observatory Hero Section ── */}
+        <div className="tech-card p-8 sm:p-12 mb-12 border-brand-primary/40 bg-gradient-to-br from-surface/90 via-surface/60 to-background/90 relative overflow-hidden">
+          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-accent/10 rounded-full blur-[100px] pointer-events-none" />
+
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-primary/30 bg-brand-primary/10 text-brand-primary font-mono text-[10px] uppercase tracking-widest mb-4">
+              <Activity className="w-3.5 h-3.5" /> EMPIRICAL DATA OBSERVATORY
             </div>
-            <h1 className="text-4xl md:text-5xl font-mono font-bold text-brand-primary mb-6 tracking-tight">
-              Discover <span className="text-brand-primary glow-text">Bihar</span>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-mono font-bold text-foreground mb-6 leading-tight">
+              BIHAR STATE <span className="text-brand-primary">DATA HUB</span> & FACTSHEETS
             </h1>
-            <p className="text-muted text-lg font-sans leading-relaxed">
-              A comprehensive multi-dimensional analysis of Bihar&apos;s rich history, profound biodiversity, agricultural supremacy, and emerging socio-economic landscape.
+            <p className="font-sans text-muted text-base sm:text-lg leading-relaxed mb-8">
+              Explore standardized, verifiable socio-economic data across all 38 districts of Bihar. Triangulated from Directorate of Economics & Statistics surveys, Census projections, CAG audits, and primary NBRF field research.
             </p>
-          </motion.div>
 
-          {/* Quick Facts Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-20">
-            {[
-              { label: "Established", value: "22 March 1912", icon: Clock },
-              { label: "Capital", value: "Patna", icon: Building2 },
-              { label: "Area", value: "94,163 sq km", icon: MapPin },
-              { label: "Population <25", value: "58%", icon: Users },
-            ].map((fact, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 text-center hover:border-brand-primary/50 transition-colors"
-              >
-                <fact.icon className="w-6 h-6 text-brand-primary mx-auto mb-3" />
-                <div className="text-2xl font-mono font-bold text-brand-primary mb-1">{fact.value}</div>
-                <div className="text-xs text-muted font-sans uppercase tracking-widest">{fact.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* AGRICULTURE SECTION */}
-      <section className="py-24 bg-surface border-y border-border relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
-            <h2 className="text-3xl font-mono font-bold text-brand-primary mb-4 flex items-center gap-3">
-              <Wheat className="w-8 h-8 text-brand-primary" /> Agricultural Powerhouse
-            </h2>
-            <p className="text-muted max-w-2xl">
-              Bihar is an agrarian state where 80% of the population depends on agriculture. It leads the nation in several key crops.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Top Achievements */}
-            <div className="md:col-span-1 space-y-4">
-              <div className="bg-background border border-border p-6 rounded-xl border-l-4 border-l-brand-primary">
-                <h3 className="font-mono font-bold text-xl text-brand-primary mb-3">Shape Bihar&apos;s Future</h3>
-                <p className="text-muted text-sm">Produces 71% of India&apos;s total Litchi output.</p>
+            {/* Quick Facts Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-border/60 font-mono">
+              <div className="p-3.5 rounded bg-background border border-border">
+                <span className="text-[10px] text-muted block uppercase">Districts Covered</span>
+                <strong className="text-xl text-brand-primary font-bold">38 Districts</strong>
               </div>
-              <div className="bg-background border border-border p-6 rounded-xl border-l-4 border-l-brand-primary">
-                <h3 className="text-xl font-mono font-bold text-brand-primary mb-2">🥇 Makhana (Fox Nut)</h3>
-                <p className="text-muted text-sm">Produces 85% of India&apos;s and 90% of the World&apos;s Makhana.</p>
+              <div className="p-3.5 rounded bg-background border border-border">
+                <span className="text-[10px] text-muted block uppercase">Macro GDP per Capita</span>
+                <strong className="text-xl text-brand-secondary font-bold">₹54,383</strong>
               </div>
-              <div className="bg-background border border-border p-6 rounded-xl border-l-4 border-l-brand-accent">
-                <h3 className="text-xl font-mono font-bold text-brand-primary mb-2">🥉 Tobacco & Maize</h3>
-                <p className="text-muted text-sm">3rd largest tobacco producer and 10% of national maize output.</p>
+              <div className="p-3.5 rounded bg-background border border-border">
+                <span className="text-[10px] text-muted block uppercase">State Literacy</span>
+                <strong className="text-xl text-foreground font-bold">61.8%</strong>
               </div>
-            </div>
-
-            {/* Green Revolution & Organic Farming */}
-            <div className="md:col-span-2 bg-gradient-to-br from-background to-surface border border-brand-primary/20 rounded-xl p-8">
-              <h3 className="text-2xl font-mono font-bold text-brand-primary mb-6 flex items-center gap-2">
-                <Leaf className="w-6 h-6 text-brand-primary" /> The Green Revolution & Organic Future
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-bold text-brand-primary mb-3 border-b border-border pb-2">Organic Corridor (2026)</h4>
-                  <ul className="space-y-3 text-sm text-muted">
-                    <li className="flex items-start gap-2"><Target className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" /> 13 districts implementing dedicated organic farming.</li>
-                    <li className="flex items-start gap-2"><Target className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" /> Goal of 5,700 hectares under natural farming.</li>
-                    <li className="flex items-start gap-2"><Target className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" /> 50% subsidy on biogas plants and vermicompost units.</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-bold text-brand-primary mb-3 border-b border-border pb-2">Crop Diversity</h4>
-                  <ul className="space-y-3 text-sm text-muted">
-                    <li><strong className="text-brand-primary">Kharif:</strong> Rice, Maize, Pigeon Pea, Jute</li>
-                    <li><strong className="text-brand-primary">Rabi:</strong> Wheat, Gram, Lentils, Mustard</li>
-                    <li><strong className="text-brand-primary">Horticulture:</strong> Mango (13% national), Guava, Banana</li>
-                  </ul>
-                </div>
+              <div className="p-3.5 rounded bg-background border border-border">
+                <span className="text-[10px] text-muted block uppercase">Data License</span>
+                <strong className="text-sm text-brand-accent font-bold block mt-1">Open Access / CSV</strong>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* BIODIVERSITY SECTION */}
-      <section className="py-24 bg-background relative overflow-hidden">
-        {/* Subtle Bodhi tree watermark */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
-          <Image src="/bodhi-tree.svg" alt="" width={600} height={600} className="filter drop-shadow-[0_0_50px_#10b981]" />
-        </div>
+        {/* ── Interactive Client Hub ── */}
+        <BiharObservatoryClient
+          initialDatasets={datasets}
+          initialDistricts={districts}
+        />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="mb-16">
-            <h2 className="text-3xl font-mono font-bold text-brand-primary mb-4 flex items-center gap-3">
-              <TreeDeciduous className="w-8 h-8 text-brand-primary" /> Flora & Fauna
+        {/* ── State Agricultural & Biodiversity Overview ── */}
+        <div className="mt-20 pt-16 border-t border-border">
+          <div className="mb-12 text-center max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-primary/30 bg-brand-primary/10 text-brand-primary font-mono text-[10px] uppercase tracking-widest mb-3">
+              <Wheat className="w-3.5 h-3.5" /> ECOLOGY & AGRARIAN PROFILE
+            </div>
+            <h2 className="text-3xl font-mono font-bold text-foreground mb-4">
+              Agricultural Supremacy & Biodiversity Heritage
             </h2>
-            <p className="text-muted max-w-2xl">
-              From the Himalayan foothills of Valmiki Tiger Reserve to the Gangetic plains, Bihar hosts a rich and vital ecosystem.
+            <p className="text-sm font-sans text-muted">
+              Supporting over 80% of Bihar&apos;s workforce, the agrarian economy is undergoing rapid structural evolution toward organic farming, commercial livestock, and high-value horticulture.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-6 mb-12">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="tech-card p-6 border border-border bg-surface/60 border-l-4 border-l-brand-primary">
+              <h3 className="font-mono font-bold text-lg text-brand-primary mb-3">Shahi Litchi Monopsony</h3>
+              <p className="text-xs text-muted leading-relaxed font-sans">
+                Bihar produces <strong>71% of India&apos;s total Litchi output</strong>, concentrated across Tirhut division (Muzaffarpur, Vaishali, Sitamarhi), with dedicated geographical indication (GI) tagging.
+              </p>
+            </div>
+
+            <div className="tech-card p-6 border border-border bg-surface/60 border-l-4 border-l-brand-secondary">
+              <h3 className="font-mono font-bold text-lg text-brand-secondary mb-3">World Makhana Capital</h3>
+              <p className="text-xs text-muted leading-relaxed font-sans">
+                The Mithilanchal wetland basins (Darbhanga, Madhubani, Purnia) account for <strong>85% of national and nearly 90% of global Fox Nut (Makhana)</strong> cultivation and preliminary processing.
+              </p>
+            </div>
+
+            <div className="tech-card p-6 border border-border bg-surface/60 border-l-4 border-l-brand-accent">
+              <h3 className="font-mono font-bold text-lg text-brand-accent mb-3">Maize & Organic Corridors</h3>
+              <p className="text-xs text-muted leading-relaxed font-sans">
+                Purnia and Katihar boast the highest winter maize productivity yields in South Asia. Meanwhile, 13 districts along the Ganga basin have been designated for 100% subsidy-backed organic agriculture.
+              </p>
+            </div>
+          </div>
+
+          {/* State Symbols Row */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
               { title: "State Animal", name: "Gaur (Indian Bison)", desc: "Bos gaurus", icon: Target },
               { title: "State Bird", name: "House Sparrow", desc: "Passer domesticus", icon: Bird },
               { title: "State Aquatic", name: "Gangetic Dolphin", desc: "Platanista gangetica", icon: Fish },
-              { title: "State Tree", name: "Peepal", desc: "Ficus religiosa", icon: Leaf },
-            ].map((symbol, idx) => (
-              <div key={idx} className="bg-surface border border-border rounded-xl p-6 text-center hover:-translate-y-1 transition-transform">
-                <symbol.icon className="w-8 h-8 text-brand-accent mx-auto mb-4" />
-                <div className="text-xs text-brand-primary font-mono uppercase tracking-widest mb-2">{symbol.title}</div>
-                <div className="font-bold text-brand-primary mb-1">{symbol.name}</div>
-                <div className="text-xs text-muted italic">{symbol.desc}</div>
+              { title: "State Tree", name: "Peepal (Bodhi)", desc: "Ficus religiosa", icon: Leaf },
+            ].map((sym, idx) => (
+              <div key={idx} className="tech-card p-5 text-center border border-border bg-background/50">
+                <sym.icon className="w-6 h-6 text-brand-primary mx-auto mb-3" />
+                <div className="text-[10px] font-mono uppercase text-muted tracking-widest">{sym.title}</div>
+                <div className="font-mono font-bold text-sm text-foreground my-1">{sym.name}</div>
+                <div className="text-[11px] font-sans italic text-muted">{sym.desc}</div>
               </div>
             ))}
           </div>
-
-          <div className="bg-surface/50 border border-border rounded-xl p-8">
-            <h3 className="text-xl font-mono font-bold text-brand-primary mb-6">Protected Areas & Reserves</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-brand-primary"></div>
-                  <strong className="text-brand-primary">Valmiki Tiger Reserve (West Champaran)</strong>
-                </div>
-                <p className="text-sm text-muted pl-5">Shelters Bengal Tigers, Indian Leopards, Sloth Bears, and over 250 bird species.</p>
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-brand-accent"></div>
-                  <strong className="text-brand-primary">Vikramshila Gangetic Dolphin Sanctuary</strong>
-                </div>
-                <p className="text-sm text-muted pl-5">A 60km stretch of the Ganges protecting the endangered Gangetic Dolphin (50% of India&apos;s population).</p>
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-white"></div>
-                  <strong className="text-brand-primary">Kaimur Wildlife Sanctuary</strong>
-                </div>
-                <p className="text-sm text-muted pl-5">The largest sanctuary in Bihar (1,342 sq km), home to diverse flora including Sal and Mahua forests.</p>
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-white"></div>
-                  <strong className="text-brand-primary">Kanwar Lake Bird Sanctuary</strong>
-                </div>
-                <p className="text-sm text-muted pl-5">Asia&apos;s largest freshwater oxbow lake, hosting migratory birds and rich wetland biodiversity.</p>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
-
-      {/* MULTI-DIMENSIONAL ANALYSIS */}
-      <section className="py-24 bg-surface border-t border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16 text-center">
-            <h2 className="text-3xl font-mono font-bold text-brand-primary mb-4">
-              Multi-Dimensional Analysis
-            </h2>
-            <p className="text-muted max-w-2xl mx-auto">
-              A holistic look at Bihar&apos;s historical legacy, cultural ecosystem, and future trajectory.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-background border border-border rounded-xl p-8">
-              <h3 className="text-xl font-mono font-bold text-brand-primary mb-4 border-b border-border pb-4">Historical Legacy</h3>
-              <ul className="space-y-4 text-sm text-muted">
-                <li><strong className="text-brand-primary">Ancient Era (6th Century BC onward):</strong> Magadha Empire & Mahajanapada dominance, followed by Maurya & Gupta Empires (Golden Age). First residential universities at Nalanda & Vikramshila.</li>
-                <li><strong className="text-brand-primary">Medieval Era:</strong> Sher Shah Suri&apos;s administrative reforms, Grand Trunk Road.</li>
-                <li><strong className="text-brand-primary">Colonial & Modern:</strong> Champaran Satyagraha (1917), JP Movement (1974).</li>
-              </ul>
-            </div>
-
-            <div className="bg-background border border-border rounded-xl p-8">
-              <h3 className="text-xl font-mono font-bold text-brand-primary mb-4 border-b border-border pb-4">Cultural Ecosystem</h3>
-              <ul className="space-y-4 text-sm text-muted">
-                <li><strong className="text-brand-primary">Languages:</strong> Hindi, Urdu, Maithili, Bhojpuri, Magahi, Angika.</li>
-                <li><strong className="text-brand-primary">Visual Arts:</strong> Madhubani/Mithila Painting (GI Tagged), Patna Qalam.</li>
-                <li><strong className="text-brand-primary">Cuisine:</strong> Litti Chokha, Sattu, Khaja (Silao), Thekua, Makhana.</li>
-              </ul>
-            </div>
-
-            <div className="bg-background border border-border rounded-xl p-8">
-              <h3 className="text-xl font-mono font-bold text-brand-primary mb-4 border-b border-border pb-4">Future Trajectory (2030)</h3>
-              <ul className="space-y-4 text-sm text-muted">
-                <li><strong className="text-brand-accent">Infrastructure:</strong> Bihta IT City, Ganga Expressway, NW-1 Inland Waterways.</li>
-                <li><strong className="text-brand-accent">Demographics:</strong> 10 million youth to be skilled by 2025. Highest demographic dividend in India.</li>
-                <li><strong className="text-brand-accent">Vision:</strong> Double GSDP to $100 billion, driven by IT, food processing, and eco-tourism.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* GLOBAL RESEARCH */}
-      <section className="py-24 bg-background border-t border-border text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <BookOpen className="w-12 h-12 text-brand-primary mx-auto mb-6" />
-          <h2 className="text-3xl font-mono font-bold text-brand-primary mb-6">Global Research & Publications</h2>
-          <p className="text-muted text-lg leading-relaxed mb-8">
-            Bihar serves as a critical focal point for global academic research. Key areas of study include 
-            <strong> Epidemiology & Public Health</strong> (Kala-azar elimination strategies published in The Lancet), 
-            <strong> Archaeology</strong> (Excavations at Nalanda & Rajgir by the Royal Asiatic Society), and 
-            <strong> Economics</strong> (World Bank policy research on agricultural growth and poverty dynamics).
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-brand-primary">World Bank</span>
-            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-brand-primary">The Lancet</span>
-            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-brand-primary">WHO / TDR</span>
-            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-brand-primary">ICMR</span>
-            <span className="px-4 py-2 rounded-full bg-surface border border-border text-xs font-mono text-brand-primary">Oxford University Press</span>
-          </div>
-        </div>
-      </section>
+      </div>
     </main>
   );
 }

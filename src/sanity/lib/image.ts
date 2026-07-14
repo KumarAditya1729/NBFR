@@ -1,13 +1,15 @@
 import createImageUrlBuilder from '@sanity/image-url'
-// import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
-
 import { dataset, projectId } from '../env'
 
-const imageBuilder = createImageUrlBuilder({
-  projectId: projectId || '',
-  dataset: dataset || '',
-})
+const imageBuilder = projectId ? createImageUrlBuilder({ projectId, dataset: dataset || 'production' }) : null
 
-export const urlForImage = (source: any) => {
-  return imageBuilder?.image(source).auto('format').fit('max')
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const urlForImage = (source: any): string | null => {
+  if (!source || !imageBuilder) return null
+  if (typeof source === 'string') return source
+  try {
+    return imageBuilder.image(source).auto('format').fit('max').url()
+  } catch {
+    return null
+  }
 }

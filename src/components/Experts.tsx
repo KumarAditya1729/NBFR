@@ -4,9 +4,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
+import { urlForImage } from "@/sanity/lib/image";
 
-export default function Experts() {
-  const experts = [
+export default function Experts({ experts: expertsProp }: { experts?: any[] } = {}) {
+  // Real NBRF Board of Directors — displayed as static default when Sanity CMS has no experts
+  const BOARD_OF_DIRECTORS = [
     {
       name: "Santosh Kumar",
       role: "Director | Social Entrepreneur, RTI Champion & Former World Bank Consultant",
@@ -51,6 +53,10 @@ export default function Experts() {
     },
   ];
 
+  // Use Sanity CMS data if available, otherwise display real static board data
+  const displayExperts = (expertsProp && expertsProp.length > 0) ? expertsProp : BOARD_OF_DIRECTORS;
+
+
   const [expandedBio, setExpandedBio] = useState<string | null>(null);
 
   const toggleBio = (hash: string) => {
@@ -62,23 +68,32 @@ export default function Experts() {
   };
 
   return (
-    <section id="experts" className="py-24 bg-surface border-t border-border relative overflow-hidden">
+    <section id="experts" className="py-24 bg-background relative overflow-hidden">
+      {/* Subtle grid background */}
+      <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
+      
+      {/* Decorative accent orb */}
+      <div className="absolute top-1/3 -left-40 w-80 h-80 bg-brand-primary/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/3 -right-40 w-80 h-80 bg-brand-accent/10 rounded-full blur-[100px] pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        {/* Section Header */}
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-secondary/30 bg-brand-secondary/10 text-brand-secondary font-mono text-[10px] uppercase tracking-widest mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-primary/30 bg-brand-primary/10 text-brand-primary font-mono text-[10px] uppercase tracking-widest mb-4"
           >
-            LEADERSHIP // DIRECTORS
+            PEOPLE // LEADERSHIP
           </motion.div>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6 glow-text-blue"
+            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6"
           >
             BOARD OF DIRECTORS
           </motion.h2>
@@ -87,32 +102,52 @@ export default function Experts() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-muted text-lg font-sans max-w-2xl mx-auto"
+            className="text-muted text-lg font-sans max-w-3xl mx-auto"
           >
-            The founding board of Nav Bihar Renaissance Foundation — seasoned leaders from public service, banking, medicine, academia, and administration.
+            Our directors are accomplished leaders from public administration, banking, healthcare, engineering, and social development — guiding NBRF&apos;s mission with decades of distinguished service.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {experts.map((expert, i) => {
+        {/* Directors Grid - 3 Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {displayExperts.length === 0 ? (
+            <div className="col-span-3 flex flex-col items-center justify-center gap-4 py-20 text-center border border-dashed border-border rounded-2xl">
+              <div className="w-16 h-16 rounded-full bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center">
+                <ChevronDown className="w-8 h-8 text-muted/40" />
+              </div>
+              <div>
+                <p className="font-mono font-bold text-muted">No Director profiles yet</p>
+                <p className="text-xs text-muted/70 mt-1">Add expert profiles via <a href="/studio" className="text-brand-primary hover:underline">Sanity Studio</a> to display the Board of Directors here.</p>
+              </div>
+            </div>
+          ) : displayExperts.map((expert, i) => {
             const isExpanded = expandedBio === expert.hash;
+            // Use local string path directly; only resolve Sanity refs through urlForImage
+            const imgUrl = typeof expert.image === 'string'
+              ? expert.image
+              : (expert.image && expert.image.asset ? urlForImage(expert.image) : null);
+
             return (
               <motion.div
-                key={expert.hash}
-                initial={{ opacity: 0, y: 20 }}
+                key={expert.hash || i}
+                id={expert.hash}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={`tech-card group overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 ${isExpanded ? 'ring-1 ring-brand-secondary' : ''}`}
+                className="tech-card flex flex-col group overflow-hidden border border-border hover:border-brand-primary/50 transition-all duration-500 hover:-translate-y-1 w-full max-w-xs mx-auto"
               >
-                {/* Photo area */}
-                <div className="relative h-64 overflow-hidden shrink-0 bg-surface-alt/50">
-                  {expert.image ? (
+                {/* Director Photo Container */}
+                <div className="relative w-full h-64 shrink-0 bg-surface-alt/50 overflow-hidden border-b border-border/50">
+                  {imgUrl ? (
                     <Image
-                      src={expert.image}
-                      alt={expert.name}
+                      key={imgUrl}
+                      src={imgUrl}
+                      alt={`Photo of ${expert.name}`}
                       fill
-                      className="object-contain object-center grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      priority={i < 3}
+                      className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                     />
                   ) : (
                     <div className="w-full h-full bg-background flex flex-col items-center justify-center gap-3">
@@ -143,33 +178,10 @@ export default function Experts() {
                 </div>
 
                 {/* Bio section */}
-                <div className="p-5 flex flex-col flex-grow">
-                  <AnimatePresence initial={false}>
-                    {isExpanded && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.35, ease: "easeInOut" }}
-                        className="overflow-hidden mb-4"
-                      >
-                        <p className="text-sm text-muted font-sans leading-relaxed border-t border-border pt-4 whitespace-pre-line">
-                          {expert.bio}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  <button
-                    onClick={() => toggleBio(expert.hash)}
-                    className="mt-auto w-full tech-button py-2.5 px-4 flex items-center justify-center gap-2 text-xs text-brand-secondary border-brand-secondary/30 hover:bg-brand-secondary/10 hover:border-brand-secondary"
-                  >
-                    {isExpanded ? (
-                      <>CLOSE PROFILE <ChevronUp className="w-4 h-4" /></>
-                    ) : (
-                      <>VIEW PROFILE <ChevronDown className="w-4 h-4" /></>
-                    )}
-                  </button>
+                <div className="p-5 h-[280px] overflow-y-auto scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent">
+                  <p className="text-sm text-muted font-sans leading-relaxed whitespace-pre-line">
+                    {expert.bio}
+                  </p>
                 </div>
               </motion.div>
             );
@@ -198,10 +210,12 @@ export default function Experts() {
             >
               <div className="relative h-64 overflow-hidden shrink-0 bg-surface-alt/50">
                 <Image
+                  key="/directors/shashank-shrivastava.jpg"
                   src="/directors/shashank-shrivastava.jpg"
-                  alt="Shashank Shrivastava"
+                  alt="Photo of Shashank Shrivastava"
                   fill
-                  className="object-contain object-center grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  sizes="320px"
+                  className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
                 <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-black/60 backdrop-blur px-2 py-1 rounded border border-white/10">

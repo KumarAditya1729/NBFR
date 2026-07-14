@@ -4,12 +4,21 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import InteractiveSvg from "@/components/InteractiveSvg";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import {
   Map, Layers, ZoomIn, ZoomOut, RotateCcw, ExternalLink,
   MapPin, Users, Activity, BookOpen, Wheat, Stethoscope, GraduationCap, ArrowLeft
 } from "lucide-react";
+
+const InteractiveSvg = dynamic(() => import("@/components/InteractiveSvg"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center min-h-[300px] text-brand-primary font-mono text-xs animate-pulse">
+      Loading Bihar GIS District Layer...
+    </div>
+  ),
+});
 
 const districts = [
   { name: "Patna", region: "Central", pop: "5.8M", hdi: "0.61" },

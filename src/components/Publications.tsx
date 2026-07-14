@@ -1,61 +1,42 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, FileText, Users, ChevronRight, Handshake } from "lucide-react";
+import { Mail, FileText, Users, ChevronRight, Handshake, Search, Download } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { urlForImage } from "@/sanity/lib/image";
 
-export default function Publications() {
-  const upcomingAreas = [
-    {
-      icon: FileText,
-      color: "text-brand-primary",
-      border: "group-hover:border-brand-primary",
-      bg: "bg-brand-primary/10",
-      title: "Policy Briefs",
-      desc: "In-depth analysis of Bihar's governance, agriculture, and social development policies.",
-    },
-    {
-      icon: FileText,
-      color: "text-brand-secondary",
-      border: "group-hover:border-brand-secondary",
-      bg: "bg-brand-secondary/10",
-      title: "Research Reports",
-      desc: "Data-driven reports on economic, educational, and health indicators across Bihar's 38 districts.",
-    },
-    {
-      icon: FileText,
-      color: "text-brand-accent",
-      border: "group-hover:border-brand-accent",
-      bg: "bg-brand-accent/10",
-      title: "Working Papers",
-      desc: "Collaborative academic papers on migration, rural economy, infrastructure, and social equity.",
-    },
-    {
-      icon: FileText,
-      color: "text-brand-primary",
-      border: "group-hover:border-brand-primary",
-      bg: "bg-brand-primary/10",
-      title: "Survey & Field Studies",
-      desc: "Ground-level research from Bihar's villages and cities to inform actionable recommendations.",
-    },
-  ];
+export default function Publications({ publications: publicationsProp }: { publications?: any[] } = {}) {
+  const displayPubs = (publicationsProp && publicationsProp.length > 0) ? publicationsProp : [];
+  const [filterType, setFilterType] = useState<string>("ALL");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const filteredPubs = displayPubs.filter(pub => {
+    const matchesType = filterType === "ALL" || pub.publicationType === filterType;
+    const matchesQuery = !searchQuery || (pub.title?.toLowerCase().includes(searchQuery.toLowerCase()) || pub.abstract?.toLowerCase().includes(searchQuery.toLowerCase()));
+    return matchesType && matchesQuery;
+  });
+
+  const categories = ["ALL", "Policy Brief", "Research Report", "Working Paper", "Field Survey"];
 
   return (
     <section id="publications" className="py-24 bg-surface border-t border-border relative overflow-hidden">
-      {/* Decorative orb */}
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none" />
+      {/* Decorative accent grid */}
+      <div className="absolute inset-0 bg-grid opacity-15 pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-primary/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-accent/30 bg-brand-accent/10 text-brand-accent font-mono text-[10px] uppercase tracking-widest mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-primary/30 bg-brand-primary/10 text-brand-primary font-mono text-[10px] uppercase tracking-widest mb-4"
           >
-            RESEARCH // PUBLICATIONS
+            INTELLIGENCE // REPOSITORY
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -64,7 +45,7 @@ export default function Publications() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6"
           >
-            FEATURED RESEARCH
+            RESEARCH PUBLICATIONS
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -73,30 +54,131 @@ export default function Publications() {
             transition={{ delay: 0.2 }}
             className="text-muted text-lg font-sans max-w-3xl mx-auto"
           >
-            NBRF is a newly established think tank and our research publications are currently in progress. We are actively building our research team and welcome your collaboration.
+            Rigorous policy analysis, field surveys, and economic audits published by the Nav Bihar Renaissance Foundation research teams and fellows.
           </motion.p>
         </div>
 
-        {/* Coming Soon Banner */}
+        {/* Filter & Search Bar */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-10 bg-background/80 p-4 rounded-lg border border-border/80 backdrop-blur-sm">
+          <div className="flex flex-wrap gap-2 w-full md:w-auto">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFilterType(cat)}
+                className={`px-3 py-1.5 rounded font-mono text-xs transition-all ${
+                  filterType === cat
+                    ? "bg-brand-primary text-background font-bold shadow-[0_0_12px_rgba(16,185,129,0.4)]"
+                    : "bg-surface text-muted hover:text-foreground border border-border/60"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <div className="relative w-full md:w-72">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Filter by keyword..."
+              className="w-full bg-surface border border-border rounded px-3 py-1.5 pl-9 text-xs text-foreground focus:outline-none focus:border-brand-primary"
+            />
+            <Search className="w-4 h-4 text-muted absolute left-3 top-1/2 -translate-y-1/2" />
+          </div>
+        </div>
+
+        {/* Publications Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {filteredPubs.map((pub, i) => {
+            const imgUrl = urlForImage(pub.featuredImage) || "/mindful_research.png";
+            return (
+              <motion.div
+                key={pub._id || i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="tech-card flex flex-col justify-between group overflow-hidden border border-border hover:border-brand-primary/50 transition-all duration-300 hover:-translate-y-1.5 bg-background/60"
+              >
+                <div>
+                  <div className="relative w-full h-48 bg-surface overflow-hidden border-b border-border/50">
+                    <Image
+                      src={imgUrl}
+                      alt={pub.title || "Research"}
+                      fill
+                      className="object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    />
+                    <div className="absolute top-3 left-3 flex gap-2">
+                      <span className="text-[10px] font-mono bg-background/90 border border-brand-primary/40 text-brand-primary px-2 py-0.5 rounded shadow-sm">
+                        {pub.publicationType || "Report"}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-6 flex flex-col gap-3">
+                    <div className="flex items-center justify-between text-[11px] font-mono text-muted">
+                      <span>{pub.publishDate}</span>
+                      <span>{pub.districtScope?.join(", ") || "Bihar Statewide"}</span>
+                    </div>
+
+                    <h3 className="font-mono font-bold text-base text-foreground group-hover:text-brand-primary transition-colors leading-snug line-clamp-2">
+                      {pub.title}
+                    </h3>
+
+                    <p className="text-xs text-muted font-sans line-clamp-3 leading-relaxed">
+                      {pub.abstract}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 pt-0 mt-auto flex items-center justify-between border-t border-border/40 pt-4">
+                  <span className="text-[11px] font-mono text-muted/80">
+                    By {pub.authors?.[0]?.name || "NBRF Research Team"}
+                  </span>
+                  {pub.pdfFile?.asset?.url ? (
+                    <a
+                      href={pub.pdfFile.asset.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-mono text-brand-primary hover:underline font-semibold"
+                    >
+                      <Download className="w-3.5 h-3.5" /> PDF Download
+                    </a>
+                  ) : (
+                    <Link
+                      href={`/publications/${pub.slug?.current || '#'}`}
+                      className="inline-flex items-center gap-1 text-xs font-mono text-brand-primary hover:underline font-semibold"
+                    >
+                      Read Abstract <ChevronRight className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Coming Soon & Collaboration Banner */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="tech-card p-10 md:p-14 border-brand-accent/30 relative overflow-hidden mb-12 text-center"
+          className="tech-card p-10 md:p-14 border-brand-primary/30 relative overflow-hidden mb-12 text-center bg-gradient-to-b from-surface to-background"
         >
-          <div className="absolute top-0 right-0 w-72 h-72 bg-brand-accent/5 rounded-full blur-[80px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-72 h-72 bg-brand-primary/5 rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-72 h-72 bg-brand-primary/5 rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-72 h-72 bg-brand-accent/5 rounded-full blur-[80px] pointer-events-none" />
 
           <div className="relative z-10">
-            <div className="w-16 h-16 rounded-full bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center mx-auto mb-6">
-              <Handshake className="w-8 h-8 text-brand-accent" />
+            <div className="w-16 h-16 rounded-full bg-brand-primary/10 border border-brand-primary/30 flex items-center justify-center mx-auto mb-6">
+              <Handshake className="w-8 h-8 text-brand-primary" />
             </div>
 
             <h3 className="text-2xl md:text-4xl font-mono font-bold text-brand-primary mb-4">
               We Need Your Cooperation
             </h3>
             <p className="text-muted text-lg font-sans max-w-2xl mx-auto mb-8 leading-relaxed">
-              As a newly founded think tank, NBRF is in the process of building its first body of research. We invite researchers, academics, policymakers, and domain experts to collaborate with us in shaping Bihar&apos;s development narrative.
+              As an expanding think tank, NBRF invites researchers, academics, policymakers, and domain experts to collaborate with us in shaping Bihar&apos;s development narrative.
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center">
@@ -109,42 +191,6 @@ export default function Publications() {
             </div>
           </div>
         </motion.div>
-
-        {/* Upcoming Publication Types */}
-        <div className="mb-10">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center text-xs font-mono text-muted uppercase tracking-widest mb-8"
-          >
-            — Upcoming Publication Categories —
-          </motion.p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {upcomingAreas.map((area, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`tech-card p-6 flex flex-col gap-4 group border border-border transition-all duration-300 ${area.border} hover:-translate-y-1`}
-              >
-                <div className={`w-10 h-10 rounded ${area.bg} border border-border flex items-center justify-center ${area.border} transition-all`}>
-                  <area.icon className={`w-5 h-5 ${area.color}`} />
-                </div>
-                <div>
-                  <h4 className={`font-mono font-bold text-brand-primary mb-2 group-hover:${area.color} transition-colors`}>
-                    {area.title}
-                  </h4>
-                  <p className="text-muted text-xs font-sans leading-relaxed">
-                    {area.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
 
         {/* CTA Row */}
         <motion.div

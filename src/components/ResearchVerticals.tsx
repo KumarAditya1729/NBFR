@@ -15,8 +15,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-export default function ResearchVerticals() {
-  const verticals = [
+export default function ResearchVerticals({ verticals: verticalsProp }: { verticals?: any[] } = {}) {
+  const defaultVerticals = [
     {
       name: "Governance & Public Administration",
       desc: "Strengthening democratic institutions, administrative accountability, and service delivery reform across Bihar's 38 districts.",
@@ -82,25 +82,29 @@ export default function ResearchVerticals() {
       border: "group-hover:border-brand-secondary",
     },
     {
-      name: "Cultural Heritage & Tourism",
-      desc: "Leveraging Bihar's rich Buddhist, Jain, and Sikh heritage — Nalanda, Bodh Gaya, Vaishali — as engines of economic and cultural diplomacy.",
-      icon: Globe,
-      color: "text-brand-accent",
-      glow: "group-hover:shadow-[0_0_20px_rgba(139,92,246,0.25)]",
-      border: "group-hover:border-brand-accent",
-    },
-    {
       name: "Environment & Climate Resilience",
       desc: "Studying the impact of annual floods, groundwater depletion, and forest cover loss — and crafting long-term climate adaptation policies.",
       icon: Leaf,
-      color: "text-brand-primary",
-      glow: "group-hover:shadow-[0_0_20px_rgba(16,185,129,0.25)]",
-      border: "group-hover:border-brand-primary",
+      color: "text-brand-accent",
+      glow: "group-hover:shadow-[0_0_20px_rgba(59,130,246,0.25)]",
+      border: "group-hover:border-brand-accent",
     },
   ];
 
+  const iconsList = [Landmark, Wheat, GraduationCap, HeartPulse, TrendingUp, Building2, Users, Leaf, Globe, Compass];
+  const displayVerticals = (verticalsProp && verticalsProp.length > 0)
+    ? verticalsProp.map((v, idx) => ({
+        name: v.title || v.name || "Research Vertical",
+        desc: v.description || v.desc || "",
+        icon: iconsList[idx % iconsList.length],
+        color: idx % 2 === 0 ? "text-brand-primary" : "text-brand-accent",
+        glow: idx % 2 === 0 ? "group-hover:shadow-[0_0_20px_rgba(16,185,129,0.25)]" : "group-hover:shadow-[0_0_20px_rgba(59,130,246,0.25)]",
+        border: idx % 2 === 0 ? "group-hover:border-brand-primary" : "group-hover:border-brand-accent",
+      }))
+    : defaultVerticals;
+
   return (
-    <section id="research" className="py-24 bg-surface border-t border-border relative overflow-hidden">
+    <section id="research" className="py-24 bg-background relative overflow-hidden">
       {/* Decorative orb */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -119,7 +123,7 @@ export default function ResearchVerticals() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6 glow-text"
+            className="text-3xl md:text-5xl font-mono font-bold text-brand-primary mb-6"
           >
             RESEARCH VERTICALS
           </motion.h2>
@@ -130,38 +134,41 @@ export default function ResearchVerticals() {
             transition={{ delay: 0.2 }}
             className="text-muted text-lg font-sans max-w-3xl mx-auto"
           >
-            Ten core pillars of inquiry grounded in Bihar&apos;s developmental reality — each backed by field research, data analysis, and actionable policy recommendations.
+            Nav Bihar Renaissance Foundation focuses its intellectual resources on eight core domains — producing data-driven research to inform governance and public policy across Bihar.
           </motion.p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {verticals.map((vertical, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.07 }}
-            >
-              <Link
-                href="#"
-                className={`tech-card p-7 flex flex-col h-full group hover:-translate-y-1.5 transition-all duration-300 ${vertical.glow} ${vertical.border}`}
+          {displayVerticals.map((vertical, i) => {
+            const IconComp = vertical.icon || Landmark;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.07 }}
               >
-                <div className={`w-12 h-12 rounded bg-background border border-border flex items-center justify-center mb-5 ${vertical.border} transition-all duration-300`}>
-                  <vertical.icon className={`w-6 h-6 ${vertical.color}`} />
-                </div>
-                <h3 className={`text-base font-mono font-bold text-brand-primary mb-3 group-hover:${vertical.color} transition-colors leading-snug`}>
-                  {vertical.name}
-                </h3>
-                <p className="text-muted text-xs font-sans leading-relaxed flex-grow">
-                  {vertical.desc}
-                </p>
-                <div className={`mt-5 text-[10px] font-mono ${vertical.color} flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity`}>
-                  EXPLORE RESEARCH →
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+                <Link
+                  href="#publications"
+                  className={`tech-card p-7 flex flex-col h-full group hover:-translate-y-1.5 transition-all duration-300 ${vertical.glow} ${vertical.border}`}
+                >
+                  <div className={`w-12 h-12 rounded bg-background border border-border flex items-center justify-center mb-5 ${vertical.border} transition-all duration-300`}>
+                    <IconComp className={`w-6 h-6 ${vertical.color}`} />
+                  </div>
+                  <h3 className={`text-base font-mono font-bold text-brand-primary mb-3 group-hover:${vertical.color} transition-colors leading-snug`}>
+                    {vertical.name}
+                  </h3>
+                  <p className="text-muted text-xs font-sans leading-relaxed flex-grow">
+                    {vertical.desc}
+                  </p>
+                  <div className={`mt-5 text-[10px] font-mono ${vertical.color} flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity`}>
+                    EXPLORE RESEARCH →
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
 
         <motion.div
