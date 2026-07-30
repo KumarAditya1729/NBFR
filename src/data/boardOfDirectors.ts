@@ -12,7 +12,7 @@ export interface DirectorProfile {
 export const BOARD_OF_DIRECTORS: DirectorProfile[] = [
   {
     name: "Santosh Kumar",
-    role: "Director | Social Entrepreneur, RTI Champion & Former World Bank Consultant",
+    role: "Director | Social Entrepreneur & RTI Champion",
     hash: "dir-01",
     image: "/directors/santosh-kumar.jpg",
     category: "board",
