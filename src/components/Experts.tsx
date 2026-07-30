@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import { urlForImage } from "@/sanity/lib/image";
-import { BOARD_OF_DIRECTORS } from "@/data/boardOfDirectors";
+import { BOARD_OF_DIRECTORS, MANAGEMENT_TEAM } from "@/data/boardOfDirectors";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function Experts({ experts: _expertsProp }: { experts?: any[] } = {}) {
@@ -163,39 +163,67 @@ export default function Experts({ experts: _expertsProp }: { experts?: any[] } =
             <div className="h-px flex-1 bg-border" />
           </motion.div>
 
-          <div className="flex justify-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="tech-card group overflow-hidden flex flex-col w-full max-w-xs hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="relative h-64 overflow-hidden shrink-0 bg-surface-alt/50">
-                <Image
-                  key="/directors/shashank-shrivastava.jpg"
-                  src="/directors/shashank-shrivastava.jpg"
-                  alt="Photo of Shashank Shrivastava"
-                  fill
-                  sizes="320px"
-                  priority
-                  className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
-                <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-black/60 backdrop-blur px-2 py-1 rounded border border-white/10">
-                  <div className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse" />
-                  <span className="text-[10px] font-mono text-white">MANAGEMENT</span>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 z-20 p-5">
-                  <h3 className="text-xl font-mono font-bold text-white leading-tight">Shashank Shrivastava</h3>
-                  <p className="text-brand-accent font-mono text-xs uppercase tracking-widest mt-1">Manager, NBRF Think Tank</p>
-                </div>
-              </div>
-              <div className="p-5">
-                <p className="text-sm text-muted font-sans leading-relaxed">
-                  Managing day-to-day operations and strategic coordination at Nav Bihar Renaissance Foundation, driving research initiatives and institutional partnerships.
-                </p>
-              </div>
-            </motion.div>
+          <div className="flex flex-wrap justify-center gap-8">
+            {MANAGEMENT_TEAM.map((expert, i) => {
+              const isExpanded = expandedBio === expert.hash;
+              const imgUrl = typeof expert.image === 'string'
+                ? expert.image
+                : (expert.image && expert.image.asset ? urlForImage(expert.image) : null);
+
+              return (
+                <motion.div
+                  key={expert.hash || i}
+                  id={expert.hash}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="tech-card group overflow-hidden flex flex-col w-full max-w-xs hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="relative h-64 overflow-hidden shrink-0 bg-surface-alt/50">
+                    {imgUrl ? (
+                      <Image
+                        key={imgUrl}
+                        src={imgUrl}
+                        alt={`Photo of ${expert.name}`}
+                        fill
+                        sizes="320px"
+                        priority
+                        className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-background flex flex-col items-center justify-center gap-3">
+                        <div className="w-24 h-24 rounded-full bg-brand-primary/10 border-2 border-brand-primary/30 flex items-center justify-center">
+                          <span className="text-4xl font-mono font-bold text-brand-primary">
+                            {expert.name.split(' ').map((n: string) => n[0]).join('').slice(0, 2)}
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-mono text-muted">PHOTO COMING SOON</span>
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
+                    <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-black/60 backdrop-blur px-2 py-1 rounded border border-white/10">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse" />
+                      <span className="text-[10px] font-mono text-white">MANAGEMENT</span>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 z-20 p-5">
+                      <h3 className="text-xl font-mono font-bold text-white leading-tight">{expert.name}</h3>
+                      <p className="text-brand-accent font-mono text-xs uppercase tracking-widest mt-1">{expert.role}</p>
+                    </div>
+                  </div>
+                  <div className="p-5 flex flex-col flex-1">
+                    <p className={`text-sm text-muted font-sans leading-relaxed whitespace-pre-line ${isExpanded ? '' : 'line-clamp-4'}`}>
+                      {expert.bio}
+                    </p>
+                    <button 
+                      onClick={() => toggleBio(expert.hash)}
+                      className="text-brand-accent text-xs font-mono mt-3 self-start hover:underline"
+                    >
+                      {isExpanded ? 'Show Less' : 'Read More'}
+                    </button>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 
