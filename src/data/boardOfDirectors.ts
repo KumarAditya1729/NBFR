@@ -67,6 +67,6 @@ export const MANAGEMENT_TEAM: DirectorProfile[] = [
     hash: "mgmt-01",
     image: "/directors/shashank-shrivastava.jpg",
     category: "management",
-    bio: "Managing day-to-day operations and strategic coordination at Nav Bihar Renaissance Foundation, driving research initiatives and institutional partnerships."
+    bio: "Shashank Shrivastava is a UGC-NET qualified social work researcher and development professional with expertise in rural development, public policy, and impact assessment. As Manager at the Nav Bihar Renaissance Foundation (NBRF), he leads organisational management while overseeing research projects, publications, and policy initiatives. His work spans large-scale socio-economic research, livelihood development, women's empowerment, and evidence-based policy analysis. A published researcher with extensive field experience, Shashank is committed to advancing inclusive development through rigorous research, strategic programme management, and knowledge-driven public policy."
   }
 ];
