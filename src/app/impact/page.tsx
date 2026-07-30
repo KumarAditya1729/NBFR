@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, BarChart3, ShieldCheck, Sparkles } from "lucide-react";
 import ResearchImpactClient from "@/components/impact/ResearchImpactClient";
+import { sanityFetch } from "@/sanity/lib/client";
+import { ALL_PUBLICATIONS_QUERY, ALL_DATASETS_QUERY, ALL_DISTRICTS_QUERY } from "@/sanity/lib/queries";
+import type { Publication, BiharDataset, DistrictFactsheet } from "@/sanity/lib/fallbackData";
 
 export const metadata: Metadata = {
   title: "Research Impact & Telemetry Dashboard | Nav Bihar Renaissance Foundation (NBRF)",
@@ -17,7 +20,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ImpactPage() {
+export default async function ImpactPage() {
+  const [publications, datasets, districts] = await Promise.all([
+    sanityFetch<Publication[]>({ query: ALL_PUBLICATIONS_QUERY, revalidate: 3600 }),
+    sanityFetch<BiharDataset[]>({ query: ALL_DATASETS_QUERY, revalidate: 3600 }),
+    sanityFetch<DistrictFactsheet[]>({ query: ALL_DISTRICTS_QUERY, revalidate: 3600 }),
+  ]);
+
   return (
     <main className="min-h-screen bg-background text-foreground pb-24 overflow-x-hidden relative">
       {/* Decorative background grid and glow */}
@@ -64,7 +73,7 @@ export default function ImpactPage() {
         </div>
 
         {/* Interactive Client Component */}
-        <ResearchImpactClient />
+        <ResearchImpactClient publications={publications} datasets={datasets} districts={districts} />
       </div>
     </main>
   );

@@ -28,6 +28,7 @@ import {
   type ResearchVertical,
   type BiharDataset
 } from "@/sanity/lib/fallbackData";
+import { BOARD_OF_DIRECTORS, MANAGEMENT_TEAM } from "@/data/boardOfDirectors";
 
 interface SearchResultItem {
   id: string;
@@ -53,7 +54,7 @@ interface GlobalSearchClientProps {
 
 export default function GlobalSearchClient({
   initialPublications = [],
-  initialExperts = [],
+  initialExperts: _initialExperts = [],
   initialEvents = [],
   initialPartners = [],
   initialVerticals = [],
@@ -65,9 +66,9 @@ export default function GlobalSearchClient({
   const [selectedTab, setSelectedTab] = useState<string>("ALL");
   const [sortBy, setSortBy] = useState<"relevance" | "newest">("relevance");
 
-  // Use only real Sanity data — no fallback demo records
+  // Use only real Sanity data for publications/events/etc., static NBRF Board & Management for experts
   const pubs = useMemo(() => initialPublications, [initialPublications]);
-  const exps = useMemo(() => initialExperts, [initialExperts]);
+  const exps = useMemo(() => [...BOARD_OF_DIRECTORS, ...MANAGEMENT_TEAM], []);
   const evts = useMemo(() => initialEvents, [initialEvents]);
   const parts = useMemo(() => initialPartners, [initialPartners]);
   const verts = useMemo(() => initialVerticals, [initialVerticals]);

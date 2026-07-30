@@ -8,8 +8,10 @@ export interface Publication {
   abstract: string
   publishDate: string
   districtScope?: string[]
+  researchVertical?: { title: string; slug?: { current: string }; iconName?: string }
   authors?: Array<{ _id: string; name: string; designation?: string }>
   featuredImage?: unknown
+  pdfFileUrl?: string
   pdfUrl?: string
   seo?: { metaTitle?: string; metaDescription?: string }
 }

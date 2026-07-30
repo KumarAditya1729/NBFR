@@ -9,6 +9,11 @@ export const ALL_PUBLICATIONS_QUERY = groq`
     abstract,
     publishDate,
     districtScope,
+    researchVertical->{
+      title,
+      slug,
+      iconName
+    },
     authors[]->{
       _id,
       name,
@@ -16,6 +21,7 @@ export const ALL_PUBLICATIONS_QUERY = groq`
       role
     },
     featuredImage,
+    "pdfFileUrl": pdfFile.asset->url,
     pdfUrl,
     seo
   }
@@ -30,6 +36,11 @@ export const RECENT_PUBLICATIONS_QUERY = groq`
     abstract,
     publishDate,
     districtScope,
+    researchVertical->{
+      title,
+      slug,
+      iconName
+    },
     authors[]->{
       _id,
       name,
@@ -37,6 +48,7 @@ export const RECENT_PUBLICATIONS_QUERY = groq`
       role
     },
     featuredImage,
+    "pdfFileUrl": pdfFile.asset->url,
     pdfUrl
   }
 `

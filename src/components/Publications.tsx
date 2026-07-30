@@ -13,12 +13,12 @@ export default function Publications({ publications: publicationsProp }: { publi
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const filteredPubs = displayPubs.filter(pub => {
-    const matchesType = filterType === "ALL" || pub.publicationType === filterType;
+    const matchesType = filterType === "ALL" || pub.publicationType === filterType || (filterType === "Field Study" && (pub.publicationType === "Field Study" || pub.publicationType === "Survey & Field Study" || pub.publicationType === "Field Survey"));
     const matchesQuery = !searchQuery || (pub.title?.toLowerCase().includes(searchQuery.toLowerCase()) || pub.abstract?.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesType && matchesQuery;
   });
 
-  const categories = ["ALL", "Policy Brief", "Research Report", "Working Paper", "Field Survey"];
+  const categories = ["ALL", "Policy Brief", "Research Report", "Working Paper", "Field Study", "Data Monograph"];
 
   return (
     <section id="publications" className="py-24 bg-surface border-t border-border relative overflow-hidden">

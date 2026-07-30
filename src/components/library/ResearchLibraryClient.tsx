@@ -129,7 +129,7 @@ export default function ResearchLibraryClient({
       }
 
       // Type match
-      if (selectedType !== "ALL" && type !== selectedType) {
+      if (selectedType !== "ALL" && type !== selectedType && !(selectedType === "Field Study" && (type === "Survey & Field Study" || type === "Field Survey" || type === "Field Study"))) {
         return false;
       }
 

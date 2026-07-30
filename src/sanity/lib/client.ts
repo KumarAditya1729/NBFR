@@ -11,7 +11,7 @@ export async function sanityFetch<T>({
   query,
   params = {},
   tags = [],
-  revalidate = 3600,
+  revalidate = 30,
 }: {
   query: string
   params?: Record<string, unknown>
@@ -22,9 +22,10 @@ export async function sanityFetch<T>({
 
   if (isRealSanityConfigured) {
     try {
+      const effectiveRevalidate = process.env.NODE_ENV === 'development' ? 0 : (typeof revalidate === 'number' && revalidate > 30 ? 30 : revalidate)
       const data = await client.fetch<T>(query, params, {
         next: {
-          revalidate,
+          revalidate: effectiveRevalidate,
           tags,
         },
       })

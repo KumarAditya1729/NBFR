@@ -1,10 +1,5 @@
 import HomeHero from "@/components/home/HomeHero";
-import PublicationsBento from "@/components/home/PublicationsBento";
 import FocusAreas from "@/components/home/FocusAreas";
-import ExpertsBento from "@/components/home/ExpertsBento";
-import EventsDataRow from "@/components/home/EventsDataRow";
-import NewsImpactRow from "@/components/home/NewsImpactRow";
-import PartnersSearchRow from "@/components/home/PartnersSearchRow";
 import ImpactCounter from "@/components/home/ImpactCounter";
 import BiharInNumbers from "@/components/home/BiharInNumbers";
 import BiharTimeline from "@/components/home/BiharTimeline";
@@ -100,35 +95,20 @@ export default async function Home() {
         </section>
 
         {/* ── SEGMENT 5: PUBLICATIONS & RESEARCH ARCHIVE (#publications) ── */}
-        <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-          <PublicationsBento publications={publications} />
-        </section>
         <Publications publications={publications} />
 
         {/* ── SEGMENT 6: BOARD OF DIRECTORS, EXPERTS & FELLOWSHIPS (#experts, #initiatives) ── */}
-        <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-          <ExpertsBento experts={experts} />
-        </section>
         <Experts experts={experts} />
         <Fellowships />
 
         {/* ── SEGMENT 7: EVENTS & EMPIRICAL DATA CENTER (#events) ── */}
-        <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-          <EventsDataRow events={events} datasets={datasets} />
-        </section>
         <Events events={events} />
 
         {/* ── SEGMENT 8: NEWS, MEDIA & INSIGHTS (#insights, #media) ── */}
-        <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-          <NewsImpactRow />
-        </section>
         <Insights />
         <MediaPress />
 
         {/* ── SEGMENT 9: ECOSYSTEM PARTNERS & INSTITUTIONAL MEMBERSHIP (#partners, #memberships) ── */}
-        <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-          <PartnersSearchRow partners={partners} />
-        </section>
         <Partners partners={partners} />
         <Membership />
 

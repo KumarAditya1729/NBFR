@@ -9,14 +9,15 @@ import type { Publication, ResearchVertical, Expert } from "@/sanity/lib/fallbac
 import ResearchLibraryClient from "@/components/library/ResearchLibraryClient";
 import Link from "next/link";
 import { ArrowLeft, BookOpen, Sparkles, FileSpreadsheet, Layers } from "lucide-react";
+import { BOARD_OF_DIRECTORS, MANAGEMENT_TEAM } from "@/data/boardOfDirectors";
 
 export const metadata = {
   title: "Research Library & Policy Repository | Nav Bihar Renaissance Foundation (NBRF)",
   description:
-    "Explore NBRF's authoritative open-access repository of working papers, policy briefs, data monographs, and district-level empirical research across all 38 districts of Bihar.",
+    "Explore data-driven research papers, working drafts, and policy briefs from NBRF across agrarian transition, governance, demography, and industrial policy in Bihar.",
   openGraph: {
-    title: "NBRF Research Library & Policy Repository",
-    description: "Open-access empirical research and policy frameworks for Bihar's transformation.",
+    title: "Research Library | Nav Bihar Renaissance Foundation",
+    description: "Policy research and verified data repository for Bihar's transformation.",
     url: "https://nbrf.in/publications",
     siteName: "Nav Bihar Renaissance Foundation",
     type: "website",
@@ -24,7 +25,7 @@ export const metadata = {
 };
 
 export default async function PublicationsHubPage() {
-  const [publications, verticals, experts] = await Promise.all([
+  const [publications, verticals, _experts] = await Promise.all([
     sanityFetch<Publication[]>({ query: ALL_PUBLICATIONS_QUERY, revalidate: 3600 }),
     sanityFetch<ResearchVertical[]>({ query: ALL_VERTICALS_QUERY, revalidate: 3600 }),
     sanityFetch<Expert[]>({ query: ALL_EXPERTS_QUERY, revalidate: 3600 }),
@@ -41,37 +42,41 @@ export default async function PublicationsHubPage() {
         <div className="mb-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-mono text-muted hover:text-brand-primary transition-colors py-1.5 px-3 rounded border border-border/60 bg-surface/50"
+            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-muted hover:text-brand-primary transition-colors py-1.5 px-3 rounded border border-border/60 bg-surface/50"
           >
             <ArrowLeft className="w-3.5 h-3.5" /> Back to Think Tank Portal
           </Link>
         </div>
 
-        {/* ── Library Hero Section ── */}
-        <div className="tech-card p-8 sm:p-12 mb-12 border-brand-primary/40 bg-gradient-to-br from-surface/90 via-surface/60 to-background/90 relative overflow-hidden">
-          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-secondary/10 rounded-full blur-[100px] pointer-events-none" />
-          
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-primary/30 bg-brand-primary/10 text-brand-primary font-mono text-[10px] uppercase tracking-widest mb-4">
-              <BookOpen className="w-3.5 h-3.5" /> OPEN ACCESS // RESEARCH REPOSITORY
+        {/* ── Page Header Band ── */}
+        <div className="tech-card p-6 sm:p-8 md:p-12 bg-surface/80 border-border/80 mb-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-brand-primary bg-brand-primary/10 border border-brand-primary/20 px-3 py-1 rounded mb-4">
+                <BookOpen className="w-3.5 h-3.5" />
+                NBRF POLICY REPOSITORY & WORKING PAPERS
+              </div>
+              <h1 className="font-mono font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-foreground">
+                Research Library & <span className="text-brand-primary">Data Hub</span>
+              </h1>
+              <p className="font-sans text-sm sm:text-base text-muted mt-3 leading-relaxed">
+                Open-access policy briefs, empirical field surveys, and economic analyses exploring Bihar&apos;s structural transformation. Search across publications, verticals, and verified datasets.
+              </p>
             </div>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-mono font-bold text-foreground mb-6 leading-tight">
-              BIHAR PUBLIC POLICY <span className="text-brand-primary">ARCHIVE</span>
-            </h1>
-            <p className="font-sans text-muted text-base sm:text-lg leading-relaxed mb-8">
-              Nav Bihar Renaissance Foundation publishes rigorous, multi-disciplinary research to inform state governance, rural economic development, and institutional reform. All reports are peer-reviewed and made open-access under Creative Commons (CC-BY 4.0).
-            </p>
 
-            <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-muted pt-6 border-t border-border/60">
-              <span className="flex items-center gap-1.5 bg-background px-3 py-1.5 rounded border border-border">
-                <Sparkles className="w-3.5 h-3.5 text-brand-primary" /> Verified District Data
-              </span>
-              <span className="flex items-center gap-1.5 bg-background px-3 py-1.5 rounded border border-border">
-                <FileSpreadsheet className="w-3.5 h-3.5 text-brand-accent" /> Standardized Citations
-              </span>
-              <span className="flex items-center gap-1.5 bg-background px-3 py-1.5 rounded border border-border">
-                <Layers className="w-3.5 h-3.5 text-brand-secondary" /> 8 Research Verticals
-              </span>
+            <div className="flex flex-wrap items-center gap-3 shrink-0 font-mono text-xs">
+              <div className="tech-card px-4 py-2.5 bg-background/50 flex items-center gap-2 border-border/60">
+                <Sparkles className="w-3.5 h-3.5 text-brand-primary" />
+                <span><strong className="text-foreground">{publications.length}</strong> Papers</span>
+              </div>
+              <div className="tech-card px-4 py-2.5 bg-background/50 flex items-center gap-2 border-border/60">
+                <Layers className="w-3.5 h-3.5 text-brand-secondary" />
+                <span><strong className="text-foreground">{verticals.length}</strong> Verticals</span>
+              </div>
+              <Link href="/bihar" className="tech-button py-2 px-3 flex items-center gap-1.5 text-xs">
+                <FileSpreadsheet className="w-3.5 h-3.5" />
+                Bihar Data Engine
+              </Link>
             </div>
           </div>
         </div>
@@ -80,7 +85,7 @@ export default async function PublicationsHubPage() {
         <ResearchLibraryClient
           initialPublications={publications}
           verticals={verticals}
-          authors={experts}
+          authors={[...BOARD_OF_DIRECTORS, ...MANAGEMENT_TEAM]}
         />
 
         {/* ── Submission CTA Band ── */}
