@@ -2,8 +2,7 @@
 
 import { toast } from "@/components/admin/AdminToast";
 import { useState, useRef } from "react";
-import { UploadCloud, X, Loader2, Image as ImageIcon } from "lucide-react";
-import { uploadImage } from "@/lib/actions";
+import { UploadCloud, X, Loader2 } from "lucide-react";
 
 interface ImageUploadProps {
   value?: string | null;
@@ -19,35 +18,45 @@ export default function ImageUpload({ value, onChange, label = "Featured Image" 
     const file = e.target.files?.[0];
     if (!file) return;
 
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("File too large. Max size is 5MB.");
+      return;
+    }
+
     setIsUploading(true);
     try {
       const formData = new FormData();
       formData.append("file", file);
-      
-      const result = await uploadImage(formData);
-      
-      if (result.success && result.url) {
+
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await res.json();
+
+      if (res.ok && result.url) {
         onChange(result.url);
+        toast.success("Image uploaded!");
       } else {
-        alert(result.error || "Failed to upload image");
+        toast.error(result.error || "Failed to upload image");
       }
     } catch (error) {
       console.error(error);
-      toast.error("Error uploading image");
+      toast.error("Network error during upload.");
     } finally {
       setIsUploading(false);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
+      if (fileInputRef.current) fileInputRef.current.value = "";
     }
   };
 
   return (
     <div className="flex flex-col gap-2">
       <label className="text-sm font-medium text-gray-700">{label}</label>
-      
+
       {value ? (
         <div className="relative rounded-xl overflow-hidden border border-gray-200 group bg-gray-50 flex items-center justify-center max-h-64">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={value} alt="Uploaded" className="max-w-full max-h-64 object-contain" />
           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <button
@@ -60,7 +69,7 @@ export default function ImageUpload({ value, onChange, label = "Featured Image" 
           </div>
         </div>
       ) : (
-        <div 
+        <div
           onClick={() => !isUploading && fileInputRef.current?.click()}
           className={`
             border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center transition-colors cursor-pointer
@@ -81,9 +90,9 @@ export default function ImageUpload({ value, onChange, label = "Featured Image" 
               <span className="text-sm text-blue-600/70 mt-1">PNG, JPG, WEBP up to 5MB</span>
             </div>
           )}
-          <input 
-            type="file" 
-            ref={fileInputRef} 
+          <input
+            type="file"
+            ref={fileInputRef}
             onChange={handleFileChange}
             accept="image/*"
             className="hidden"

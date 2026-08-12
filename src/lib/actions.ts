@@ -277,32 +277,3 @@ export async function deleteMembershipProgram(id: string) {
   }
 }
 
-import { writeFile } from "fs/promises";
-import { join } from "path";
-import { randomBytes } from "crypto";
-
-export async function uploadImage(formData: FormData) {
-  try {
-    const file = formData.get("file") as File;
-    if (!file) {
-      return { success: false, error: "No file uploaded" };
-    }
-
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-
-    // Generate unique filename
-    const uniqueSuffix = randomBytes(8).toString("hex");
-    const extension = file.name.split(".").pop();
-    const filename = `${uniqueSuffix}.${extension}`;
-    
-    // Save to public/uploads
-    const uploadDir = join(process.cwd(), "public", "uploads");
-    const filepath = join(uploadDir, filename);
-    await writeFile(filepath, buffer);
-
-    return { success: true, url: `/uploads/${filename}` };
-  } catch (error: any) {
-    return { success: false, error: error.message };
-  }
-}
