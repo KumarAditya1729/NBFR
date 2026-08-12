@@ -1,10 +1,10 @@
 "use client";
 
-
 import { useState } from "react";
-import { Plus, Edit2, Trash2, X, Newspaper, ExternalLink } from "lucide-react";
+import { Plus, Edit2, Trash2, X, Newspaper, ExternalLink, Image as ImageIcon } from "lucide-react";
 import { toast } from "@/components/admin/AdminToast";
 import { createMediaMention, updateMediaMention, deleteMediaMention } from "@/lib/actions";
+import ImageUpload from "@/components/admin/ImageUpload";
 
 type MediaMention = any;
 
@@ -19,12 +19,14 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
   const [source, setSource] = useState("");
   const [date, setDate] = useState("");
   const [url, setUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   const resetForm = () => {
     setHeadline("");
     setSource("");
     setDate("");
     setUrl("");
+    setImageUrl("");
     setEditingId(null);
   };
 
@@ -34,33 +36,27 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
     setSource(mention.source || "");
     setDate(mention.date || "");
     setUrl(mention.url || "");
+    setImageUrl(mention.imageUrl || "");
     setIsDrawerOpen(true);
   };
 
   const handleDelete = async (id: string) => {
     if (!confirm("Are you sure you want to delete this Media Mention?")) return;
-    
     setIsLoading(true);
     const result = await deleteMediaMention(id);
     setIsLoading(false);
-
     if (result.success) {
       setMentions(mentions.filter((m) => m.id !== id));
+      toast.success("Mention deleted.");
     } else {
-      toast.error("Error deleting Mention: : " + (result.error || ""));
+      toast.error("Error deleting Mention: " + (result.error || ""));
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-
-    const data = {
-      headline,
-      source,
-      date,
-      url,
-    };
+    const data = { headline, source, date, url, imageUrl };
 
     if (editingId) {
       const result = await updateMediaMention(editingId, data);
@@ -68,8 +64,9 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
         setMentions(mentions.map((m) => (m.id === editingId ? result.data : m)));
         setIsDrawerOpen(false);
         resetForm();
+        toast.success("Mention updated!");
       } else {
-        toast.error("Error updating Mention: : " + (result.error || ""));
+        toast.error("Error updating Mention: " + (result.error || ""));
       }
     } else {
       const result = await createMediaMention(data);
@@ -77,8 +74,9 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
         setMentions([result.data, ...mentions]);
         setIsDrawerOpen(false);
         resetForm();
+        toast.success("Mention created!");
       } else {
-        toast.error("Error creating Mention: : " + (result.error || ""));
+        toast.error("Error creating Mention: " + (result.error || ""));
       }
     }
     setIsLoading(false);
@@ -88,14 +86,11 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900">Media Mentions</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900">Media & Press</h2>
           <p className="mt-2 text-gray-600">Manage press coverage and external articles.</p>
         </div>
         <button
-          onClick={() => {
-            resetForm();
-            setIsDrawerOpen(true);
-          }}
+          onClick={() => { resetForm(); setIsDrawerOpen(true); }}
           className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2.5 px-5 rounded-lg shadow-sm transition-colors flex items-center gap-2"
         >
           <Plus className="w-5 h-5" />
@@ -108,6 +103,7 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-200 text-sm uppercase tracking-wider text-gray-500">
+                <th className="p-4 font-semibold w-20">Image</th>
                 <th className="p-4 font-semibold">Source & Date</th>
                 <th className="p-4 font-semibold">Headline</th>
                 <th className="p-4 font-semibold">URL</th>
@@ -118,16 +114,31 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
               {mentions.map((mention) => (
                 <tr key={mention.id} className="hover:bg-gray-50 transition-colors group">
                   <td className="p-4">
+                    {mention.imageUrl ? (
+                      <img
+                        src={mention.imageUrl}
+                        alt={mention.source}
+                        className="w-14 h-10 object-cover rounded-lg border border-gray-200"
+                      />
+                    ) : (
+                      <div className="w-14 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <ImageIcon className="w-5 h-5 text-gray-300" />
+                      </div>
+                    )}
+                  </td>
+                  <td className="p-4">
                     <span className="inline-block px-2.5 py-1 text-xs font-semibold bg-emerald-100 text-emerald-800 rounded-full mb-1">
                       {mention.source}
                     </span>
                     <div className="text-sm text-gray-500">{mention.date}</div>
                   </td>
-                  <td className="p-4 font-medium text-gray-900">{mention.headline}</td>
+                  <td className="p-4 font-medium text-gray-900 max-w-xs">
+                    <div className="line-clamp-2">{mention.headline}</div>
+                  </td>
                   <td className="p-4">
-                    <a 
-                      href={mention.url} 
-                      target="_blank" 
+                    <a
+                      href={mention.url}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="text-emerald-600 hover:text-emerald-700 flex items-center gap-1 text-sm font-medium"
                     >
@@ -154,7 +165,8 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
               ))}
               {mentions.length === 0 && (
                 <tr>
-                  <td colSpan={4} className="p-8 text-center text-gray-500">
+                  <td colSpan={5} className="p-10 text-center text-gray-400">
+                    <Newspaper className="w-10 h-10 mx-auto mb-2 opacity-20" />
                     No Media Mentions found.
                   </td>
                 </tr>
@@ -168,7 +180,7 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
       {isDrawerOpen && (
         <div className="fixed inset-0 z-50 flex justify-end">
           <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={() => setIsDrawerOpen(false)} />
-          <div className="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
+          <div className="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col">
             <div className="flex items-center justify-between p-6 border-b border-gray-100">
               <h3 className="text-xl font-bold text-gray-900">
                 {editingId ? "Edit Media Mention" : "New Media Mention"}
@@ -180,9 +192,16 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
                 <X className="w-5 h-5" />
               </button>
             </div>
-            
+
             <div className="flex-1 overflow-y-auto p-6">
-              <form id="media-form" onSubmit={handleSubmit} className="space-y-6">
+              <form id="media-form" onSubmit={handleSubmit} className="space-y-5">
+                {/* Image Upload */}
+                <ImageUpload
+                  label="Outlet Logo / Article Thumbnail"
+                  value={imageUrl}
+                  onChange={setImageUrl}
+                />
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Headline *</label>
                   <textarea
@@ -191,9 +210,10 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
                     value={headline}
                     onChange={(e) => setHeadline(e.target.value)}
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none resize-none"
+                    placeholder="Article headline..."
                   />
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Source *</label>
@@ -207,10 +227,9 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Date *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Date</label>
                     <input
                       type="text"
-                      required
                       value={date}
                       onChange={(e) => setDate(e.target.value)}
                       className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
@@ -220,7 +239,7 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">URL *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Article URL *</label>
                   <input
                     type="url"
                     required
@@ -232,7 +251,7 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
                 </div>
               </form>
             </div>
-            
+
             <div className="p-6 border-t border-gray-100 bg-gray-50 flex gap-3">
               <button
                 type="button"
@@ -245,10 +264,9 @@ export default function MediaMentionClient({ initialData }: { initialData: Media
                 type="submit"
                 form="media-form"
                 disabled={isLoading}
-                className="flex-1 px-4 py-2.5 bg-emerald-600 text-white font-medium rounded-xl hover:bg-emerald-700 transition-colors disabled:opacity-70 flex items-center justify-center gap-2"
+                className="flex-1 px-4 py-2.5 bg-emerald-600 text-white font-medium rounded-xl hover:bg-emerald-700 transition-colors disabled:opacity-70"
               >
-                {isLoading && <Newspaper className="w-4 h-4 animate-spin" />}
-                {editingId ? "Save Changes" : "Create Mention"}
+                {isLoading ? "Saving..." : editingId ? "Save Changes" : "Create Mention"}
               </button>
             </div>
           </div>
