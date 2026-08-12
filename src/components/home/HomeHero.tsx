@@ -4,7 +4,9 @@ import { ArrowRight, ShieldCheck, Globe, Zap } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function HomeHero() {
+import { SiteSettings } from "@/lib/data";
+
+export default function HomeHero({ settings }: { settings?: SiteSettings | null }) {
   return (
     <div className="tech-card p-5 sm:p-8 md:p-10 flex flex-col gap-5 w-full relative overflow-hidden">
       {/* Background Glow */}
@@ -31,11 +33,15 @@ export default function HomeHero() {
         </div>
 
         <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-brand-primary leading-[1.1]">
-          Nav Bihar <span className="text-brand-primary">Renaissance</span> Foundation
+          {settings?.heroHeadline || (
+            <>
+              Nav Bihar <span className="text-brand-primary">Renaissance</span> Foundation
+            </>
+          )}
         </h1>
 
         <p className="text-muted/80 text-xs sm:text-sm md:text-base max-w-2xl leading-relaxed">
-          Bihar&apos;s pioneering think tank driving development through Research, Policy, Impact, and Action. We identify developmental gaps across Bihar&apos;s social, economic, and cultural sectors — and provide data-driven recommendations to policymakers, institutions, and stakeholders.
+          {settings?.heroSubheadline || "Bihar's pioneering think tank driving development through Research, Policy, Impact, and Action. We identify developmental gaps across Bihar's social, economic, and cultural sectors — and provide data-driven recommendations to policymakers, institutions, and stakeholders."}
         </p>
 
         {/* Action Buttons */}

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Mail, FileText, Users, ChevronRight, Handshake, Search, Download } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { urlForImage } from "@/sanity/lib/image";
+import { urlForImage } from "@/lib/image";
 
 export default function Publications({ publications: publicationsProp }: { publications?: any[] } = {}) {
   const displayPubs = (publicationsProp && publicationsProp.length > 0) ? publicationsProp : [];
@@ -147,7 +147,7 @@ export default function Publications({ publications: publicationsProp }: { publi
                     </a>
                   ) : (
                     <Link
-                      href={`/publications/${pub.slug?.current || '#'}`}
+                      href={`/publications/${typeof pub.slug === 'string' ? pub.slug : (pub.slug?.current || '#')}`}
                       className="inline-flex items-center gap-1 text-xs font-mono text-brand-primary hover:underline font-semibold"
                     >
                       Read Abstract <ChevronRight className="w-3.5 h-3.5" />

@@ -27,7 +27,7 @@ import {
   type Partner,
   type ResearchVertical,
   type BiharDataset
-} from "@/sanity/lib/fallbackData";
+} from "@/lib/data";
 import { BOARD_OF_DIRECTORS, MANAGEMENT_TEAM } from "@/data/boardOfDirectors";
 
 interface SearchResultItem {
@@ -86,7 +86,7 @@ export default function GlobalSearchClient({
         title: p.title,
         subtitle: `Research Report // ${p.authors?.[0]?.name || "NBRF Lab"}`,
         description: p.abstract || "Empirical research paper on Bihar public policy and developmental economics.",
-        href: `/publications/${p.slug?.current || "state-of-rural-livelihoods-in-bihar-goat-farming-impact"}`,
+        href: `/publications/${typeof p.slug === 'string' ? p.slug : (p.slug?.current || "state-of-rural-livelihoods-in-bihar-goal-2024")}`,
         tag: p.publicationType || "Research Report",
         date: p.publishDate || "2024"
       });

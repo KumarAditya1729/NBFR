@@ -18,15 +18,15 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { urlForImage } from "@/sanity/lib/image";
+import { urlForImage } from "@/lib/image";
 import CitationModal from "@/components/library/CitationModal";
 
 interface AuthorItem {
   _id?: string;
   name: string;
-  designation?: string;
-  role?: string;
-  bio?: string;
+  designation?: string | null;
+  role?: string | null;
+  bio?: string | null;
   image?: unknown;
 }
 
@@ -56,30 +56,30 @@ interface PublicationDetailProps {
   publication: {
     _id?: string;
     title: string;
-    slug?: { current?: string } | string;
-    publicationType?: string;
-    abstract?: string;
-    executiveSummary?: string;
-    publishDate?: string;
-    lastUpdated?: string;
+    slug?: { current?: string } | string | null;
+    publicationType?: string | null;
+    abstract?: string | null;
+    executiveSummary?: string | null;
+    publishDate?: string | null;
+    lastUpdated?: string | null;
     districtScope?: string[];
-    researchVertical?: { title?: string; slug?: unknown; iconName?: string };
+    researchVertical?: { title?: string; slug?: unknown; iconName?: string | null } | null;
     authors?: AuthorItem[];
-    pdfFileUrl?: string;
-    pdfUrl?: string;
+    pdfFileUrl?: string | null;
+    pdfUrl?: string | null;
     featuredImage?: unknown;
-    citation?: string;
+    citation?: string | null;
     methodology?: MethodologyData;
     datasets?: DatasetItem[];
   };
   relatedPublications?: Array<{
     _id?: string;
     title?: string;
-    slug?: { current?: string } | string;
+    slug?: { current?: string } | string | null;
     featuredImage?: unknown;
-    publishDate?: string;
-    abstract?: string;
-    publicationType?: string;
+    publishDate?: string | null;
+    abstract?: string | null;
+    publicationType?: string | null;
   }>;
 }
 

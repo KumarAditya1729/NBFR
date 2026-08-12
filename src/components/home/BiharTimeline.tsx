@@ -96,7 +96,10 @@ const eraColors: Record<string, string> = {
   Renaissance: "#EA580C",
 };
 
-export default function BiharTimeline() {
+import { TimelineEvent } from "@/lib/data";
+
+export default function BiharTimeline({ events: initialEvents }: { events?: TimelineEvent[] | null }) {
+  const displayEvents = initialEvents?.length ? initialEvents : events;
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -114,7 +117,7 @@ export default function BiharTimeline() {
     const card = scrollRef.current.querySelector(".timeline-card") as HTMLElement;
     const cardW = card ? card.offsetWidth + 24 : 320;
     const idx = Math.round(scrollRef.current.scrollLeft / cardW);
-    setActiveIndex(Math.min(idx, events.length - 1));
+    setActiveIndex(Math.min(idx, displayEvents.length - 1));
   };
 
   return (
@@ -161,7 +164,11 @@ export default function BiharTimeline() {
           className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide scroll-smooth"
           style={{ scrollbarWidth: "none" }}
         >
-          {events.map((event, i) => (
+          {displayEvents.map((event, i) => {
+            const eraStr = "era" in event && typeof event.era === "string" ? event.era : (event as any).category || "Modern";
+            const iconStr = "icon" in event && typeof event.icon === "string" ? event.icon : "📅";
+            const colorStr = "color" in event && typeof event.color === "string" ? event.color : eraColors[eraStr] || "#EA580C";
+            return (
             <motion.div
               key={event.year}
               initial={{ opacity: 0, y: 24 }}
@@ -169,7 +176,7 @@ export default function BiharTimeline() {
               transition={{ duration: 0.4, delay: 0.05 * i }}
               className="timeline-card tech-card p-5 flex flex-col gap-3 min-w-[260px] sm:min-w-[300px] snap-start flex-shrink-0 cursor-pointer group relative"
               style={{
-                borderTopColor: event.color,
+                borderTopColor: colorStr,
                 borderTopWidth: "3px",
                 opacity: activeIndex === i ? 1 : 0.75,
               }}
@@ -177,24 +184,24 @@ export default function BiharTimeline() {
               {/* Dot on the connecting line */}
               <div
                 className="absolute -top-[29px] left-6 w-4 h-4 rounded-full border-2 border-white shadow-sm z-10 transition-transform group-hover:scale-125"
-                style={{ backgroundColor: event.color }}
+                style={{ backgroundColor: colorStr }}
               />
 
               {/* Era badge */}
               <div className="flex items-center justify-between">
                 <span
                   className="text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded border font-bold"
-                  style={{ color: eraColors[event.era], borderColor: eraColors[event.era] + "40", backgroundColor: eraColors[event.era] + "10" }}
+                  style={{ color: eraColors[eraStr] || "#EA580C", borderColor: (eraColors[eraStr] || "#EA580C") + "40", backgroundColor: (eraColors[eraStr] || "#EA580C") + "10" }}
                 >
-                  {event.era}
+                  {eraStr}
                 </span>
-                <span className="text-2xl">{event.icon}</span>
+                <span className="text-2xl">{iconStr}</span>
               </div>
 
               {/* Year */}
               <div
                 className="font-mono font-bold text-2xl"
-                style={{ color: event.color }}
+                style={{ color: colorStr }}
               >
                 {event.year}
               </div>
@@ -206,15 +213,15 @@ export default function BiharTimeline() {
 
               {/* Description */}
               <p className="text-xs text-muted leading-relaxed flex-1">
-                {event.desc}
+                {(event as any).description || ("desc" in event && typeof event.desc === "string" ? event.desc : "")}
               </p>
             </motion.div>
-          ))}
+          )})}
         </div>
       </div>
 
       <div className="flex justify-center mt-6">
-        {events.map((_, i) => (
+        {displayEvents.map((_, i) => (
           <button
             key={i}
             aria-label={`Go to event ${i + 1}`}

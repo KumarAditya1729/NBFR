@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import { Mic, PenTool, MessageSquare, BookOpen, Mail, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
-export default function Insights() {
+import { Insight } from "@/lib/data";
+
+export default function Insights({ insights }: { insights?: Insight[] | null }) {
   const upcomingFormats = [
     {
       icon: PenTool,
@@ -138,6 +140,40 @@ export default function Insights() {
             </motion.div>
           ))}
         </div>
+
+        {/* Render Fetched Insights if available */}
+        {insights && insights.length > 0 && (
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {insights.map((insight, i) => (
+              <motion.div
+                key={insight._id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="tech-card p-6 flex flex-col gap-4 border border-border hover:border-brand-primary/50 transition-all"
+              >
+                <div>
+                  <div className="text-[10px] font-mono text-brand-primary mb-2 uppercase">{insight.type}</div>
+                  <h4 className="font-mono font-bold text-brand-primary mb-2 text-base">
+                    {insight.title}
+                  </h4>
+                  {insight.author && (
+                    <p className="text-muted text-xs font-sans">By {insight.author}</p>
+                  )}
+                  {insight.date && (
+                    <p className="text-muted/70 text-[10px] font-sans mt-1">{new Date(insight.date).toLocaleDateString()}</p>
+                  )}
+                </div>
+                {insight.link && (
+                  <Link href={insight.link} target="_blank" className="mt-auto inline-flex items-center gap-1 text-xs text-brand-accent hover:underline">
+                    Read More <ChevronRight className="w-3 h-3" />
+                  </Link>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        )}
 
       </div>
     </section>

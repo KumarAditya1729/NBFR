@@ -4,7 +4,23 @@ import { motion } from "framer-motion";
 import { UserPlus, BookOpen, GraduationCap, Globe } from "lucide-react";
 import Link from "next/link";
 
-export default function Fellowships() {
+import { MembershipProgram } from "@/lib/data";
+
+export default function Fellowships({ programs }: { programs?: MembershipProgram[] | null }) {
+  const defaultPrograms = [
+    { icon: BookOpen, title: "Research Membership", desc: "For researchers and academics advancing Bihar's development agenda." },
+    { icon: UserPlus, title: "Policy Membership", desc: "For mid-career professionals and administrators shaping governance." },
+    { icon: GraduationCap, title: "Student Membership", desc: "Mentorship and engagement for outstanding university students." },
+    { icon: Globe, title: "Visiting Scholar", desc: "Global experts collaborating on Bihar's development research." },
+  ];
+  
+  const displayPrograms = programs?.length ? programs.map(p => ({
+    icon: p.iconName === 'UserPlus' ? UserPlus : 
+          p.iconName === 'GraduationCap' ? GraduationCap : 
+          p.iconName === 'Globe' ? Globe : BookOpen,
+    title: p.title,
+    desc: p.description
+  })) : defaultPrograms;
   return (
     <section id="initiatives" className="py-24 bg-background bg-grid relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none"></div>
@@ -57,12 +73,7 @@ export default function Fellowships() {
             
             <div className="md:w-1/2 w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { icon: BookOpen, title: "Research Membership", desc: "For researchers and academics advancing Bihar's development agenda." },
-                  { icon: UserPlus, title: "Policy Membership", desc: "For mid-career professionals and administrators shaping governance." },
-                  { icon: GraduationCap, title: "Student Membership", desc: "Mentorship and engagement for outstanding university students." },
-                  { icon: Globe, title: "Visiting Scholar", desc: "Global experts collaborating on Bihar's development research." },
-                ].map((item, i) => (
+                {displayPrograms.map((item, i) => (
                   <motion.div 
                     key={i}
                     initial={{ opacity: 0, scale: 0.95 }}

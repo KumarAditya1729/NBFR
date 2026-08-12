@@ -31,7 +31,26 @@ function Counter({ value, suffix, fallbackText, isStatic }: { value: number; suf
   return <span ref={ref}>{fallbackText}</span>;
 }
 
-export default function ImpactCounter() {
+import { ImpactStat } from "@/lib/data";
+
+export default function ImpactCounter({ stats: initialStats }: { stats?: ImpactStat[] | null }) {
+  const displayStats = initialStats?.length ? initialStats.map(s => {
+    // Attempt to parse value as number, otherwise fallback to static mode or just pass string.
+    // The current Counter component expects a number, but wait, the schema defines value as string.
+    // So we might need to parse it. Let's parse out any non-digits for the suffix or prefix.
+    const numericMatch = s.value.match(/(\d+)/);
+    const numValue = numericMatch ? parseInt(numericMatch[1], 10) : 0;
+    const suffixStr = s.value.replace(/\d+/g, '').trim();
+    
+    return {
+      value: numValue,
+      label: s.label,
+      suffix: suffixStr,
+      description: s.description || "",
+      fallbackText: s.value,
+      isStatic: !numericMatch
+    };
+  }) : stats;
   return (
     <section className="w-full bg-brand-secondary text-white py-14 px-4 overflow-hidden relative">
       {/* Decorative background */}
@@ -49,14 +68,14 @@ export default function ImpactCounter() {
         </motion.p>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
-          {stats.map((stat, i) => (
+          {displayStats.map((stat, i) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex flex-col items-center gap-1 group"
+              className="flex flex-col items-center gap-1 group relative"
             >
               <div className="text-4xl sm:text-5xl font-serif font-bold text-white group-hover:text-brand-accent transition-colors duration-300">
                 <Counter value={stat.value} suffix={stat.suffix} fallbackText={stat.fallbackText} isStatic={stat.isStatic} />
@@ -68,8 +87,8 @@ export default function ImpactCounter() {
                 {stat.description}
               </div>
               {/* Divider dot */}
-              {i < stats.length - 1 && (
-                <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-10 bg-white/10" />
+              {i < displayStats.length - 1 && (
+                <div className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 w-px h-10 bg-white/10" />
               )}
             </motion.div>
           ))}

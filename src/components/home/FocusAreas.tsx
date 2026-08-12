@@ -3,7 +3,9 @@
 import { ArrowRight, Landmark, Wheat, GraduationCap, HeartPulse } from "lucide-react";
 import Link from "next/link";
 
-export default function FocusAreas() {
+import { FocusArea } from "@/lib/data";
+
+export default function FocusAreas({ areas: initialAreas }: { areas?: FocusArea[] | null }) {
   const areas = [
     {
       title: "Governance & Admin",
@@ -49,17 +51,28 @@ export default function FocusAreas() {
       </div>
 
       <div className="flex flex-col gap-3 h-full justify-between">
-        {areas.map((area, i) => (
-          <Link href="/#research" key={i} className={`group flex items-center gap-4 p-3 rounded-lg border border-border bg-surface transition-all duration-300 ${area.border} ${area.bg}`}>
-            <div className={`w-10 h-10 rounded bg-background border border-border flex items-center justify-center transition-colors ${area.color}`}>
-              <area.icon className="w-5 h-5" />
+        {(initialAreas?.length ? initialAreas : areas).slice(0,4).map((area, i) => {
+          const colors = [
+            { color: "group-hover:text-brand-primary", bg: "group-hover:bg-brand-primary/10", border: "group-hover:border-brand-primary/30" },
+            { color: "group-hover:text-brand-secondary", bg: "group-hover:bg-brand-secondary/10", border: "group-hover:border-brand-secondary/30" },
+            { color: "group-hover:text-brand-accent", bg: "group-hover:bg-brand-accent/10", border: "group-hover:border-brand-accent/30" },
+            { color: "group-hover:text-brand-primary", bg: "group-hover:bg-brand-primary/10", border: "group-hover:border-brand-primary/30" }
+          ];
+          const style = colors[i % colors.length];
+          // Use hardcoded icon fallback if none matches
+          const Icon = "icon" in area ? (area as any).icon : Landmark;
+          
+          return (
+          <Link href="/#research" key={i} className={`group flex items-center gap-4 p-3 rounded-lg border border-border bg-surface transition-all duration-300 ${style.border} ${style.bg}`}>
+            <div className={`w-10 h-10 rounded bg-background border border-border flex items-center justify-center transition-colors ${style.color}`}>
+              <Icon className="w-5 h-5" />
             </div>
             <div>
-              <h3 className={`font-mono font-bold text-sm text-brand-primary transition-colors ${area.color}`}>{area.title}</h3>
-              <p className="text-[10px] text-muted font-sans">{area.desc}</p>
+              <h3 className={`font-mono font-bold text-sm text-brand-primary transition-colors ${style.color}`}>{area.title}</h3>
+              <p className="text-[10px] text-muted font-sans">{("description" in area ? area.description : (area as any).desc)}</p>
             </div>
           </Link>
-        ))}
+        )})}
       </div>
     </div>
   );

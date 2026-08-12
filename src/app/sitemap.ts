@@ -1,16 +1,12 @@
 import type { MetadataRoute } from 'next'
-import { sanityFetch } from '@/sanity/lib/client'
-import { ALL_PUBLICATIONS_QUERY } from '@/sanity/lib/queries'
-import type { Publication } from '@/sanity/lib/fallbackData'
+import { FALLBACK_PUBLICATIONS } from '@/lib/data'
+import type { Publication } from '@/lib/data'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://nbrf.in'
 
   // Dynamic publications fetching for sitemap indexing
-  const publications = await sanityFetch<Publication[]>({
-    query: ALL_PUBLICATIONS_QUERY,
-    revalidate: 3600,
-  }).catch(() => [])
+  const publications = FALLBACK_PUBLICATIONS;
 
   const publicationRoutes: MetadataRoute.Sitemap = (publications || []).map((pub) => {
     const slugStr = typeof pub.slug === 'string' ? pub.slug : pub.slug?.current || ''

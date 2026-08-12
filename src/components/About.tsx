@@ -6,7 +6,9 @@ import Image from "next/image";
 import { Users, Target, Rocket, Eye, Info } from "lucide-react";
 import Link from "next/link";
 
-export default function About() {
+import { SiteSettings } from "@/lib/data";
+
+export default function About({ settings }: { settings?: SiteSettings | null }) {
   const [activeTab, setActiveTab] = useState("about");
 
   const tabs = [
@@ -20,7 +22,9 @@ export default function About() {
     about: (
       <div className="space-y-4 text-muted font-sans text-sm md:text-base leading-relaxed">
         <p>
-          <strong className="text-brand-primary">The Nav Bihar Renaissance Foundation (NBRF)</strong> is Bihar&apos;s pioneering think tank, dedicated to addressing the state&apos;s developmental challenges. With data-driven insights and research, we provide strategic solutions across social, economic, cultural, and other sectors, enabling Bihar to realize its full potential.
+          {settings?.aboutText || (
+            <><strong className="text-brand-primary">The Nav Bihar Renaissance Foundation (NBRF)</strong> is Bihar&apos;s pioneering think tank, dedicated to addressing the state&apos;s developmental challenges. With data-driven insights and research, we provide strategic solutions across social, economic, cultural, and other sectors, enabling Bihar to realize its full potential.</>
+          )}
         </p>
         <p>
           Bihar has a glorious past; it was the centre of political and spiritual power in India. Pataliputra was the capital of the Maurya Empire and later the Gupta Empire. Bihar was the land where Gautam Buddha obtained enlightenment when he began spreading the teachings of his new faith—Buddhism. Mahavir, the 24th Tirthankara of Jainism, was from Vaishali.

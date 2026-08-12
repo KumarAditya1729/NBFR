@@ -4,7 +4,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Send, CheckCircle } from "lucide-react";
 
-export default function Contact() {
+import { SiteSettings } from "@/lib/data";
+
+export default function Contact({ settings }: { settings?: SiteSettings | null }) {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
@@ -34,8 +36,8 @@ export default function Contact() {
   };
 
   const contacts = [
-    { icon: MapPin, label: "Location", value: "Patna, Bihar, India" },
-    { icon: Mail, label: "Email", value: "contact@nbrf.org.in" },
+    { icon: MapPin, label: "Location", value: settings?.address || "Patna, Bihar, India" },
+    { icon: Mail, label: "Email", value: settings?.contactEmail || "contact@nbrf.org.in" },
   ];
 
   return (

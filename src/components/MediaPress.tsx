@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import { Megaphone, Newspaper, Radio, Mail, ChevronRight, Send } from "lucide-react";
 import Link from "next/link";
 
-export default function MediaPress() {
+import { MediaMention } from "@/lib/data";
+
+export default function MediaPress({ mentions }: { mentions?: MediaMention[] | null }) {
   const mediaOpportunities = [
     {
       icon: Megaphone,
@@ -112,6 +114,37 @@ export default function MediaPress() {
             </div>
           </div>
         </motion.div>
+
+        {/* Render Fetched Media Mentions if available */}
+        {mentions && mentions.length > 0 && (
+          <div className="mb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {mentions.map((mention, i) => (
+              <motion.div
+                key={mention._id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="tech-card p-6 flex flex-col gap-4 border border-border hover:border-brand-accent/50 transition-all"
+              >
+                <div>
+                  <div className="text-[10px] font-mono text-brand-accent mb-2 uppercase">{mention.source}</div>
+                  <h4 className="font-mono font-bold text-brand-primary mb-2 text-base leading-snug">
+                    {mention.headline}
+                  </h4>
+                  {mention.date && (
+                    <p className="text-muted/70 text-[10px] font-sans mt-1">{new Date(mention.date).toLocaleDateString()}</p>
+                  )}
+                </div>
+                {mention.url && (
+                  <Link href={mention.url} target="_blank" className="mt-auto inline-flex items-center gap-1 text-xs text-brand-primary hover:underline">
+                    Read Article <ChevronRight className="w-3 h-3" />
+                  </Link>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        )}
 
         {/* Press Contact Row */}
         <motion.div

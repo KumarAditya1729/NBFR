@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
-import { urlForImage } from "@/sanity/lib/image";
+import { urlForImage } from "@/lib/image";
 import { BOARD_OF_DIRECTORS, MANAGEMENT_TEAM } from "@/data/boardOfDirectors";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

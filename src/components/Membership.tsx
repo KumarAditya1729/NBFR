@@ -5,7 +5,9 @@ import { UserPlus, FileText, Users, Network, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Membership() {
+import { MembershipProgram } from "@/lib/data";
+
+export default function Membership({ programs }: { programs?: MembershipProgram[] | null }) {
   const benefits = [
     {
       icon: FileText,

@@ -24,7 +24,7 @@ import {
   X
 } from "lucide-react";
 import Link from "next/link";
-import { type BiharDataset, type DistrictFactsheet } from "@/sanity/lib/fallbackData";
+import { type BiharDataset, type DistrictFactsheet } from "@/lib/data";
 
 interface BiharObservatoryClientProps {
   initialDatasets?: BiharDataset[];
@@ -207,7 +207,7 @@ export default function BiharObservatoryClient({
                   return (
                     <button
                       key={d._id}
-                      onClick={() => setSelectedDistrictId(d._id)}
+                      onClick={() => setSelectedDistrictId(d._id || d.id || '')}
                       className={`w-full p-3.5 rounded text-left transition-all border flex items-center justify-between group ${
                         isSelected
                           ? "bg-brand-primary/15 border-brand-primary text-foreground shadow-sm"

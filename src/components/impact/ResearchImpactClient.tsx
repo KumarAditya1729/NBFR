@@ -17,7 +17,7 @@ import {
   CheckCircle2
 } from "lucide-react";
 import Link from "next/link";
-import type { Publication, BiharDataset, DistrictFactsheet } from "@/sanity/lib/fallbackData";
+import type { Publication, BiharDataset, DistrictFactsheet } from "@/lib/data";
 
 interface MetricCardProps {
   label: string;

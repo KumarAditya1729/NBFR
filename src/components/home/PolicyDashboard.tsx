@@ -1,6 +1,8 @@
 "use client";
 
-export default function PolicyDashboard() {
+import { FocusArea } from "@/lib/data";
+
+export default function PolicyDashboard({ areas }: { areas?: FocusArea[] | null }) {
 
   return (
     <div className="tech-card p-4 sm:p-6 md:p-8 flex flex-col h-full gap-5">

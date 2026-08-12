@@ -28,20 +28,20 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { urlForImage } from "@/sanity/lib/image";
+import { urlForImage } from "@/lib/image";
 
 interface PublicationItem {
   _id?: string;
   title?: string;
-  slug?: { current?: string } | string;
-  publicationType?: string;
-  abstract?: string;
-  publishDate?: string;
+  slug?: { current?: string } | string | null;
+  publicationType?: string | null;
+  abstract?: string | null;
+  publishDate?: string | null;
   districtScope?: string[];
-  authors?: Array<{ _id?: string; name?: string; designation?: string; role?: string }>;
+  authors?: Array<{ _id?: string; name?: string; designation?: string | null; role?: string | null }>;
   featuredImage?: unknown;
-  pdfUrl?: string;
-  pdfFileUrl?: string;
+  pdfUrl?: string | null;
+  pdfFileUrl?: string | null;
   vertical?: string;
 }
 
@@ -180,7 +180,7 @@ export default function ResearchLibraryClient({
     setCurrentPage(1);
   };
 
-  const getSlugString = (slugField?: { current?: string } | string) => {
+  const getSlugString = (slugField?: { current?: string } | string | null) => {
     if (!slugField) return "bihar-policy-blueprint";
     if (typeof slugField === "string") return slugField;
     return slugField.current || "bihar-policy-blueprint";
