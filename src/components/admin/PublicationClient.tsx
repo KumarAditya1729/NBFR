@@ -19,8 +19,8 @@ export default function PublicationClient({ initialData }: { initialData: Public
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [abstract, setAbstract] = useState("");
-  const [date, setDate] = useState("");
-  const [type, setType] = useState("Research Paper");
+  const [publishDate, setPublishDate] = useState("");
+  const [publicationType, setPublicationType] = useState("Research Paper");
   const [coverImage, setCoverImage] = useState("");
   const [pdfUrl, setPdfUrl] = useState("");
 
@@ -28,8 +28,8 @@ export default function PublicationClient({ initialData }: { initialData: Public
     setTitle("");
     setSlug("");
     setAbstract("");
-    setDate("");
-    setType("Research Paper");
+    setPublishDate("");
+    setPublicationType("Research Paper");
     setCoverImage("");
     setPdfUrl("");
     setEditingId(null);
@@ -40,8 +40,8 @@ export default function PublicationClient({ initialData }: { initialData: Public
     setTitle(pub.title || "");
     setSlug(pub.slug || "");
     setAbstract(pub.abstract || "");
-    setDate(pub.date || "");
-    setType(pub.type || "Research Paper");
+    setPublishDate(pub.publishDate || "");
+    setPublicationType(pub.publicationType || "Research Paper");
     setCoverImage(pub.coverImage || "");
     setPdfUrl(pub.pdfUrl || "");
     setIsDrawerOpen(true);
@@ -69,8 +69,8 @@ export default function PublicationClient({ initialData }: { initialData: Public
       title,
       slug,
       abstract,
-      date,
-      type,
+      publishDate,
+      publicationType,
       coverImage,
       pdfUrl,
     };
@@ -143,9 +143,9 @@ export default function PublicationClient({ initialData }: { initialData: Public
                     <h4 className="font-medium text-gray-900">{pub.title}</h4>
                     <div className="text-sm text-gray-500 mt-1 flex items-center gap-2">
                       <span className="inline-block px-2 py-0.5 text-xs font-semibold bg-indigo-100 text-indigo-800 rounded">
-                        {pub.type}
+                        {pub.publicationType}
                       </span>
-                      {pub.date}
+                      {pub.publishDate}
                     </div>
                   </td>
                   <td className="p-4">
@@ -239,8 +239,8 @@ export default function PublicationClient({ initialData }: { initialData: Public
                     <label className="block text-sm font-medium text-gray-700 mb-1">Type *</label>
                     <select
                       required
-                      value={type}
-                      onChange={(e) => setType(e.target.value)}
+                      value={publicationType}
+                      onChange={(e) => setPublicationType(e.target.value)}
                       className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none bg-white"
                     >
                       <option value="Research Paper">Research Paper</option>
@@ -254,8 +254,8 @@ export default function PublicationClient({ initialData }: { initialData: Public
                     <input
                       type="text"
                       required
-                      value={date}
-                      onChange={(e) => setDate(e.target.value)}
+                      value={publishDate}
+                      onChange={(e) => setPublishDate(e.target.value)}
                       className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none"
                       placeholder="e.g. October 2024"
                     />

@@ -141,6 +141,7 @@ model Publication {
   slug             String?  @unique
   publicationType  String?
   abstract         String?
+  coverImage       String?
   publishDate      String?
   districtScope    String[] @default([])
   pdfFileUrl       String?
