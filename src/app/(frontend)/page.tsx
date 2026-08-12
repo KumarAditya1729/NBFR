@@ -31,6 +31,7 @@ import Partners from "@/components/Partners";
 import Contact from "@/components/Contact";
 import ScrollToTop from "@/components/ScrollToTop";
 import Experts from "@/components/Experts";
+import Glimpses from "@/components/home/Glimpses";
 
 import {
   FALLBACK_PUBLICATIONS,
@@ -140,6 +141,9 @@ export default async function Home() {
 
         {/* ── SEGMENT 7: EVENTS & EMPIRICAL DATA CENTER (#events) ── */}
         <Events events={events} />
+
+        {/* ── SEGMENT 7.5: GLIMPSES / GALLERY ── */}
+        <Glimpses />
 
         {/* ── SEGMENT 8: NEWS, MEDIA & INSIGHTS (#insights, #media) ── */}
         <Insights insights={insights} />
