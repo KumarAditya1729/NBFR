@@ -115,7 +115,7 @@ export default async function Home() {
         <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
           <InteractiveMapBento />
           <ImpactCounter stats={impactStats} />
-          <BiharInNumbers stats={impactStats} />
+          <BiharInNumbers />
         </section>
 
         {/* ── SEGMENT 4: RESEARCH VERTICALS & POLICY DASHBOARD (#research) ── */}

@@ -47,26 +47,7 @@ const facts = [
   },
 ];
 
-import { ImpactStat } from "@/lib/data";
-
-export default function BiharInNumbers({ stats }: { stats?: ImpactStat[] | null }) {
-  const displayFacts = stats?.length ? stats.map((s, i) => {
-    const colors = [
-      "var(--color-cat-economy)",
-      "var(--color-cat-social)",
-      "var(--color-cat-policy)",
-      "var(--color-cat-infra)",
-      "var(--color-brand-primary)",
-      "var(--color-info)"
-    ];
-    return {
-      value: s.value,
-      label: s.label,
-      description: s.description,
-      icon: s.iconName || "📊",
-      color: colors[i % colors.length]
-    };
-  }) : facts;
+export default function BiharInNumbers() {
   return (
     <section className="w-full py-10 overflow-hidden">
       <motion.div
@@ -81,7 +62,7 @@ export default function BiharInNumbers({ stats }: { stats?: ImpactStat[] | null 
       </motion.div>
 
       <div className="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide sm:grid sm:grid-cols-3 lg:grid-cols-6 sm:overflow-visible">
-        {displayFacts.map((fact, i) => (
+        {facts.map((fact, i) => (
           <motion.div
             key={fact.label}
             initial={{ opacity: 0, y: 20 }}
