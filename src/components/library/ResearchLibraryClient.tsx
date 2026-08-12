@@ -32,13 +32,15 @@ import { urlForImage } from "@/lib/image";
 
 interface PublicationItem {
   _id?: string;
+  id?: string;
   title?: string;
   slug?: { current?: string } | string | null;
   publicationType?: string | null;
   abstract?: string | null;
   publishDate?: string | null;
+  coverImage?: string | null;
   districtScope?: string[];
-  authors?: Array<{ _id?: string; name?: string; designation?: string | null; role?: string | null }>;
+  authors?: Array<{ _id?: string; name?: string; designation?: string | null; role?: string | null; bio?: string | null }>;
   featuredImage?: unknown;
   pdfUrl?: string | null;
   pdfFileUrl?: string | null;
@@ -414,7 +416,7 @@ export default function ResearchLibraryClient({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {paginatedPublications.map((pub, idx) => {
             const slugStr = getSlugString(pub.slug);
-            const imgUrl = urlForImage(pub.featuredImage) || "/mindful_research.png";
+            const imgUrl = pub.coverImage || urlForImage(pub.featuredImage) || "/mindful_research.png";
             const pubType = pub.publicationType || "Research Report";
             const pubDate = pub.publishDate || "2026-03-15";
 
@@ -468,11 +470,18 @@ export default function ResearchLibraryClient({
                     </p>
 
                     {/* Authors list */}
-                    {pub.authors && pub.authors.length > 0 && (
+                    {pub.authors && pub.authors.length > 0 ? (
                       <div className="flex items-center gap-2 mb-4 pt-3 border-t border-border/40 text-xs font-mono text-muted">
                         <User className="w-3.5 h-3.5 text-brand-secondary shrink-0" />
                         <span className="line-clamp-1">
                           By {pub.authors.map(a => a.name).join(", ")}
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2 mb-4 pt-3 border-t border-border/40 text-xs font-mono text-muted">
+                        <User className="w-3.5 h-3.5 text-brand-secondary shrink-0" />
+                        <span className="line-clamp-1">
+                          By Shashank Shrivastava
                         </span>
                       </div>
                     )}

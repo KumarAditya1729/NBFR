@@ -52,6 +52,24 @@ interface DatasetItem {
   verifiedBy?: string;
 }
 
+interface PublicationItem {
+  _id?: string;
+  id?: string;
+  title?: string;
+  slug?: { current?: string } | string | null;
+  publicationType?: string | null;
+  abstract?: string | null;
+  publishDate?: string | null;
+  coverImage?: string | null;
+  districtScope?: string[];
+  authors?: Array<{ _id?: string; name?: string; designation?: string | null; role?: string | null; bio?: string | null }>;
+  featuredImage?: unknown;
+  pdfUrl?: string | null;
+  pdfFileUrl?: string | null;
+  vertical?: string;
+  body?: any;
+}
+
 interface PublicationDetailProps {
   publication: {
     _id?: string;
@@ -67,6 +85,7 @@ interface PublicationDetailProps {
     authors?: AuthorItem[];
     pdfFileUrl?: string | null;
     pdfUrl?: string | null;
+    coverImage?: string | null;
     featuredImage?: unknown;
     citation?: string | null;
     methodology?: MethodologyData;
@@ -74,9 +93,11 @@ interface PublicationDetailProps {
   };
   relatedPublications?: Array<{
     _id?: string;
+    id?: string;
     title?: string;
     slug?: { current?: string } | string | null;
     featuredImage?: unknown;
+    coverImage?: string | null;
     publishDate?: string | null;
     abstract?: string | null;
     publicationType?: string | null;
@@ -173,7 +194,7 @@ export default function PublicationDetailClient({
               ))
             ) : (
               <span className="text-xs font-mono text-brand-primary bg-background px-3 py-1.5 rounded border border-border">
-                Santosh Kumar // Arun Kumar Singh (IA&AS)
+                Shashank Shrivastava
               </span>
             )}
           </div>
@@ -362,17 +383,10 @@ export default function PublicationDetailClient({
                     ) : (
                       <>
                         <div className="space-y-2">
-                          <h5 className="font-mono font-bold text-sm text-foreground">Santosh Kumar</h5>
-                          <p className="font-sans text-[11px] text-brand-primary">Director | Former World Bank Consultant & RTI Champion</p>
+                          <h5 className="font-mono font-bold text-sm text-foreground">Shashank Shrivastava</h5>
+                          <p className="font-sans text-[11px] text-brand-primary">NBRF Research Scholar</p>
                           <p className="font-sans text-xs text-muted leading-relaxed">
-                            A prominent social entrepreneur who successfully campaigned to mandate public asset disclosures of state officials under the RTI Act.
-                          </p>
-                        </div>
-                        <div className="space-y-2 pt-4 border-t border-border/40">
-                          <h5 className="font-mono font-bold text-sm text-foreground">Arun Kumar Singh (IA&AS)</h5>
-                          <p className="font-sans text-[11px] text-brand-accent">Former Deputy Comptroller & Auditor General of India</p>
-                          <p className="font-sans text-xs text-muted leading-relaxed">
-                            Decades of expertise supervising financial audits of national development programmes and public sector undertakings.
+                            A dedicated researcher focused on public policy and empirical studies in Bihar.
                           </p>
                         </div>
                       </>
@@ -597,7 +611,7 @@ export default function PublicationDetailClient({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {relatedPublications.slice(0, 3).map((relPub, idx) => {
               const relSlug = typeof relPub.slug === "string" ? relPub.slug : (relPub.slug?.current || "bihar-policy-blueprint");
-              const relImg = urlForImage(relPub.featuredImage) || "/mindful_research.png";
+              const relImg = relPub.coverImage || urlForImage(relPub.featuredImage) || "/mindful_research.png";
               return (
                 <div
                   key={relPub._id || idx}
